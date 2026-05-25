@@ -1,0 +1,230 @@
+{
+  "description": "Service-specific evaluation grids for Call Scoring. Manager names map agents to services.",
+  "last_updated": "2026-05-25",
+  "services": {
+    "E-vendeurs": {
+      "display_name": "E-vendeurs",
+      "manager_name": "Ludovic DOREAU",
+      "description": "Ventes entrantes et sortantes, prise de rendez-vous",
+      "scoring_criteria": {
+        "accueil": {
+          "label": "Accueil et Professionalisme",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["bonjour", "merci", "bienvenue", "enchanté", "je vous écoute", "comment puis-je", "puis-je vous aider", "ravi", "souhaitez", "besoin"],
+          "keywords_negative": ["allô", "ouais", "attendez", "j'sais pas", "je sais pas", "c'est pas mon", "je m'en fous", "débrouillez-vous", "pas le temps"],
+          "description": "Qualité de l'accueil et professionnalisme de l'agent"
+        },
+        "besoins": {
+          "label": "Identification des Besoins",
+          "weight": 4,
+          "max_points": 20,
+          "keywords_positive": ["quel modèle", "quelle marque", "quel budget", "quel type", "recherchez-vous", "vous souhaitez", "quels critères", "essai", "financement", "reprise", "livraison", "attendez-vous", "qu'est-ce qui est", "important pour vous"],
+          "keywords_negative": ["je vous pose pas la question", "écoutez", "je répète", "comme je vous ai dit", "c'est écrit", "vous n'écoutez pas"],
+          "description": "Capacité à identifier les besoins du client"
+        },
+        "argumentation": {
+          "label": "Argumentation et Conseil",
+          "weight": 4,
+          "max_points": 20,
+          "keywords_positive": ["je vous propose", "je vous conseille", "avantage", "caractéristique", "option", "équipement", "finition", "motorisation", "garantie", "entretien", "économies", "prix", "offre", "promotion", "occasion", "neuf", "stock", "disponible"],
+          "keywords_negative": ["c'est comme ça", "je n'y peux rien", "c'est le prix", "désolé c'est", "pas possible", "je ne peux pas"],
+          "description": "Qualité de l'argumentation commerciale"
+        },
+        "gestion_opposition": {
+          "label": "Gestion des Objections",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["je comprends", "je vois", "c'est noté", "laissez-moi", "permettez-moi", "effectivement", "cependant", "néanmoins", "alternative", "solution", "peut-être", "considérer", "proposition"],
+          "keywords_negative": ["c'est pas vrai", "vous avez tort", "n'importe quoi", "vous vous trompez", "c'est faux", "absurde", "pas du tout"],
+          "description": "Capacité à gérer les objections"
+        },
+        "closing": {
+          "label": "Conclusion et Prise de Rendez-vous",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["rendez-vous", "venez", "concession", "essai", "programmons", "agenda", "planning", "à bientôt", "je vous attends", "confirmation", "rappel", "sms", "mail", "réservation"],
+          "keywords_negative": ["on verra plus tard", "rappelez", "je vous laisse", "débrouillez-vous"],
+          "description": "Efficacité de la conclusion et prise de rendez-vous"
+        },
+        "empathie": {
+          "label": "Empathie et Relation Client",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["je comprends", "tout à fait", "bien sûr", "pas de souci", "naturellement", "rassurez-vous", "soyez tranquille", "je suis là", "à votre disposition", "avec plaisir", "volontiers"],
+          "keywords_negative": ["je m'en fiche", "c'est votre problème", "débrouillez-vous", "je n'ai pas le temps", "écoutez-moi bien"],
+          "description": "Qualité de l'empathie et relation client"
+        }
+      }
+    },
+    "Qualifieurs": {
+      "display_name": "Qualifieurs",
+      "manager_name": "Mickael ROCHEGUDE",
+      "description": "Qualification de leads, appel sortant",
+      "scoring_criteria": {
+        "presentation": {
+          "label": "Présentation et Cadre de l'Appel",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["bonjour", "je vous appelle", "de la part de", "au sujet de", "vous avez laissé", "suite à", "contact", "demande", "prospection", "projet"],
+          "keywords_negative": ["allô", "ouais", "c'est pour quoi", "qui êtes-vous", "j'appelle pour"],
+          "description": "Qualité de la présentation"
+        },
+        "qualification": {
+          "label": "Qualification du Lead",
+          "weight": 5,
+          "max_points": 20,
+          "keywords_positive": ["êtes-vous toujours intéressé", "avez-vous des questions", "quel est votre projet", "budget", "délai", "secteur", "critères", "besoins", "attentes", "souhaits", "situation", "actuel", "véhicule"],
+          "keywords_negative": ["bon ben", "voilà", "c'est tout", "rien d'autre", "d'accord bah"],
+          "description": "Qualité de la qualification du lead"
+        },
+        "engagement": {
+          "label": "Engagement et Suivi",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["je vous envoie", "documentation", "devis", "proposition", "commercial", "rappelle", "relance", "email", "sms", "prise de rendez-vous", "concession", "venir"],
+          "keywords_negative": ["je ne peux pas", "c'est pas possible", "rappelez plus tard", "j'ai pas le temps"],
+          "description": "Qualité de l'engagement et suivi"
+        },
+        "courtoisie": {
+          "label": "Courtoisie et Professionnalisme",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["merci", "bonne journée", "au revoir", "merci de votre", "n'hésitez pas", "je reste à votre disposition", "à bientôt"],
+          "keywords_negative": ["voilà c'est tout", "c'est bon", "ça marche", "OK", "salut"],
+          "description": "Niveau de courtoisie"
+        }
+      }
+    },
+    "APV GVA": {
+      "display_name": "APV GVA",
+      "manager_name": "Leslie BOULARD",
+      "description": "Après-vente, gestion des ateliers",
+      "scoring_criteria": {
+        "accueil_SAV": {
+          "label": "Accueil et Prise en Charge",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["bonjour", "merci d'appeler", "comment puis-je", "je vous écoute", "en quoi puis-je", "besoin", "problème", "panne"],
+          "keywords_negative": ["allô", "ouais", "c'est pour quoi là", "j'ai pas le temps"],
+          "description": "Qualité de l'accueil SAV"
+        },
+        "diagnostic": {
+          "label": "Diagnostic et Compréhension",
+          "weight": 4,
+          "max_points": 20,
+          "keywords_positive": ["depuis quand", "symptômes", "bruit", "témoin", "voyant", "bizarre", "entendu", "constaté", "décrivez", "expliquez", "quel bruit", "quand"],
+          "keywords_negative": ["j'sais pas", "je vois pas", "amenez-le", "je peux rien dire"],
+          "description": "Qualité du diagnostic"
+        },
+        "solution": {
+          "label": "Proposition de Solution",
+          "weight": 4,
+          "max_points": 20,
+          "keywords_positive": ["rendez-vous", "atelier", "diagnostic", "technicien", "pièce", "réparation", "intervention", "devis", "prise en charge", "garantie", "entretien", "révision"],
+          "keywords_negative": ["je sais pas quoi vous dire", "c'est compliqué", "pas possible", "amenez", "désolé je", "je ne peux rien"],
+          "description": "Qualité de la solution proposée"
+        },
+        "delai": {
+          "label": "Gestion des Délais et Suivi",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["disponible", "créneau", "semaine prochaine", "jour même", "sous", "heures", "sans rendez-vous", "urgent", "priorité", "appel", "confirmation", "relance", "suivi"],
+          "keywords_negative": ["plus tard", "je ne sais pas quand", "pas de date", "débrouillez-vous", "c'est pas mon rayon"],
+          "description": "Gestion des délais"
+        },
+        "satisfaction": {
+          "label": "Satisfaction et Fidélisation",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["satisfait", "content", "merci de votre confiance", "à bientôt", "bonne journée", "au plaisir", "n'hésitez pas", "rester à votre disposition"],
+          "keywords_negative": ["c'est fini", "voilà", "au revoir", "ça va"],
+          "description": "Satisfaction client"
+        }
+      }
+    },
+    "APV FMC/NSA/BMW": {
+      "display_name": "APV FMC/NSA/BMW",
+      "manager_name": "Cédric KOUDJENOUME",
+      "description": "Après-vente FMC, Nissan, BMW",
+      "scoring_criteria": {
+        "accueil_multimarque": {
+          "label": "Accueil Multimarque",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["bonjour", "bienvenue chez", "garage", "concession", "FMC", "Nissan", "BMW", "service après-vente", "atelier", "comment puis-je", "merci d'appeler"],
+          "keywords_negative": ["allô", "ouais", "j'sais pas", "c'est pas chez nous", "c'est pas notre"],
+          "description": "Accueil pour les marques FMC, Nissan, BMW"
+        },
+        "expertise_technique": {
+          "label": "Expertise Technique",
+          "weight": 5,
+          "max_points": 20,
+          "keywords_positive": ["diagnostic", "technicien", "spécialiste", "marque", "modèle", "motorisation", "pièce d'origine", "constructeur", "préconisation", "garantie constructeur", "forfait", "entretien", "révision", "vidange", "freins", "embrayage", "distribution", "climatisation"],
+          "keywords_negative": ["j'en sais rien", "je suis pas mécano", "je peux pas vous dire", "je connais pas", "c'est pas mon domaine"],
+          "description": "Expertise technique"
+        },
+        "communication": {
+          "label": "Communication et Pédagogie",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["je vous explique", "en résumé", "voici", "ce qui se passe", "le problème vient de", "nous allons", "intervention", "je vous tiens au courant", "je vous rappelle"],
+          "keywords_negative": ["c'est compliqué", "vous comprenez pas", "je vous l'ai déjà dit", "je répète"],
+          "description": "Pédagogie et communication"
+        },
+        "orientation": {
+          "label": "Orientation et Conseil",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["je vous conseille", "le mieux serait", "nous pouvons", "proposition", "alternative", "solution", "devis gratuit", "prise en charge"],
+          "keywords_negative": ["je peux rien pour vous", "c'est pas chez nous", "pas de solution", "désolé"],
+          "description": "Conseil et orientation client"
+        }
+      }
+    },
+    "Standard": {
+      "display_name": "Standard",
+      "manager_name": "Leila BOUHAFS",
+      "description": "Accueil standard, orientation, appel entrant",
+      "scoring_criteria": {
+        "accueil_standard": {
+          "label": "Accueil Standard",
+          "weight": 4,
+          "max_points": 20,
+          "keywords_positive": ["bonjour", "merci d'appeler", "bienvenue", "vous êtes bien chez", "comment puis-je vous aider", "en quoi puis-je", "standard", "accueil", "société", "concession"],
+          "keywords_negative": ["allô", "ouais", "j'attends", "qui êtes-vous", "c'est pour quoi"],
+          "description": "Qualité de l'accueil standard"
+        },
+        "orientation": {
+          "label": "Orientation et Transfert",
+          "weight": 4,
+          "max_points": 20,
+          "keywords_positive": ["je vous mets en relation", "je vous passe", "je vous transfère", "service", "département", "collègue", "spécialiste", "commercial", "SAV", "atelier", "après-vente", "réception", "je vous laisse avec"],
+          "keywords_negative": ["c'est pas mon service", "je sais pas qui", "débrouillez-vous", "appelez le", "composez le"],
+          "description": "Qualité de l'orientation"
+        },
+        "information": {
+          "label": "Information et Renseignement",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["horaires", "adresse", "téléphone", "email", "site web", "coordonnées", "plan d'accès", "jour férié", "ouverture", "fermeture", "info", "renseignement"],
+          "keywords_negative": ["je sais pas", "j'ai pas l'info", "cherchez sur internet", "googlez", "je suis pas l'annuaire"],
+          "description": "Qualité des informations fournies"
+        },
+        "courtoisie_standard": {
+          "label": "Courtoisie et Professionnalisme",
+          "weight": 3,
+          "max_points": 20,
+          "keywords_positive": ["merci", "bonne journée", "au revoir", "n'hésitez pas", "je reste à votre disposition", "merci de votre appel", "à bientôt", "avec plaisir"],
+          "keywords_negative": ["voilà", "c'est bon", "ça marche", "salut", "bye", "OK", "d'accord"],
+          "description": "Courtoisie au standard"
+        }
+      }
+    }
+  },
+  "scoring_weights": {
+    "keyword_match_weight": 2.0,
+    "sentiment_boost": 1.5,
+    "pros_cons_generation": true
+  }
+}
