@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Call Scoring — Supervision Qualité</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+/* ============================================================
+   DESIGN SYSTEM — BYMYCAR SUPERVISION
+   ============================================================ */
+:root {
+  --navy: #0a1628;
+  --navy-light: #132240;
+  --primary: #2563eb;
+  --primary-light: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --teal: #14b8a6;
+  --teal-light: #2dd4bf;
+  --green: #10b981;
+  --orange: #f59e0b;
+  --red: #ef4444;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--gray-100); color: var(--gray-900); min-height: 100vh; }
+
+/* ---- Layout ---- */
+.app { display: flex; min-height: 100vh; }
+.sidebar { width: 250px; background: var(--navy); color: white; display: flex; flex-direction: column; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+.sidebar-brand { padding: 1.5rem 1.25rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.sidebar-brand h1 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.3; }
+.sidebar-brand span { font-size: .7rem; color: var(--gray-400); font-weight: 500; letter-spacing: .03em; text-transform: uppercase; }
+.sidebar-nav { padding: 1rem .75rem; display: flex; flex-direction: column; gap: .15rem; }
+.nav-label { font-size: .65rem; text-transform: uppercase; color: var(--gray-500); letter-spacing: .06em; font-weight: 700; padding: .75rem .75rem .35rem; }
+.sidebar-btn { display: flex; align-items: center; gap: .6rem; padding: .5rem .75rem; border-radius: var(--radius-sm); border: none; background: transparent; color: var(--gray-300); font-size: .85rem; font-weight: 500; cursor: pointer; transition: var(--transition); width: 100%; text-align: left; }
+.sidebar-btn:hover { background: rgba(255,255,255,.06); color: white; }
+.sidebar-btn.active { background: var(--primary); color: white; font-weight: 600; }
+.sidebar-btn .icon { font-size: 1rem; width: 1.4rem; text-align: center; flex-shrink: 0; }
+
+.main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+/* ---- Top Bar ---- */
+.topbar { background: white; border-bottom: 1px solid var(--gray-200); padding: .75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; position: sticky; top: 0; z-index: 50; }
+.topbar-title { font-size: 1.15rem; font-weight: 700; color: var(--gray-900); }
+.topbar-title small { font-weight: 500; color: var(--gray-400); font-size: .85rem; }
+.topbar-controls { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.topbar-controls select, .topbar-controls button { padding: .35rem .7rem; border-radius: var(--radius-sm); border: 1px solid var(--gray-200); background: white; font-size: .8rem; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: var(--transition); }
+.topbar-controls select:hover, .topbar-controls button:hover { border-color: var(--primary); color: var(--primary); }
+.topbar-controls button.active { background: var(--primary); color: white; border-color: var(--primary); }
+.topbar-controls .period-group { display: flex; gap: 2px; }
+.topbar-controls .period-group button { border-radius: 0; }
+.topbar-controls .period-group button:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.topbar-controls .period-group button:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+
+/* ---- Content ---- */
+.content { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+
+/* ---- KPI Cards ---- */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .85rem; }
+.kpi-card { background: white; border-radius: var(--radius); padding: 1rem 1.25rem; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm); transition: var(--transition); }
+.kpi-card:hover { box-shadow: var(--shadow-md); }
+.kpi-card .kpi-label { font-size: .7rem; text-transform: uppercase; color: var(--gray-400); font-weight: 700; letter-spacing: .04em; margin-bottom: .15rem; }
+.kpi-card .kpi-value { font-size: 1.65rem; font-weight: 800; line-height: 1.2; }
+.kpi-card .kpi-sub { font-size: .75rem; color: var(--gray-400); margin-top: .15rem; }
+.kpi-primary .kpi-value { color: var(--primary); }
+.kpi-teal .kpi-value { color: var(--teal); }
+.kpi-green .kpi-value { color: var(--green); }
+.kpi-orange .kpi-value { color: var(--orange); }
+.kpi-red .kpi-value { color: var(--red); }
+
+/* ---- Charts Row ---- */
+.charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 900px) { .charts-row { grid-template-columns: 1fr; } }
+.chart-card { background: white; border-radius: var(--radius); border: 1px solid var(--gray-200); padding: 1rem 1.25rem; box-shadow: var(--shadow-sm); }
+.chart-card h3 { font-size: .85rem; font-weight: 700; color: var(--gray-600); text-transform: uppercase; letter-spacing: .03em; margin-bottom: .75rem; }
+
+/* ---- Agent Table ---- */
+.table-card { background: white; border-radius: var(--radius); border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm); overflow: hidden; }
+.table-card .table-header { display: flex; justify-content: space-between; align-items: center; padding: .85rem 1.25rem; border-bottom: 1px solid var(--gray-200); }
+.table-card .table-header h3 { font-size: .85rem; font-weight: 700; color: var(--gray-600); text-transform: uppercase; letter-spacing: .03em; }
+.table-card .table-header .table-count { font-size: .8rem; color: var(--gray-400); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+thead th { background: var(--gray-50); padding: .6rem .85rem; font-size: .7rem; text-transform: uppercase; color: var(--gray-400); font-weight: 700; letter-spacing: .04em; text-align: left; border-bottom: 1px solid var(--gray-200); white-space: nowrap; }
+tbody td { padding: .6rem .85rem; border-bottom: 1px solid var(--gray-100); vertical-align: middle; }
+tbody tr { transition: var(--transition); }
+tbody tr:hover { background: var(--gray-50); }
+tbody tr:last-child td { border-bottom: none; }
+.agent-link { color: var(--primary); font-weight: 700; cursor: pointer; background: none; border: none; font-size: .875rem; padding: 0; text-decoration: none; }
+.agent-link:hover { text-decoration: underline; }
+
+/* Grade colors */
+.grade-a { color: var(--green); }
+.grade-b { color: var(--teal); }
+.grade-c { color: var(--orange); }
+.grade-d { color: var(--red); }
+
+/* Mini bar */
+.minibar { display: flex; width: 100px; height: 8px; border-radius: 4px; overflow: hidden; background: var(--gray-200); }
+.minibar div { height: 100%; transition: width .3s; }
+
+/* ---- Modal ---- */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,22,40,.6); backdrop-filter: blur(4px); z-index: 999; justify-content: center; align-items: center; padding: 1rem; }
+.modal-overlay.active { display: flex; }
+.modal { background: white; border-radius: 12px; width: 100%; max-width: 780px; max-height: 85vh; overflow-y: auto; box-shadow: var(--shadow-lg); position: relative; }
+.modal-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: flex-start; }
+.modal-header h2 { font-size: 1.15rem; font-weight: 700; }
+.modal-header p { font-size: .8rem; color: var(--gray-400); margin-top: .15rem; }
+.modal-close { background: none; border: none; font-size: 1.5rem; color: var(--gray-400); cursor: pointer; padding: .25rem; line-height: 1; }
+.modal-close:hover { color: var(--gray-700); }
+.modal-body { padding: 1.25rem 1.5rem; }
+.modal-agent-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; margin-bottom: 1.25rem; }
+.stat-box { text-align: center; background: var(--gray-50); border-radius: var(--radius-sm); padding: .75rem; }
+.stat-box .stat-num { font-size: 1.3rem; font-weight: 800; }
+.stat-box .stat-label { font-size: .7rem; text-transform: uppercase; color: var(--gray-400); font-weight: 600; letter-spacing: .03em; }
+
+.call-card { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: .85rem 1rem; margin-bottom: .6rem; }
+.call-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .35rem; font-size: .8rem; color: var(--gray-500); }
+.call-card-grade { font-weight: 800; font-size: 1rem; }
+.call-card-detail { font-size: .8rem; color: var(--gray-600); line-height: 1.5; }
+
+/* ---- Empty state ---- */
+.empty { text-align: center; padding: 3rem 2rem; color: var(--gray-400); }
+.empty h3 { font-size: 1rem; margin-bottom: .25rem; color: var(--gray-500); }
+.empty p { font-size: .85rem; }
+
+/* ---- Loading ---- */
+.loading { display: flex; justify-content: center; align-items: center; padding: 4rem 2rem; color: var(--gray-400); gap: .5rem; }
+.spinner { width: 20px; height: 20px; border: 2px solid var(--gray-200); border-top-color: var(--primary); border-radius: 50%; animation: spin .6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---- Last update badge ---- */
+.last-update { font-size: .7rem; color: var(--gray-400); text-align: right; padding: .5rem 0; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar { width: 56px; }
+  .sidebar-brand h1, .sidebar-brand span, .nav-label, .sidebar-btn span { display: none; }
+  .sidebar-btn { justify-content: center; padding: .6rem; }
+  .sidebar-btn .icon { margin: 0; }
+  .topbar { padding: .6rem 1rem; }
+  .topbar-title { font-size: 1rem; }
+  .content { padding: .85rem 1rem; }
+  .kpi-grid { grid-template-columns: repeat(2,1fr); }
+  .modal { max-width: 95vw; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <h1>Call Scoring</h1>
+      <span>Supervision Qualité</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-label">Services</div>
+      <button class="sidebar-btn active" data-service="E-vendeurs"><span class="icon">📞</span><span>E-vendeurs</span></button>
+      <button class="sidebar-btn" data-service="Qualifieurs"><span class="icon">🎯</span><span>Qualifieurs</span></button>
+      <button class="sidebar-btn" data-service="APV GVA"><span class="icon">🔧</span><span>APV GVA</span></button>
+      <button class="sidebar-btn" data-service="APV FMC/NSA/BMW"><span class="icon">🚗</span><span>APV FMC/BMW</span></button>
+      <button class="sidebar-btn" data-service="Standard"><span class="icon">🏢</span><span>Standard</span></button>
+      <hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:.5rem 0;">
+      <button class="sidebar-btn" data-service="__all__"><span class="icon">📊</span><span>Vue d'ensemble</span></button>
+    </nav>
+    <div style="margin-top:auto;padding:.75rem;font-size:.65rem;color:var(--gray-600);text-align:center;border-top:1px solid rgba(255,255,255,.06);">
+      <div id="data-badge">—</div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <!-- Top bar -->
+    <div class="topbar">
+      <div class="topbar-title" id="page-title">Service : <strong>E-vendeurs</strong></div>
+      <div class="topbar-controls">
+        <div class="period-group">
+          <button class="active" data-period="all">Tout</button>
+          <button data-period="month">Ce mois</button>
+          <button data-period="3months">3 mois</button>
+        </div>
+        <select id="monthSel"></select>
+        <select id="yearSel"></select>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content" id="app-content">
+      <div class="loading"><div class="spinner"></div> Chargement...</div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2 id="modal-name"></h2>
+        <p id="modal-meta"></p>
+      </div>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+let data = {};
+let currentService = 'E-vendeurs';
+let period = 'all';
+let month = new Date().getMonth();
+let year = new Date().getFullYear();
+let charts = { dist: null, trend: null };
+
+// ============================================================
+// INIT
+// ============================================================
+async function init() {
+  // Populate month/year selects
+  const ms = document.getElementById('monthSel');
+  ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre']
+    .forEach((m,i) => { const o=document.createElement('option'); o.value=i; o.textContent=m; if(i===month)o.selected=true; ms.appendChild(o); });
+  const ys = document.getElementById('yearSel');
+  const cy = new Date().getFullYear();
+  for(let y=cy+1; y>=cy-2; y--) { const o=document.createElement('option'); o.value=y; o.textContent=y; if(y===cy)o.selected=true; ys.appendChild(o); }
+
+  // Sidebar clicks
+  document.querySelectorAll('.sidebar-btn').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.sidebar-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    currentService = b.dataset.service;
+    render();
+  }));
+
+  // Period buttons
+  document.querySelectorAll('[data-period]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-period]').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    period = b.dataset.period;
+    render();
+  }));
+
+  // Month/year change
+  document.getElementById('monthSel').addEventListener('change', e => { month = parseInt(e.target.value); render(); });
+  document.getElementById('yearSel').addEventListener('change', e => { year = parseInt(e.target.value); render(); });
+
+  // Modal backdrop close
+  document.getElementById('modal').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
+
+  await loadData();
+}
+
+async function loadData() {
+  const badge = document.getElementById('data-badge');
+  try {
+    const r = await fetch('data.json?'+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    data = await r.json();
+    const dates = Object.keys(data).sort();
+    badge.textContent = '📅 '+(dates[dates.length-1]||'—') + ' · ' + 
+      dates.reduce((s,d) => s+data[d].length, 0) + ' appels';
+  } catch(e) {
+    console.warn(e);
+    data = {};
+    badge.textContent = '⚠️ Données non chargées';
+  }
+  render();
+}
+
+// ============================================================
+// FILTER
+// ============================================================
+function getCalls() {
+  const minDate = period==='all' ? null :
+    period==='month' ? new Date(year, month, 1) :
+    new Date(year, month-2, 1);
+  const maxDate = period==='all' ? null :
+    new Date(year, month+1, 0, 23, 59, 59);
+
+  let calls = [];
+  Object.keys(data).forEach(dk => {
+    const d = new Date(dk+'T00:00:00');
+    if(minDate && d<minDate) return;
+    if(maxDate && d>maxDate) return;
+    if(!data[dk]) return;
+    data[dk].forEach(c => {
+      if(currentService==='__all__' || c.service===currentService) calls.push(c);
+    });
+  });
+  return calls;
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function render() {
+  const calls = getCalls();
+  const label = currentService==='__all__' ? 'Vue d\'ensemble' : currentService;
+  document.getElementById('page-title').innerHTML = 'Service : <strong>'+label+'</strong>';
+
+  const content = document.getElementById('app-content');
+  content.innerHTML = buildKPI(calls) + buildCharts(calls) + buildTable(calls);
+  setTimeout(() => initCharts(calls), 50);
+}
+
+// ---- KPI ----
+function buildKPI(calls) {
+  if(!calls.length) return `
+    <div class="kpi-grid">
+      <div class="kpi-card kpi-primary"><div class="kpi-label">Appels</div><div class="kpi-value">0</div></div>
+      <div class="kpi-card kpi-teal"><div class="kpi-label">Note moyenne</div><div class="kpi-value">—</div></div>
+      <div class="kpi-card kpi-green"><div class="kpi-label">Satisfaction</div><div class="kpi-value">—</div></div>
+      <div class="kpi-card kpi-orange"><div class="kpi-label">Agents</div><div class="kpi-value">0</div></div>
+      <div class="kpi-card kpi-red"><div class="kpi-label">Friction</div><div class="kpi-value">—</div></div>
+    </div>
+    <div class="empty"><h3>Aucun appel pour la période sélectionnée</h3><p>Modifiez les filtres pour voir les données.</p></div>`;
+
+  let sumScore=0, sumSat=0, sumFric=0, sumDur=0;
+  const agents = new Set();
+  calls.forEach(c => {
+    const sc = c.score || parseFloat((c.grade||'0').split('/')[0]) || 0;
+    sumScore += sc;
+    if(c.client_sentiment) { sumSat += c.client_sentiment.Satisfied||0; sumFric += c.client_sentiment.Frustrated||0; }
+    sumDur += c.duration_sec||0;
+    if(c.agent_name) agents.add(c.agent_name);
+  });
+  const n=calls.length, avg=(sumScore/n).toFixed(1), sat=Math.round(sumSat/n), fric=Math.round(sumFric/n);
+  const durMin = Math.round(sumDur/60);
+
+  return `<div class="kpi-grid">
+    <div class="kpi-card kpi-primary"><div class="kpi-label">Appels traités</div><div class="kpi-value">${n}</div><div class="kpi-sub">${durMin} min de conversation</div></div>
+    <div class="kpi-card kpi-teal"><div class="kpi-label">Note moyenne</div><div class="kpi-value">${avg}<span style="font-size:.9rem;font-weight:500;color:var(--gray-400)">/20</span></div><div class="kpi-sub">${calls.filter(c=>(c.score||0)>=14).length} appels ≥ 14/20</div></div>
+    <div class="kpi-card kpi-green"><div class="kpi-label">Taux satisfaction</div><div class="kpi-value">${sat}%</div><div class="kpi-sub">Clients satisfaits</div></div>
+    <div class="kpi-card kpi-orange"><div class="kpi-label">Agents actifs</div><div class="kpi-value">${agents.size}</div><div class="kpi-sub">${Object.keys(groupBy(calls,'agent_name')).length} évalués</div></div>
+    <div class="kpi-card kpi-red"><div class="kpi-label">Taux friction</div><div class="kpi-value">${fric}%</div><div class="kpi-sub">Clients frustrés</div></div>
+  </div>`;
+}
+
+// ---- Charts ----
+function buildCharts(calls) {
+  if(!calls.length) return '';
+  return `<div class="charts-row">
+    <div class="chart-card"><h3>Distribution des notes</h3><canvas id="chart-dist" height="180"></canvas></div>
+    <div class="chart-card"><h3>Top 5 agents (note moyenne)</h3><canvas id="chart-top" height="180"></canvas></div>
+  </div>`;
+}
+
+function initCharts(calls) {
+  if(!calls.length) return;
+  // Clean up old charts
+  Object.values(charts).forEach(c => { if(c) { c.destroy(); } });
+
+  // Grade distribution
+  const bins = {'0-5':0,'5-8':0,'8-12':0,'12-16':0,'16-20':0};
+  calls.forEach(c => {
+    const sc = c.score || parseFloat((c.grade||'0').split('/')[0]) || 0;
+    if(sc<5) bins['0-5']++;
+    else if(sc<8) bins['5-8']++;
+    else if(sc<12) bins['8-12']++;
+    else if(sc<16) bins['12-16']++;
+    else bins['16-20']++;
+  });
+  const c1 = document.getElementById('chart-dist');
+  if(c1) charts.dist = new Chart(c1, {
+    type: 'bar',
+    data: {
+      labels: Object.keys(bins),
+      datasets: [{
+        label: 'Appels',
+        data: Object.values(bins),
+        backgroundColor: ['#ef4444','#f59e0b','#facc15','#2dd4bf','#10b981'],
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+    }
+  });
+
+  // Top 5 agents
+  const grp = groupBy(calls, 'agent_name');
+  const scores = Object.entries(grp).map(([name,list]) => {
+    const avg = list.reduce((s,c) => s+(c.score||parseFloat((c.grade||'0').split('/')[0])||0),0)/list.length;
+    return {name, avg, count: list.length};
+  }).sort((a,b) => b.avg - a.avg).slice(0,5);
+
+  const c2 = document.getElementById('chart-top');
+  if(c2) charts.top = new Chart(c2, {
+    type: 'bar',
+    data: {
+      labels: scores.map(s => s.name.split(' ').slice(0,2).join(' ')),
+      datasets: [{
+        label: 'Note /20',
+        data: scores.map(s => s.avg),
+        backgroundColor: '#3b82f6',
+        borderRadius: 4,
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: { x: { min: 0, max: 20 } }
+    }
+  });
+}
+
+// ---- Table ----
+function buildTable(calls) {
+  if(!calls.length) return '';
+  const grp = groupBy(calls, 'agent_name');
+  const rows = Object.entries(grp).map(([name,list]) => {
+    const mgr = list[0].manager||'—';
+    const n=list.length;
+    const avg = list.reduce((s,c) => s+(c.score||parseFloat((c.grade||'0').split('/')[0])||0),0)/n;
+    let sumSat=0,sumNeu=0,sumFric=0;
+    list.forEach(c => { if(c.client_sentiment) { sumSat+=c.client_sentiment.Satisfied||0; sumNeu+=c.client_sentiment.Neutral||0; sumFric+=c.client_sentiment.Frustrated||0; }});
+    const sat=Math.round(sumSat/n), neu=Math.round(sumNeu/n), fric=Math.round(sumFric/n);
+    const gc = avg>=14?'grade-a':avg>=10?'grade-b':avg>=7?'grade-c':'grade-d';
+    const enc = btoa(encodeURIComponent(JSON.stringify(list)));
+    return {name, mgr, n, avg: avg.toFixed(1), gc, sat, neu, fric, enc};
+  }).sort((a,b) => b.n - a.n || b.avg - a.avg);
+
+  return `<div class="table-card">
+    <div class="table-header">
+      <h3>Conseillers · ${rows.length} agents</h3>
+      <span class="table-count">${calls.length} appels analysés</span>
+    </div>
+    <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Conseiller</th><th>Manager</th><th>Appels</th><th>Note ø</th><th>Sentiment client</th>
+      </tr></thead>
+      <tbody>${rows.map(r => `<tr>
+        <td><button class="agent-link" onclick="openModal('${r.enc}')">${esc(r.name)}</button></td>
+        <td style="color:var(--gray-400);font-size:.8rem;">${esc(r.mgr)}</td>
+        <td><strong>${r.n}</strong></td>
+        <td class="${r.gc}" style="font-weight:700;font-size:1rem;">${r.avg}/20</td>
+        <td><div class="minibar"><div style="background:var(--green);width:${r.sat}%"></div><div style="background:var(--orange);width:${r.neu}%"></div><div style="background:var(--red);width:${r.fric}%"></div></div></td>
+      </tr>`).join('')}</tbody>
+    </table>
+    </div>
+  </div>`;
+}
+
+// ---- Modal ----
+function openModal(enc) {
+  const calls = JSON.parse(decodeURIComponent(atob(enc)));
+  if(!calls||!calls.length) return;
+  const c0 = calls[0];
+  document.getElementById('modal-name').textContent = c0.agent_name||'Agent';
+  document.getElementById('modal-meta').textContent = 
+    'Manager : '+(c0.manager||'—')+' · Service : '+(c0.service||'—');
+
+  let sum=0, sumSat=0, sumFric=0;
+  calls.forEach(c => { sum+=c.score||parseFloat((c.grade||'0').split('/')[0])||0; if(c.client_sentiment){sumSat+=c.client_sentiment.Satisfied||0;sumFric+=c.client_sentiment.Frustrated||0;}});
+  const n=calls.length, avg=(sum/n).toFixed(1), sat=Math.round(sumSat/n), fric=Math.round(sumFric/n);
+  const gc = avg>=14?'grade-a':avg>=10?'grade-b':avg>=7?'grade-c':'grade-d';
+
+  const body = document.getElementById('modal-body');
+  body.innerHTML = `
+    <div class="modal-agent-stats">
+      <div class="stat-box"><div class="stat-num ${gc}">${avg}</div><div class="stat-label">Note /20</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--green)">${sat}%</div><div class="stat-label">Satisfaction</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--red)">${fric}%</div><div class="stat-label">Friction</div></div>
+    </div>
+    <h4 style="font-size:.85rem;color:var(--gray-500);margin-bottom:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;">Historique des appels (${n})</h4>
+    ${calls.sort((a,b)=>(b.datetime||b.date||'').localeCompare(a.datetime||a.date||'')).slice(0,20).map(c => {
+      const sc = c.score||parseFloat((c.grade||'0').split('/')[0])||0;
+      const gcc = sc>=14?'grade-a':sc>=10?'grade-b':sc>=7?'grade-c':'grade-d';
+      const dt = (c.datetime||c.date||'').slice(0,16).replace('T',' ');
+      const dur = c.duration_sec ? Math.round(c.duration_sec/60)+'min' : '—';
+      const sent = c.client_sentiment||{};
+      const pros = c.pros ? '<br><span style="color:var(--green)">+ '+esc(c.pros)+'</span>' : '';
+      const cons = c.cons ? '<br><span style="color:var(--orange)">− '+esc(c.cons)+'</span>' : '';
+      const link = c.url&&c.url!=='#' ? ' · <a href="'+esc(c.url)+'" target="_blank" style="color:var(--primary);text-decoration:none;">Genesys ↗</a>' : '';
+      return `<div class="call-card">
+        <div class="call-card-top"><span>${esc(dt)} · ${dur}${link}</span><span class="call-card-grade ${gcc}">${sc.toFixed(1)}/20</span></div>
+        <div class="call-card-detail">
+          <span>Ton : <strong>${esc(c.agent_tone||'—')}</strong></span>
+          <span style="margin-left:.75rem;color:var(--green)">${sent.Satisfied||0}%</span>
+          <span style="color:var(--orange)">${sent.Neutral||0}%</span>
+          <span style="color:var(--red)">${sent.Frustrated||0}%</span>
+          ${pros}${cons}
+        </div>
+      </div>`;
+    }).join('')}
+    ${calls.length>20 ? '<p style="text-align:center;color:var(--gray-400);font-size:.8rem;margin-top:.5rem;">Affichage des 20 derniers appels (sur '+calls.length+')</p>' : ''}
+  `;
+  document.getElementById('modal').classList.add('active');
+}
+
+function closeModal() { document.getElementById('modal').classList.remove('active'); }
+
+// ============================================================
+// HELPERS
+// ============================================================
+function groupBy(arr, key) {
+  const g = {};
+  arr.forEach(item => {
+    const k = item[key] || 'Inconnu';
+    if(!g[k]) g[k] = [];
+    g[k].push(item);
+  });
+  return g;
+}
+
+function esc(s) {
+  if(typeof s!=='string') return s;
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Keyboard shortcut
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+// Start
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
