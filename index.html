@@ -309,16 +309,9 @@ tbody tr:hover { background: var(--surface-secondary); }
       <input type="email" id="loginEmail" placeholder="prenom.nom@bymycar.fr" autocomplete="email" autofocus>
       <div class="domain-hint">Domaines autorisés : @bymycar.* ou @cosmobilis.*</div>
     </div>
-    <div class="form-group">
-      <label for="loginPassphrase">Passphrase équipe</label>
-      <div style="position:relative">
-        <input type="password" id="loginPassphrase" placeholder="Saisir la passphrase" autocomplete="off" style="width:100%;padding:10px 40px 10px 14px;border-radius:var(--radius);border:1px solid var(--border);font-size:15px;font-family:var(--font);outline:none;transition:var(--transition);background:var(--surface-secondary);">
-        <button id="togglePassphrase" type="button" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-tertiary);cursor:pointer;font-size:13px;padding:4px;" onclick="togglePassphraseVisibility()" aria-label="Afficher/masquer la passphrase">👁</button>
-      </div>
-    </div>
     <button class="btn-primary" id="loginBtn">Se connecter</button>
     <div class="error-msg" id="loginError"></div>
-    <div class="info-msg">Authentification par passphrase d'équipe.<br>Session active 2 heures.</div>
+    <div class="info-msg">Connectez-vous avec votre email professionnel.<br>Session active 2 heures.</div>
   </div>
 </div>
 
@@ -805,55 +798,18 @@ function closeModal() { document.getElementById('modal').classList.remove('activ
 function esc(s) { return typeof s==='string' ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : (s||''); }
 
 // ============================================================
-// AUTHENTICATION SYSTEM — Per-user passphrases (no email needed)
+// AUTHENTICATION SYSTEM — Email domain only (aucun mot de passe)
 // ============================================================
-// GitHub variable LOGIN_PASSPHRASE is a JSON map:
-//   {"user@bymycar.fr": "motdepasse", "autre@bymycar.fr": "secret"}
-// Injected by pipeline at build time. Session in localStorage (2h).
+// Tout email @bymycar.* ou @cosmobilis.* est accepté.
+// Session stockée en localStorage, valide 2 heures.
+// Rafraîchissement de page conserve la session.
 
-// The pipeline replaces {
-    "john.melek@bymycar.fr":  "bymycar2026"
-} with a raw JSON object:
-// {"user@bymycar.fr":"password"}
-// We use typeof-trick so it works even if placeholder wasn't replaced.
 const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis'];
 const SESSION_DURATION_MS = 2 * 60 * 60 * 1000; // 2 heures
-
-// This gets replaced at build time by the pipeline.
-// DO NOT put quotes around {
-    "john.melek@bymycar.fr":  "bymycar2026"
-} — it's replaced with a raw JSON object literal.
-const RAW_USERS = (typeof {
-    "john.melek@bymycar.fr":  "bymycar2026"
-} !== 'undefined') ? {
-    "john.melek@bymycar.fr":  "bymycar2026"
-} : null;
-
-let _users = null;
-function getUsers() {
-  if (_users) return _users;
-  if (RAW_USERS && typeof RAW_USERS === 'object' && !Array.isArray(RAW_USERS)) {
-    _users = RAW_USERS;
-  }
-  return _users;
-}
-
-function togglePassphraseVisibility() {
-  const input = document.getElementById('loginPassphrase');
-  const btn = document.getElementById('togglePassphrase');
-  if (input.type === 'password') {
-    input.type = 'text';
-    btn.textContent = '🙈';
-  } else {
-    input.type = 'password';
-    btn.textContent = '👁';
-  }
-}
 
 function showLogin() {
   document.getElementById('loginScreen').classList.remove('hidden');
   document.getElementById('loginEmail').focus();
-  document.getElementById('loginPassphrase').value = '';
   document.getElementById('loginError').textContent = '';
 }
 
@@ -863,23 +819,8 @@ function hideLogin() {
 
 function handleLogin() {
   const email = document.getElementById('loginEmail').value.trim().toLowerCase();
-  const passphrase = document.getElementById('loginPassphrase').value;
   const errorEl = document.getElementById('loginError');
   errorEl.textContent = '';
-
-  const users = getUsers();
-
-  // Vérifier la configuration
-  if (!users || typeof users !== 'object') {
-    if (RAW_USERS === null && typeof {
-    "john.melek@bymycar.fr":  "bymycar2026"
-} === 'undefined') {
-      errorEl.textContent = 'Erreur de configuration : contactez l\'administrateur.';
-    } else {
-      errorEl.textContent = 'Erreur de configuration : format de passphrase invalide.';
-    }
-    return;
-  }
 
   // Valider email
   if (!email || !email.includes('@')) {
@@ -895,26 +836,7 @@ function handleLogin() {
     return;
   }
 
-  // Vérifier si l'email a un compte
-  if (!(email in users)) {
-    errorEl.textContent = 'Accès non autorisé. Cet email n\'a pas de compte.';
-    return;
-  }
-
-  // Valider mot de passe
-  if (!passphrase) {
-    errorEl.textContent = 'Veuillez saisir votre mot de passe.';
-    return;
-  }
-
-  if (passphrase !== users[email]) {
-    errorEl.textContent = 'Mot de passe incorrect. Veuillez réessayer.';
-    document.getElementById('loginPassphrase').value = '';
-    document.getElementById('loginPassphrase').focus();
-    return;
-  }
-
-  // Succès
+  // Succès — tout email du domaine autorisé est accepté
   completeLogin(email);
 }
 
@@ -945,7 +867,6 @@ function checkSession() {
       localStorage.removeItem('bdc_session');
       return false;
     }
-    // Session valide — afficher le badge
     document.getElementById('userBadge').innerHTML = session.email + ' · <span style="cursor:pointer;color:var(--red-dim)" onclick="logout()">Déconnexion</span>';
     return true;
   } catch (e) {
@@ -960,14 +881,10 @@ function logout() {
   showLogin();
 }
 
-// Intercepter Entrée
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('loginBtn').onclick = handleLogin;
-  document.getElementById('loginPassphrase').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') handleLogin();
-  });
   document.getElementById('loginEmail').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') document.getElementById('loginPassphrase').focus();
+    if (e.key === 'Enter') handleLogin();
   });
 
   const hasSession = checkSession();
