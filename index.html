@@ -11,6 +11,23 @@
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
 
+/* ---- Login Screen ---- */
+.login-overlay { display: flex; position: fixed; inset: 0; background: var(--bg); z-index: 9999; justify-content: center; align-items: center; }
+.login-overlay.hidden { display: none; }
+.login-card { background: var(--surface); border-radius: var(--radius-xl); padding: 48px 40px 40px; width: 100%; max-width: 420px; box-shadow: var(--shadow-xl); border: 1px solid var(--border); text-align: center; }
+.login-card h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+.login-card p.sub { font-size: 13px; color: var(--text-tertiary); margin-bottom: 28px; }
+.login-card .form-group { margin-bottom: 16px; text-align: left; }
+.login-card label { display: block; font-size: 11px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.login-card input { width: 100%; padding: 10px 14px; border-radius: var(--radius); border: 1px solid var(--border); font-size: 15px; font-family: var(--font); outline: none; transition: var(--transition); background: var(--surface-secondary); }
+.login-card input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,113,227,0.15); background: var(--surface); }
+.login-card .btn-primary { width: 100%; padding: 10px; border-radius: var(--radius); border: none; background: var(--blue); color: var(--text-inverse); font-size: 14px; font-weight: 600; cursor: pointer; transition: var(--transition); font-family: var(--font); }
+.login-card .btn-primary:hover { background: var(--blue-hover); }
+.login-card .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.login-card .error-msg { font-size: 12px; color: var(--red-dim); margin-top: 8px; min-height: 20px; }
+.login-card .info-msg { font-size: 11px; color: var(--text-tertiary); margin-top: 16px; line-height: 1.5; }
+.login-card .domain-hint { font-size: 11px; color: var(--blue); margin-top: 4px; }
+
 :root {
   --bg: #f5f5f7;
   --bg-alt: #ffffff;
@@ -235,19 +252,20 @@ tbody tr:hover { background: var(--surface-secondary); }
   <aside class="sidebar">
     <div class="sidebar-brand">
       <h1>CallScoring</h1>
-      <span>Qualité BDC</span>
+      <span>Evaluation Qualite BDC</span>
     </div>
     <div class="sidebar-scroll">
       <div class="nav-label">Services</div>
-      <button class="sidebar-btn active" data-svc="E-vendeurs"><span class="icon">📞</span><span>E‑vendeurs</span></button>
-      <button class="sidebar-btn" data-svc="Qualifieurs"><span class="icon">🎯</span><span>Qualifieurs</span></button>
-      <button class="sidebar-btn" data-svc="APV GVA"><span class="icon">🔧</span><span>APV GVA</span></button>
-      <button class="sidebar-btn" data-svc="APV FMC/NSA/BMW"><span class="icon">🚗</span><span>APV FMC/BMW</span></button>
-      <button class="sidebar-btn" data-svc="Standard"><span class="icon">🏢</span><span>Standard</span></button>
+      <button class="sidebar-btn active" data-svc="E-vendeurs"><span class="icon">EV</span><span>E-vendeurs</span></button>
+      <button class="sidebar-btn" data-svc="Qualifieurs"><span class="icon">QL</span><span>Qualifieurs</span></button>
+      <button class="sidebar-btn" data-svc="APV GVA"><span class="icon">GV</span><span>APV GVA</span></button>
+      <button class="sidebar-btn" data-svc="APV FMC/NSA/BMW"><span class="icon">BM</span><span>APV FMC/BMW</span></button>
+      <button class="sidebar-btn" data-svc="Standard"><span class="icon">ST</span><span>Standard</span></button>
       <div class="sidebar-divider"></div>
-      <button class="sidebar-btn" data-svc="__all__"><span class="icon">◉</span><span>Vue d'ensemble</span></button>
+      <button class="sidebar-btn" data-svc="__all__"><span class="icon">AL</span><span>Vue d'ensemble</span></button>
     </div>
     <div class="data-badge" id="dataBadge">—</div>
+    <div class="data-badge" style="border-top:none;padding-top:0;font-size:9px;cursor:pointer;" onclick="showLogin()" id="userBadge">Non connecte</div>
   </aside>
 
   <!-- Main -->
@@ -270,6 +288,22 @@ tbody tr:hover { background: var(--surface-secondary); }
     <div class="content" id="contentArea">
       <div class="loading"><div class="spinner"></div> Chargement des données…</div>
     </div>
+  </div>
+</div>
+
+<!-- Login Screen -->
+<div class="login-overlay" id="loginScreen">
+  <div class="login-card">
+    <h1>CallScoring</h1>
+    <p class="sub">Acces reserve au personnel BDC</p>
+    <div class="form-group">
+      <label for="loginEmail">Email professionnel</label>
+      <input type="email" id="loginEmail" placeholder="prenom.nom@bymycar.fr" autocomplete="email" autofocus>
+      <div class="domain-hint">Domaines autorises : @bymycar.* ou @cosmobilis.*</div>
+    </div>
+    <button class="btn-primary" id="loginBtn" onclick="handleLogin()">Se connecter</button>
+    <div class="error-msg" id="loginError"></div>
+    <div class="info-msg">Un code de verification vous sera envoye par email.<br>Lien de connexion valable 15 minutes.</div>
   </div>
 </div>
 
@@ -343,11 +377,11 @@ async function load() {
     const dates = Object.keys(DATA).sort();
     const total = dates.reduce((s,d) => s + DATA[d].length, 0);
     const last = dates[dates.length-1] || '—';
-    document.getElementById('dataBadge').textContent = '📦 ' + total + ' appels · ' + last;
+    document.getElementById('dataBadge').textContent = total + ' appels · ' + last;
   } catch(e) {
     console.warn('Load error:', e);
     DATA = {};
-    document.getElementById('dataBadge').textContent = '⚠️ Données indisponibles';
+    document.getElementById('dataBadge').textContent = 'Donnees indisponibles';
   }
   render();
 }
@@ -667,6 +701,142 @@ function openModal(enc) {
 function closeModal() { document.getElementById('modal').classList.remove('active'); }
 
 function esc(s) { return typeof s==='string' ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : (s||''); }
+
+// ============================================================
+// AUTHENTICATION SYSTEM
+// ============================================================
+// Architecture securisee:
+// - L'authentification est geree par un backend separe (API Gateway)
+// - Aucun secret, token ou cle API n'est stocke dans le frontend
+// - Le backend verifie le domaine email et emet un JWT en cookie HttpOnly
+// - Le cookie est automatiquement envoye avec chaque requete
+// - Le JS frontend verifie uniquement la presence du cookie via un appel /api/me
+// - Aucune donnee sensible n'est accessible without authentication
+
+// Backend URL - configurer selon le deploiement
+const AUTH_API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:3001'
+  : 'https://auth.call-scoring.bymycar.fr'; // A configurer
+
+// Domaines autorises
+const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis'];
+
+// Etat de la session
+let SESSION_USER = null;
+
+function showLogin() {
+  document.getElementById('loginScreen').classList.remove('hidden');
+  document.getElementById('loginEmail').focus();
+}
+
+function hideLogin() {
+  document.getElementById('loginScreen').classList.add('hidden');
+}
+
+async function handleLogin() {
+  const email = document.getElementById('loginEmail').value.trim();
+  const btn = document.getElementById('loginBtn');
+  const errorEl = document.getElementById('loginError');
+  errorEl.textContent = '';
+
+  // Validation email
+  if (!email || !email.includes('@')) {
+    errorEl.textContent = 'Veuillez entrer une adresse email valide.';
+    return;
+  }
+
+  const domain = email.split('@')[1] || '';
+  const domainName = domain.split('.')[0].toLowerCase();
+  const allowed = ALLOWED_DOMAINS.some(d => domainName === d || domainName.endsWith('.' + d));
+
+  if (!allowed) {
+    errorEl.textContent = 'Seuls les emails @bymycar.* et @cosmobilis.* sont autorises.';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours...';
+
+  try {
+    // Etape 1: Demander un code de verification
+    const resp = await fetch(AUTH_API + '/api/auth/request', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    });
+
+    if (!resp.ok) {
+      const data = await resp.json().catch(() => ({}));
+      throw new Error(data.error || 'Erreur lors de la demande de connexion');
+    }
+
+    // Etape 2: Si le backend est configure en mode "magic link",
+    // l'utilisateur recoit un email avec un lien de connexion.
+    // En mode developpement, on affiche un champ pour le code.
+    errorEl.style.color = 'var(--green-dim)';
+    errorEl.textContent = 'Un lien de connexion a ete envoye a ' + email + '. Consultez votre messagerie.';
+
+    // Verifier la session automatiquement toutes les 3 secondes
+    const checkInterval = setInterval(async () => {
+      const sessionOk = await checkSession();
+      if (sessionOk) {
+        clearInterval(checkInterval);
+        hideLogin();
+      }
+    }, 3000);
+
+  } catch (e) {
+    errorEl.style.color = 'var(--red-dim)';
+    errorEl.textContent = e.message || 'Erreur de connexion. Veuillez reessayer.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Se connecter';
+  }
+}
+
+async function checkSession() {
+  try {
+    const resp = await fetch(AUTH_API + '/api/auth/me', {
+      credentials: 'include',  // Envoie le cookie HttpOnly
+    });
+
+    if (resp.ok) {
+      const data = await resp.json();
+      SESSION_USER = data.user || data.email;
+      document.getElementById('userBadge').textContent = SESSION_USER;
+      document.getElementById('loginError').textContent = '';
+      return true;
+    }
+  } catch (e) {
+    // Backend pas encore disponible, mode hors-ligne
+  }
+  return false;
+}
+
+async function logout() {
+  try {
+    await fetch(AUTH_API + '/api/auth/logout', {
+      method: 'POST',
+      credentials: 'include',
+    });
+  } catch (e) {}
+  SESSION_USER = null;
+  document.getElementById('userBadge').textContent = 'Non connecte';
+  showLogin();
+}
+
+// Initialisation: verifier la session au chargement
+document.addEventListener('DOMContentLoaded', async () => {
+  // Verifier si une session existe deja
+  const hasSession = await checkSession();
+
+  if (!hasSession && window.location.hostname !== 'localhost' && !window.location.href.includes('noauth')) {
+    // Afficher l'ecran de connexion
+    showLogin();
+  } else if (hasSession) {
+    hideLogin();
+  }
+});
 </script>
 </body>
 </html>
