@@ -1,230 +1,1881 @@
 {
-  "description": "Service-specific evaluation grids for Call Scoring. Manager names map agents to services.",
+  "description": "Grilles d'évaluation qualité — Référentiel BDC ByMyCar",
   "last_updated": "2026-05-25",
   "services": {
+    "APV": {
+      "display_name": "APV (GVA + BMW + FMC + Nissan)",
+      "grid_file": "Grille évaluation APV BMW+GVA+FORD+NISSAN.xlsx",
+      "manager_names": [
+        "Leslie BOULARD",
+        "Cédric KOUDJENOUME"
+      ],
+      "description": "Après-vente — ateliers, service client, multi-marques",
+      "criteria": [
+        {
+          "id": "prise_en_charge_et_accompagnement_du_contact",
+          "label": "Prise en charge et accompagnement du contact",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 20,
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "Le client est accueilli, pris en charge de façon adaptée et accompagné lors de son contact avec le conseiller",
+            "conforme": "De façon globale, le client est pris en charge et est accompagné durant tout le contact conformément aux attentes.\nLe traitement est réalisé de façon professionnelle.\nToutes les étapes de l'appel sont réalisées ou le non respect d'une étape n'a pas d'impact négatif sur le client",
+            "non_conforme": "Présence d'une SI ou le contact génère une insatisfaction client\nLe non respect d'une étape a un impact pour le client\nLes exigences de BMC ne sont pas réalisées",
+            "non_applicable": " ",
+            "si": "Le client a subi une incivilité."
+          }
+        },
+        {
+          "id": "pertinence_de_la_reponse",
+          "label": "Pertinence de la réponse",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 20,
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "Le client obtient auprès du conseiller client une réponse adaptée à sa demande dans le cas où celle-ci correspond à son offre de service",
+            "conforme": "a)-Le CC expose l'offre en respectant les éléments clés -donne les informations complémentaires liées à l'offre en terme de procédure-                        \nb)-le CC présente l'offre la plus adaptée aux besoins client d'une manière claire et interactive\nc)-Les informations données sont correctes et toutes les questions du client ont été abordées.\nd)-Le CC propose une solution adéquate et adaptée aux besoins du client en fonction de ses habitudes et des besoins exprimés lors de la phase précédente",
+            "non_conforme": "a)-Le conseiller ne présente pas les procédures associées à l'offre\nb)-Absence de clarté dans le discours \nc) La réponse est inappropriée par rapport aux procédures de traitement existantes sans impact sur le client.\nd)-Réponse type partielle.",
+            "non_applicable": " ",
+            "si": "Le client est induit en erreur suite à une information manquante ou erronée.\nLe client n’obtient pas la réponse à sa demande alors que les informations sont disponibles au niveau du service."
+          }
+        },
+        {
+          "id": "experience_client_de_linteraction",
+          "label": "Expérience client de l'intéraction",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 20,
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "Adaptation du dialogue par rapport à la situation du client et au contexte du contact (mesure de l'ensemble des atttitudes mises en oeuvre par le conseiller pour satisfaire son client)",
+            "conforme": "le CC est en harmonie avec le client\nle client peut dire \"c'est un contact bien traité\"\nl'image de BMC est respectée\n\nSe mettre à la place du client et IMAGINER  la mesure de la qualité perçue par le client \"Etes-vous satisfait de notre entretien ? \"",
+            "non_conforme": "Absence d'harmonie\nL'image  de marque de BMC n'est pas respectée",
+            "non_applicable": " ",
+            "si": " "
+          }
+        },
+        {
+          "id": "accueil_du_client",
+          "label": "Accueil du client",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "Le client est accueilli par un conseiller qui :\n• respecte au minimum une formule d’accueil\n• s’identifie et identifie le client (le cas échéant)",
+            "conforme": "le conseiller accueille : d'une manière claire, compréhensible avec obligatoirement Prénom et nom de la société",
+            "non_conforme": "L'absence d'un élément marquant dans l'accueil:\na)- absence de clarté et compréhension\nb)- Non respect des formules d'accueil et identification",
+            "non_applicable": " ",
+            "si": "Le client a subi une incivilité.\net/ou Le client est accueilli incorrectement par un conseiller."
+          }
+        },
+        {
+          "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+          "label": "Découverte des attentes du client  - Questionnement besoins du client",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 20,
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "Le conseiller  se montre disponible, aide le client à s’exprimer et répond de façon claire et compréhensible",
+            "conforme": "a)-Le conseiller aide le client à s’exprimer pour cerner la demande du client\nb)-le conseiller a compris et synthétise la demande ou  toutes les demandes du client en reformulant.\nc)-Le Questionnement est pertinent et ciblé",
+            "non_conforme": "L'absence d'un élément marquant à la qualification conforme\nLe questionnement n'est pas pertinent.",
+            "non_applicable": "Si la demande est simple (ex: pour un transfert vers un autre service)",
+            "si": "Le client a subi une incivilité.\net/ou si\n*La demande du client n’est pas comprise par le conseiller lors de la clôture de l’entretien"
+          }
+        },
+        {
+          "id": "traitement_des_objections",
+          "label": "Traitement des objections",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": 3,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": " ",
+            "conforme": "Toutes les demandes et/ou objections du client sont traitées.",
+            "non_conforme": "Toutes les demandes et/ou objections du client ne sont pas traitées.",
+            "non_applicable": "Le client n'as pas d'objection",
+            "si": " "
+          }
+        },
+        {
+          "id": "mise_en_attente",
+          "label": "Mise en attente",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "Le conseiller annonce clairement au client, le cas échéant, la mise en attente précédant la réponse.",
+            "conforme": "Le CC annonce clairement la mise en attente en expliquant le motif \nLa mise en attente doit être expliquée et  justifiée et validée par le client                                                                                                    Reprise de la mise en attente en remerciant le client",
+            "non_conforme": "Non respect de la phase de la mise en attente et de la reprise de l'appel",
+            "non_applicable": "la demande du client ne nécessite pas une mise en attente",
+            "si": "Le client a subi une incivilité.\net/ou le client est interrompu en le mettant en attente de façon intempestive."
+          }
+        },
+        {
+          "id": "temps_dattente",
+          "label": "Temps d'attente",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "Le temps d’attente prédéfini ou annoncé au client est respecté.",
+            "conforme": "a)-La durée de MEA ne doit pas dépasser 2 mn.\nb)-Reprendre le client à la 121' pour le rassurer avec indication du traitement en cours",
+            "non_conforme": "la durée de MEA dépasse les  2mn et/ou le client n'est pas repris à la 121' ",
+            "non_applicable": "L'appel ne nécessite pas de mise en attente / transfert",
+            "si": "Le client raccroche pendant le temps d'attente lorsque le temps d'attente annoncé ou prédéfini n'est pas respecté"
+          }
+        },
+        {
+          "id": "respect_procedures",
+          "label": "Respect procédures",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 20,
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "",
+            "non_conforme": "",
+            "non_applicable": "",
+            "si": ""
+          }
+        },
+        {
+          "id": "attitude_et_climat_dechange",
+          "label": "Attitude et climat d'échange",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 20,
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": " ",
+            "conforme": " Le conseiller met en place un climat chaleureux (sourire, intonation, écoute), il  se montre accueillant, disponible, aimable et dynamique durant tout l'appel et réussit à établir une relation personnalisée et à gagner la confiance du client (utilise des mots positifs et rassurants).  ",
+            "non_conforme": "Le Conseiller manque d'amabilité et ne fournit aucun effort afin d'instaurer un climat détendu (utilisation de formules négatives ou mots noirs).\nManque de dynamisme.\nManque de personnalisation.",
+            "non_applicable": " ",
+            "si": " "
+          }
+        },
+        {
+          "id": "conclusion_du_contact",
+          "label": "Conclusion du contact",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 10,
+          "scoring": {
+            "Conforme": 10,
+            "A ameliorer": 5,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "Le conseiller client s’assure :\n- de la compréhension réciproque des termes de l’entretien (contacts synchrones)\n- précise la suite donnée ou à donner (tous contacts)",
+            "conforme": "a)-Le CC s'assure de la compréhension du client\nb)-Demande l'accord/confirme le RDV\nc)-Le conseiller se met à la disposition du client pour tout complément d’information\ne)-Précise la suite donnée ou à donner à une demande à laquelle il ne peut pas apporter de réponse",
+            "non_conforme": "Aucune synthèse et pas de validation de la compréhension du client\nPas de validation de l'accord.\nLe CC n'indique pas sa disponibilité.\nLe CC ne précise pas la suite donnée ou à donner.",
+            "non_applicable": "la demande ne nécessite pas une conclusion (cas d'appels hors périmètre)",
+            "si": " "
+          }
+        },
+        {
+          "id": "prise_de_conge",
+          "label": "Prise de congé",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": " - Le conseiller client assure une prise de congé courtoise avec au minimum une formule de politesse (tous contacts).\nIl laisse l’initiative au client de raccrocher.",
+            "conforme": "a)- Le CC réalise une prise de congé conforme avec un remerciement  \nb)-laisse l’initiative au client de raccrocher ",
+            "non_conforme": "le CC réalise une prise de congé partielle  ou maladroite où le remerciement n'est  pas présent\nLa prise de congé ne respecte pas les consignes.",
+            "non_applicable": "le client raccroche avant la prise de congé",
+            "si": "Le client a subi une incivilité.\net/ou\n*Lors de la prise de congé, le client est congédié de façon manifestement incorrecte par le conseiller."
+          }
+        },
+        {
+          "id": "qualification_historisation",
+          "label": "Qualification - Historisation",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": " ",
+            "conforme": "L'appel est historisé systématiquement et les éléments indispensables sont renseignés\nLe code de conclusion a été correctement renseigné.",
+            "non_conforme": "L'appel n'est pas historisé et/ou les éléments indispensables ne sont pas renseignés",
+            "non_applicable": " ",
+            "si": " "
+          }
+        }
+      ],
+      "bareme": {
+        "total_max_points": {
+          "Fond": 72,
+          "Forme": 94,
+          "total": 166
+        },
+        "grade_thresholds": {
+          "Conforme": {
+            "min_points": 124,
+            "min_pct": 75
+          },
+          "A ameliorer": {
+            "min_points": 91,
+            "min_pct": 55
+          },
+          "Non conforme": {
+            "min_points": 0,
+            "min_pct": 0
+          }
+        },
+        "scoring_rules": {
+          "Conforme": "Note maximale — tous les critères sont respectés",
+          "A ameliorer": "Entre 55% et 74% — certains critères nécessitent des améliorations",
+          "Non conforme": "Moins de 55% — insuffisance grave"
+        }
+      }
+    },
     "E-vendeurs": {
       "display_name": "E-vendeurs",
-      "manager_name": "Ludovic DOREAU",
-      "description": "Ventes entrantes et sortantes, prise de rendez-vous",
-      "scoring_criteria": {
-        "accueil": {
-          "label": "Accueil et Professionalisme",
-          "weight": 3,
+      "grid_file": "Grille_evaluation Qualif + E-vente.xlsx",
+      "manager_names": [
+        "Leslie BOULARD",
+        "Cédric KOUDJENOUME"
+      ],
+      "description": "E-vendeurs — vente à distance, qualification leads",
+      "criteria": [
+        {
+          "id": "prise_en_charge_et_accompagnement_du_contact",
+          "label": "Prise en charge et accompagnement du contact",
+          "category": "Forme",
+          "coaching": false,
           "max_points": 20,
-          "keywords_positive": ["bonjour", "merci", "bienvenue", "enchanté", "je vous écoute", "comment puis-je", "puis-je vous aider", "ravi", "souhaitez", "besoin"],
-          "keywords_negative": ["allô", "ouais", "attendez", "j'sais pas", "je sais pas", "c'est pas mon", "je m'en fous", "débrouillez-vous", "pas le temps"],
-          "description": "Qualité de l'accueil et professionnalisme de l'agent"
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "De façon globale, le client est pris en charge et est accompagné durant tout le contact conformément aux attentes.\nLe traitement est réalisé de façon professionnelle.\nToutes les étapes de l'appel sont réalisées ou le non respect d'une étape n'a pas d'impact négatif sur le client",
+            "non_conforme": "Le conseiller génère une insatisfaction client\nLe non respect d'une étape a un impact pour le client",
+            "non_applicable": " ",
+            "si": "Le client a subi une incivilité."
+          }
         },
-        "besoins": {
-          "label": "Identification des Besoins",
-          "weight": 4,
+        {
+          "id": "pertinence_de_la_reponse",
+          "label": "Pertinence de la réponse",
+          "category": "Fond",
+          "coaching": false,
           "max_points": 20,
-          "keywords_positive": ["quel modèle", "quelle marque", "quel budget", "quel type", "recherchez-vous", "vous souhaitez", "quels critères", "essai", "financement", "reprise", "livraison", "attendez-vous", "qu'est-ce qui est", "important pour vous"],
-          "keywords_negative": ["je vous pose pas la question", "écoutez", "je répète", "comme je vous ai dit", "c'est écrit", "vous n'écoutez pas"],
-          "description": "Capacité à identifier les besoins du client"
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "a)-Le CC présente l'offre en respectant les éléments clés -donne les informations complémentaires liées à l'offre en terme de procédure-                        \nb)-le CC présente l'offre la plus adaptée aux besoins client d'une manière claire et interactive\nc)-Les informations données sont correctes et toutes les questions du client ont été abordées.\nd)-Le CC propose une solution adéquate et adaptée aux besoins du client en fonction de ses habitudes et des besoins exprimés.",
+            "non_conforme": "a)-Le conseiller ne présente pas les procédures associées à l'offre\nb)-Absence de clarté dans le discours \nc) La réponse est inappropriée par rapport aux procédures de traitement existantes sans impact sur le client.\nd)-Réponse type partielle.",
+            "non_applicable": " ",
+            "si": "Le client est induit en erreur suite à une information manquante ou erronée.\nLe client n’obtient pas la réponse à sa demande alors que les informations sont disponibles au niveau du service."
+          }
         },
-        "argumentation": {
-          "label": "Argumentation et Conseil",
-          "weight": 4,
+        {
+          "id": "attitude_et_climat_dechange",
+          "label": "Attitude et climat d'échange",
+          "category": "Forme",
+          "coaching": false,
           "max_points": 20,
-          "keywords_positive": ["je vous propose", "je vous conseille", "avantage", "caractéristique", "option", "équipement", "finition", "motorisation", "garantie", "entretien", "économies", "prix", "offre", "promotion", "occasion", "neuf", "stock", "disponible"],
-          "keywords_negative": ["c'est comme ça", "je n'y peux rien", "c'est le prix", "désolé c'est", "pas possible", "je ne peux pas"],
-          "description": "Qualité de l'argumentation commerciale"
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": " Le conseiller met en place un climat chaleureux (sourire, intonation, écoute), il  se montre accueillant, disponible, aimable et dynamique durant tout l'appel et réussit à établir une relation personnalisée et à gagner la confiance du client (utilise des mots positifs et rassurants).  ",
+            "non_conforme": "Le Conseiller manque d'amabilité et ne fournit aucun effort afin d'instaurer un climat détendu (utilisation de formules négatives, mots noirs ou tics de langage répétés).\nManque de dynamisme.\nManque de personnalisation.",
+            "non_applicable": " ",
+            "si": " "
+          }
         },
-        "gestion_opposition": {
-          "label": "Gestion des Objections",
-          "weight": 3,
-          "max_points": 20,
-          "keywords_positive": ["je comprends", "je vois", "c'est noté", "laissez-moi", "permettez-moi", "effectivement", "cependant", "néanmoins", "alternative", "solution", "peut-être", "considérer", "proposition"],
-          "keywords_negative": ["c'est pas vrai", "vous avez tort", "n'importe quoi", "vous vous trompez", "c'est faux", "absurde", "pas du tout"],
-          "description": "Capacité à gérer les objections"
+        {
+          "id": "accueil_du_client",
+          "label": "Accueil du client",
+          "category": "Forme",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "le conseiller accueille : d'une manière claire, compréhensible avec obligatoirement Prénom et nom de la société",
+            "non_conforme": "L'absence d'un élément marquant dans l'accueil:\na)- absence de clarté et compréhension\nb)- Non respect des formules d'accueil et identification",
+            "non_applicable": " ",
+            "si": "Le client a subi une incivilité.\net/ou Le client est accueilli incorrectement par un conseiller."
+          }
         },
-        "closing": {
-          "label": "Conclusion et Prise de Rendez-vous",
-          "weight": 3,
+        {
+          "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+          "label": "Découverte des attentes du client  - Questionnement besoins du client",
+          "category": "Fond",
+          "coaching": true,
           "max_points": 20,
-          "keywords_positive": ["rendez-vous", "venez", "concession", "essai", "programmons", "agenda", "planning", "à bientôt", "je vous attends", "confirmation", "rappel", "sms", "mail", "réservation"],
-          "keywords_negative": ["on verra plus tard", "rappelez", "je vous laisse", "débrouillez-vous"],
-          "description": "Efficacité de la conclusion et prise de rendez-vous"
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "a)-Le conseiller aide le client à s’exprimer pour cerner la demande du client\nb)-le conseiller a compris et synthétise la demande ou  toutes les demandes du client en reformulant.\nc)-Le Questionnement est pertinent et ciblé",
+            "non_conforme": "L'absence d'un élément marquant à la qualification conforme\nLe questionnement n'est pas pertinent.",
+            "non_applicable": "Si la demande est simple (ex: pour un transfert vers un autre service)",
+            "si": "Le client a subi une incivilité.\net/ou si\n*La demande du client n’est pas comprise par le conseiller lors de la clôture de l’entretien"
+          }
         },
-        "empathie": {
-          "label": "Empathie et Relation Client",
-          "weight": 3,
+        {
+          "id": "traitement_des_objections",
+          "label": "Traitement des objections",
+          "category": "Fond",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": 3,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Toutes les demandes et/ou objections du client sont traitées.",
+            "non_conforme": "Toutes les demandes et/ou objections du client ne sont pas traitées.",
+            "non_applicable": "Le client n'as pas d'objection",
+            "si": " "
+          }
+        },
+        {
+          "id": "respect_des_process_evente_qualif",
+          "label": "Respect des process e-Vente / Qualif",
+          "category": "Fond",
+          "coaching": true,
           "max_points": 20,
-          "keywords_positive": ["je comprends", "tout à fait", "bien sûr", "pas de souci", "naturellement", "rassurez-vous", "soyez tranquille", "je suis là", "à votre disposition", "avec plaisir", "volontiers"],
-          "keywords_negative": ["je m'en fiche", "c'est votre problème", "débrouillez-vous", "je n'ai pas le temps", "écoutez-moi bien"],
-          "description": "Qualité de l'empathie et relation client"
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "",
+            "non_conforme": "",
+            "non_applicable": "",
+            "si": ""
+          }
+        },
+        {
+          "id": "mise_en_attente",
+          "label": "Mise en attente",
+          "category": "Forme",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Le conseiller annonce clairement au client, le cas échéant, la mise en attente précédant la réponse.",
+            "non_conforme": "Non respect de la phase de la mise en attente et de la reprise de l'appel",
+            "non_applicable": "la demande du client ne nécessite pas une mise en attente",
+            "si": "Le client a subi une incivilité.\net/ou le client est interrompu en le mettant en attente de façon intempestive."
+          }
+        },
+        {
+          "id": "temps_dattente",
+          "label": "Temps d'attente",
+          "category": "Forme",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Le temps d’attente prédéfini ou annoncé au client est respecté.",
+            "non_conforme": "la durée de MEA dépasse les  Xmn (Temps à determiner) et/ou le client n'est pas repris au temps indiqué",
+            "non_applicable": "L'appel ne nécessite pas de mise en attente / transfert",
+            "si": "Le client raccroche pendant le temps d'attente lorsque le temps d'attente annoncé ou prédéfini n'est pas respecté"
+          }
+        },
+        {
+          "id": "conclusion_du_contact",
+          "label": "Conclusion du contact",
+          "category": "Forme",
+          "coaching": true,
+          "max_points": 10,
+          "scoring": {
+            "Conforme": 10,
+            "A ameliorer": 5,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "a)-Le CC s'assure de la compréhension du client (ex: Tout est clair pour vous?)\nb)-Reformule au besoin\nc)-Le conseiller demande si il y a d'autres questions ?\ne)-Précise la suite à donner à une demande à laquelle il ne peut pas apporter de réponse",
+            "non_conforme": "Aucune synthèse et pas de validation de la compréhension du client\nLe CC n'indique pas sa disponibilité.\nLe CC ne précise pas la suite donnée ou à donner.",
+            "non_applicable": "La demande ne nécessite pas une conclusion (cas d'appels hors périmètre)",
+            "si": " "
+          }
+        },
+        {
+          "id": "prise_de_conge",
+          "label": "Prise de congé",
+          "category": "Forme",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "a)- Le CC réalise une prise de congé conforme avec un remerciement  \nb)-laisse l’initiative au client de raccrocher ",
+            "non_conforme": "le CC réalise une prise de congé partielle  ou maladroite où le remerciement n'est  pas présent\nLa prise de congé ne respecte pas les consignes.",
+            "non_applicable": "le client raccroche avant la prise de congé",
+            "si": "Le client a subi une incivilité.\net/ou\n*Lors de la prise de congé, le client est congédié de façon manifestement incorrecte par le conseiller."
+          }
+        },
+        {
+          "id": "qualification_historisation_sf_genesys",
+          "label": "Qualification - Historisation (SF - Genesys)",
+          "category": "Fond",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "",
+            "non_conforme": "",
+            "non_applicable": "",
+            "si": ""
+          }
+        }
+      ],
+      "bareme": {
+        "total_max_points": {
+          "Fond": 72,
+          "Forme": 74,
+          "total": 146
+        },
+        "grade_thresholds": {
+          "Conforme": {
+            "min_points": 110,
+            "min_pct": 75
+          },
+          "A ameliorer": {
+            "min_points": 80,
+            "min_pct": 55
+          },
+          "Non conforme": {
+            "min_points": 0,
+            "min_pct": 0
+          }
+        },
+        "scoring_rules": {
+          "Conforme": ">= 75%",
+          "A ameliorer": "Entre 55% et 74%",
+          "Non conforme": "< 55%"
         }
       }
     },
     "Qualifieurs": {
       "display_name": "Qualifieurs",
-      "manager_name": "Mickael ROCHEGUDE",
-      "description": "Qualification de leads, appel sortant",
-      "scoring_criteria": {
-        "presentation": {
-          "label": "Présentation et Cadre de l'Appel",
-          "weight": 3,
+      "grid_file": "Grille_evaluation Qualif + E-vente.xlsx",
+      "manager_names": [
+        "Leslie BOULARD",
+        "Cédric KOUDJENOUME"
+      ],
+      "description": "Qualifieurs — qualification des leads entrants",
+      "criteria": [
+        {
+          "id": "prise_en_charge_et_accompagnement_du_contact",
+          "label": "Prise en charge et accompagnement du contact",
+          "category": "Forme",
+          "coaching": false,
           "max_points": 20,
-          "keywords_positive": ["bonjour", "je vous appelle", "de la part de", "au sujet de", "vous avez laissé", "suite à", "contact", "demande", "prospection", "projet"],
-          "keywords_negative": ["allô", "ouais", "c'est pour quoi", "qui êtes-vous", "j'appelle pour"],
-          "description": "Qualité de la présentation"
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "De façon globale, le client est pris en charge et est accompagné durant tout le contact conformément aux attentes.\nLe traitement est réalisé de façon professionnelle.\nToutes les étapes de l'appel sont réalisées ou le non respect d'une étape n'a pas d'impact négatif sur le client",
+            "non_conforme": "Le conseiller génère une insatisfaction client\nLe non respect d'une étape a un impact pour le client",
+            "non_applicable": " ",
+            "si": "Le client a subi une incivilité."
+          }
         },
-        "qualification": {
-          "label": "Qualification du Lead",
-          "weight": 5,
+        {
+          "id": "pertinence_de_la_reponse",
+          "label": "Pertinence de la réponse",
+          "category": "Fond",
+          "coaching": false,
           "max_points": 20,
-          "keywords_positive": ["êtes-vous toujours intéressé", "avez-vous des questions", "quel est votre projet", "budget", "délai", "secteur", "critères", "besoins", "attentes", "souhaits", "situation", "actuel", "véhicule"],
-          "keywords_negative": ["bon ben", "voilà", "c'est tout", "rien d'autre", "d'accord bah"],
-          "description": "Qualité de la qualification du lead"
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "a)-Le CC présente l'offre en respectant les éléments clés -donne les informations complémentaires liées à l'offre en terme de procédure-                        \nb)-le CC présente l'offre la plus adaptée aux besoins client d'une manière claire et interactive\nc)-Les informations données sont correctes et toutes les questions du client ont été abordées.\nd)-Le CC propose une solution adéquate et adaptée aux besoins du client en fonction de ses habitudes et des besoins exprimés.",
+            "non_conforme": "a)-Le conseiller ne présente pas les procédures associées à l'offre\nb)-Absence de clarté dans le discours \nc) La réponse est inappropriée par rapport aux procédures de traitement existantes sans impact sur le client.\nd)-Réponse type partielle.",
+            "non_applicable": " ",
+            "si": "Le client est induit en erreur suite à une information manquante ou erronée.\nLe client n’obtient pas la réponse à sa demande alors que les informations sont disponibles au niveau du service."
+          }
         },
-        "engagement": {
-          "label": "Engagement et Suivi",
-          "weight": 3,
+        {
+          "id": "attitude_et_climat_dechange",
+          "label": "Attitude et climat d'échange",
+          "category": "Forme",
+          "coaching": false,
           "max_points": 20,
-          "keywords_positive": ["je vous envoie", "documentation", "devis", "proposition", "commercial", "rappelle", "relance", "email", "sms", "prise de rendez-vous", "concession", "venir"],
-          "keywords_negative": ["je ne peux pas", "c'est pas possible", "rappelez plus tard", "j'ai pas le temps"],
-          "description": "Qualité de l'engagement et suivi"
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": " Le conseiller met en place un climat chaleureux (sourire, intonation, écoute), il  se montre accueillant, disponible, aimable et dynamique durant tout l'appel et réussit à établir une relation personnalisée et à gagner la confiance du client (utilise des mots positifs et rassurants).  ",
+            "non_conforme": "Le Conseiller manque d'amabilité et ne fournit aucun effort afin d'instaurer un climat détendu (utilisation de formules négatives, mots noirs ou tics de langage répétés).\nManque de dynamisme.\nManque de personnalisation.",
+            "non_applicable": " ",
+            "si": " "
+          }
         },
-        "courtoisie": {
-          "label": "Courtoisie et Professionnalisme",
-          "weight": 3,
+        {
+          "id": "accueil_du_client",
+          "label": "Accueil du client",
+          "category": "Forme",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "le conseiller accueille : d'une manière claire, compréhensible avec obligatoirement Prénom et nom de la société",
+            "non_conforme": "L'absence d'un élément marquant dans l'accueil:\na)- absence de clarté et compréhension\nb)- Non respect des formules d'accueil et identification",
+            "non_applicable": " ",
+            "si": "Le client a subi une incivilité.\net/ou Le client est accueilli incorrectement par un conseiller."
+          }
+        },
+        {
+          "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+          "label": "Découverte des attentes du client  - Questionnement besoins du client",
+          "category": "Fond",
+          "coaching": true,
           "max_points": 20,
-          "keywords_positive": ["merci", "bonne journée", "au revoir", "merci de votre", "n'hésitez pas", "je reste à votre disposition", "à bientôt"],
-          "keywords_negative": ["voilà c'est tout", "c'est bon", "ça marche", "OK", "salut"],
-          "description": "Niveau de courtoisie"
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "a)-Le conseiller aide le client à s’exprimer pour cerner la demande du client\nb)-le conseiller a compris et synthétise la demande ou  toutes les demandes du client en reformulant.\nc)-Le Questionnement est pertinent et ciblé",
+            "non_conforme": "L'absence d'un élément marquant à la qualification conforme\nLe questionnement n'est pas pertinent.",
+            "non_applicable": "Si la demande est simple (ex: pour un transfert vers un autre service)",
+            "si": "Le client a subi une incivilité.\net/ou si\n*La demande du client n’est pas comprise par le conseiller lors de la clôture de l’entretien"
+          }
+        },
+        {
+          "id": "traitement_des_objections",
+          "label": "Traitement des objections",
+          "category": "Fond",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": 3,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Toutes les demandes et/ou objections du client sont traitées.",
+            "non_conforme": "Toutes les demandes et/ou objections du client ne sont pas traitées.",
+            "non_applicable": "Le client n'as pas d'objection",
+            "si": " "
+          }
+        },
+        {
+          "id": "respect_des_process_evente_qualif",
+          "label": "Respect des process e-Vente / Qualif",
+          "category": "Fond",
+          "coaching": true,
+          "max_points": 20,
+          "scoring": {
+            "Conforme": 20,
+            "A ameliorer": 10,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "",
+            "non_conforme": "",
+            "non_applicable": "",
+            "si": ""
+          }
+        },
+        {
+          "id": "mise_en_attente",
+          "label": "Mise en attente",
+          "category": "Forme",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Le conseiller annonce clairement au client, le cas échéant, la mise en attente précédant la réponse.",
+            "non_conforme": "Non respect de la phase de la mise en attente et de la reprise de l'appel",
+            "non_applicable": "la demande du client ne nécessite pas une mise en attente",
+            "si": "Le client a subi une incivilité.\net/ou le client est interrompu en le mettant en attente de façon intempestive."
+          }
+        },
+        {
+          "id": "temps_dattente",
+          "label": "Temps d'attente",
+          "category": "Forme",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Le temps d’attente prédéfini ou annoncé au client est respecté.",
+            "non_conforme": "la durée de MEA dépasse les  Xmn (Temps à determiner) et/ou le client n'est pas repris au temps indiqué",
+            "non_applicable": "L'appel ne nécessite pas de mise en attente / transfert",
+            "si": "Le client raccroche pendant le temps d'attente lorsque le temps d'attente annoncé ou prédéfini n'est pas respecté"
+          }
+        },
+        {
+          "id": "conclusion_du_contact",
+          "label": "Conclusion du contact",
+          "category": "Forme",
+          "coaching": true,
+          "max_points": 10,
+          "scoring": {
+            "Conforme": 10,
+            "A ameliorer": 5,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "a)-Le CC s'assure de la compréhension du client (ex: Tout est clair pour vous?)\nb)-Reformule au besoin\nc)-Le conseiller demande si il y a d'autres questions ?\ne)-Précise la suite à donner à une demande à laquelle il ne peut pas apporter de réponse",
+            "non_conforme": "Aucune synthèse et pas de validation de la compréhension du client\nLe CC n'indique pas sa disponibilité.\nLe CC ne précise pas la suite donnée ou à donner.",
+            "non_applicable": "La demande ne nécessite pas une conclusion (cas d'appels hors périmètre)",
+            "si": " "
+          }
+        },
+        {
+          "id": "prise_de_conge",
+          "label": "Prise de congé",
+          "category": "Forme",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": 6
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "a)- Le CC réalise une prise de congé conforme avec un remerciement  \nb)-laisse l’initiative au client de raccrocher ",
+            "non_conforme": "le CC réalise une prise de congé partielle  ou maladroite où le remerciement n'est  pas présent\nLa prise de congé ne respecte pas les consignes.",
+            "non_applicable": "le client raccroche avant la prise de congé",
+            "si": "Le client a subi une incivilité.\net/ou\n*Lors de la prise de congé, le client est congédié de façon manifestement incorrecte par le conseiller."
+          }
+        },
+        {
+          "id": "qualification_historisation_sf_genesys",
+          "label": "Qualification - Historisation (SF - Genesys)",
+          "category": "Fond",
+          "coaching": true,
+          "max_points": 6,
+          "scoring": {
+            "Conforme": 6,
+            "A ameliorer": null,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "",
+            "non_conforme": "",
+            "non_applicable": "",
+            "si": ""
+          }
         }
-      }
-    },
-    "APV GVA": {
-      "display_name": "APV GVA",
-      "manager_name": "Leslie BOULARD",
-      "description": "Après-vente, gestion des ateliers",
-      "scoring_criteria": {
-        "accueil_SAV": {
-          "label": "Accueil et Prise en Charge",
-          "weight": 3,
-          "max_points": 20,
-          "keywords_positive": ["bonjour", "merci d'appeler", "comment puis-je", "je vous écoute", "en quoi puis-je", "besoin", "problème", "panne"],
-          "keywords_negative": ["allô", "ouais", "c'est pour quoi là", "j'ai pas le temps"],
-          "description": "Qualité de l'accueil SAV"
+      ],
+      "bareme": {
+        "total_max_points": {
+          "Fond": 72,
+          "Forme": 74,
+          "total": 146
         },
-        "diagnostic": {
-          "label": "Diagnostic et Compréhension",
-          "weight": 4,
-          "max_points": 20,
-          "keywords_positive": ["depuis quand", "symptômes", "bruit", "témoin", "voyant", "bizarre", "entendu", "constaté", "décrivez", "expliquez", "quel bruit", "quand"],
-          "keywords_negative": ["j'sais pas", "je vois pas", "amenez-le", "je peux rien dire"],
-          "description": "Qualité du diagnostic"
+        "grade_thresholds": {
+          "Conforme": {
+            "min_points": 110,
+            "min_pct": 75
+          },
+          "A ameliorer": {
+            "min_points": 80,
+            "min_pct": 55
+          },
+          "Non conforme": {
+            "min_points": 0,
+            "min_pct": 0
+          }
         },
-        "solution": {
-          "label": "Proposition de Solution",
-          "weight": 4,
-          "max_points": 20,
-          "keywords_positive": ["rendez-vous", "atelier", "diagnostic", "technicien", "pièce", "réparation", "intervention", "devis", "prise en charge", "garantie", "entretien", "révision"],
-          "keywords_negative": ["je sais pas quoi vous dire", "c'est compliqué", "pas possible", "amenez", "désolé je", "je ne peux rien"],
-          "description": "Qualité de la solution proposée"
-        },
-        "delai": {
-          "label": "Gestion des Délais et Suivi",
-          "weight": 3,
-          "max_points": 20,
-          "keywords_positive": ["disponible", "créneau", "semaine prochaine", "jour même", "sous", "heures", "sans rendez-vous", "urgent", "priorité", "appel", "confirmation", "relance", "suivi"],
-          "keywords_negative": ["plus tard", "je ne sais pas quand", "pas de date", "débrouillez-vous", "c'est pas mon rayon"],
-          "description": "Gestion des délais"
-        },
-        "satisfaction": {
-          "label": "Satisfaction et Fidélisation",
-          "weight": 3,
-          "max_points": 20,
-          "keywords_positive": ["satisfait", "content", "merci de votre confiance", "à bientôt", "bonne journée", "au plaisir", "n'hésitez pas", "rester à votre disposition"],
-          "keywords_negative": ["c'est fini", "voilà", "au revoir", "ça va"],
-          "description": "Satisfaction client"
-        }
-      }
-    },
-    "APV FMC/NSA/BMW": {
-      "display_name": "APV FMC/NSA/BMW",
-      "manager_name": "Cédric KOUDJENOUME",
-      "description": "Après-vente FMC, Nissan, BMW",
-      "scoring_criteria": {
-        "accueil_multimarque": {
-          "label": "Accueil Multimarque",
-          "weight": 3,
-          "max_points": 20,
-          "keywords_positive": ["bonjour", "bienvenue chez", "garage", "concession", "FMC", "Nissan", "BMW", "service après-vente", "atelier", "comment puis-je", "merci d'appeler"],
-          "keywords_negative": ["allô", "ouais", "j'sais pas", "c'est pas chez nous", "c'est pas notre"],
-          "description": "Accueil pour les marques FMC, Nissan, BMW"
-        },
-        "expertise_technique": {
-          "label": "Expertise Technique",
-          "weight": 5,
-          "max_points": 20,
-          "keywords_positive": ["diagnostic", "technicien", "spécialiste", "marque", "modèle", "motorisation", "pièce d'origine", "constructeur", "préconisation", "garantie constructeur", "forfait", "entretien", "révision", "vidange", "freins", "embrayage", "distribution", "climatisation"],
-          "keywords_negative": ["j'en sais rien", "je suis pas mécano", "je peux pas vous dire", "je connais pas", "c'est pas mon domaine"],
-          "description": "Expertise technique"
-        },
-        "communication": {
-          "label": "Communication et Pédagogie",
-          "weight": 3,
-          "max_points": 20,
-          "keywords_positive": ["je vous explique", "en résumé", "voici", "ce qui se passe", "le problème vient de", "nous allons", "intervention", "je vous tiens au courant", "je vous rappelle"],
-          "keywords_negative": ["c'est compliqué", "vous comprenez pas", "je vous l'ai déjà dit", "je répète"],
-          "description": "Pédagogie et communication"
-        },
-        "orientation": {
-          "label": "Orientation et Conseil",
-          "weight": 3,
-          "max_points": 20,
-          "keywords_positive": ["je vous conseille", "le mieux serait", "nous pouvons", "proposition", "alternative", "solution", "devis gratuit", "prise en charge"],
-          "keywords_negative": ["je peux rien pour vous", "c'est pas chez nous", "pas de solution", "désolé"],
-          "description": "Conseil et orientation client"
+        "scoring_rules": {
+          "Conforme": ">= 75%",
+          "A ameliorer": "Entre 55% et 74%",
+          "Non conforme": "< 55%"
         }
       }
     },
     "Standard": {
       "display_name": "Standard",
-      "manager_name": "Leila BOUHAFS",
-      "description": "Accueil standard, orientation, appel entrant",
-      "scoring_criteria": {
-        "accueil_standard": {
-          "label": "Accueil Standard",
-          "weight": 4,
-          "max_points": 20,
-          "keywords_positive": ["bonjour", "merci d'appeler", "bienvenue", "vous êtes bien chez", "comment puis-je vous aider", "en quoi puis-je", "standard", "accueil", "société", "concession"],
-          "keywords_negative": ["allô", "ouais", "j'attends", "qui êtes-vous", "c'est pour quoi"],
-          "description": "Qualité de l'accueil standard"
+      "grid_file": "Grille évaluation Standard.xlsx",
+      "manager_names": [
+        "Leslie BOULARD",
+        "Cédric KOUDJENOUME"
+      ],
+      "description": "Standard — accueil téléphonique standard des concessions",
+      "criteria": [
+        {
+          "id": "bymycar_nom_concession_prenom",
+          "label": "ByMyCar + nom concession + prénom",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
         },
-        "orientation": {
-          "label": "Orientation et Transfert",
-          "weight": 4,
-          "max_points": 20,
-          "keywords_positive": ["je vous mets en relation", "je vous passe", "je vous transfère", "service", "département", "collègue", "spécialiste", "commercial", "SAV", "atelier", "après-vente", "réception", "je vous laisse avec"],
-          "keywords_negative": ["c'est pas mon service", "je sais pas qui", "débrouillez-vous", "appelez le", "composez le"],
-          "description": "Qualité de l'orientation"
+        {
+          "id": "formule_daccueil_quelle_est_votre_demande_comment_puisje_vous_aider",
+          "label": "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
         },
-        "information": {
-          "label": "Information et Renseignement",
-          "weight": 3,
-          "max_points": 20,
-          "keywords_positive": ["horaires", "adresse", "téléphone", "email", "site web", "coordonnées", "plan d'accès", "jour férié", "ouverture", "fermeture", "info", "renseignement"],
-          "keywords_negative": ["je sais pas", "j'ai pas l'info", "cherchez sur internet", "googlez", "je suis pas l'annuaire"],
-          "description": "Qualité des informations fournies"
+        {
+          "id": "prends_le_temps_decouter_sans_interruption_du_client",
+          "label": "Prends le temps d'écouter sans interruption du client",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
         },
-        "courtoisie_standard": {
-          "label": "Courtoisie et Professionnalisme",
-          "weight": 3,
-          "max_points": 20,
-          "keywords_positive": ["merci", "bonne journée", "au revoir", "n'hésitez pas", "je reste à votre disposition", "merci de votre appel", "à bientôt", "avec plaisir"],
-          "keywords_negative": ["voilà", "c'est bon", "ça marche", "salut", "bye", "OK", "d'accord"],
-          "description": "Courtoisie au standard"
+        {
+          "id": "pose_des_questions_et_conseille",
+          "label": "Pose des questions et conseille",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
+        },
+        {
+          "id": "oriente_aux_bons_interlocuteurs_en_concessions",
+          "label": "Oriente aux bons interlocuteurs en concessions",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
+        },
+        {
+          "id": "desamorce_rassure_fais_preuve_de_comprehension",
+          "label": "Désamorce, rassure, fais preuve de compréhension",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
+        },
+        {
+          "id": "solutions_proposees_aux_objections_du_client",
+          "label": "Solutions proposées aux objections du client",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
+        },
+        {
+          "id": "courtoisie_et_politesse_de_bout_en_bout_ton_professionnel",
+          "label": "Courtoisie et politesse de bout en bout, ton professionnel",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
+        },
+        {
+          "id": "recadre_un_echange_trop_long",
+          "label": "Recadre un échange trop long",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
+        },
+        {
+          "id": "utilise_la_mise_en_attente_efficacement_temps_dattente_acceptable",
+          "label": "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
+        },
+        {
+          "id": "en_direct_pendant_un_transfert_dappel",
+          "label": "En direct pendant un transfert d'appel",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
+        },
+        {
+          "id": "redaction_du_mail_avec_tous_les_elements_indispensable_nom_clientimmatriculationmodele_vehicule",
+          "label": "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule",
+          "category": "Fond",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
+        },
+        {
+          "id": "prise_de_conge_courtoise",
+          "label": "Prise de congé courtoise",
+          "category": "Forme",
+          "coaching": false,
+          "max_points": 4,
+          "scoring": {
+            "Conforme": 4,
+            "A ameliorer": 2,
+            "Non conforme": 0,
+            "Non applicable": null
+          },
+          "referentiel": {
+            "definition": "",
+            "conforme": "Critère respecté — le conseiller répond aux attendus",
+            "non_conforme": "Critère non respecté — le conseiller ne répond pas aux attendus",
+            "non_applicable": "Situation ne permettant pas l'évaluation du critère",
+            "si": ""
+          }
+        }
+      ],
+      "bareme": {
+        "total_max_points": {
+          "total": 52
+        },
+        "note_sur_100": "La note sur 52 est convertie sur 100 (× 100/52)",
+        "grade_thresholds": {
+          "Conforme": {
+            "min_points": 39,
+            "min_pct": 75
+          },
+          "A ameliorer": {
+            "min_points": 29,
+            "min_pct": 55
+          },
+          "Non conforme": {
+            "min_points": 0,
+            "min_pct": 0
+          }
+        },
+        "scoring_rules": {
+          "Conforme": "4 pts — critère respecté",
+          "A ameliorer": "2 pts — critère partiellement respecté",
+          "Non conforme": "0 pt — critère non respecté",
+          "Non applicable": "Exclu du total — ne compte pas dans la note"
         }
       }
     }
   },
-  "scoring_weights": {
-    "keyword_match_weight": 2.0,
-    "sentiment_boost": 1.5,
-    "pros_cons_generation": true
+  "raw_data": {
+    "qualif_e_vente_bareme_sheet": {
+      "description": "BAREME sheet from Grille_evaluation Qualif + E-vente.xlsx — raw row data (rows 1-30, cols A-M)",
+      "legend": {
+        "col_A": "Sheet row reference",
+        "col_B": "Category / Criterion name",
+        "col_C_E": "Merged cells (criteria spans)",
+        "col_F": "Conforme",
+        "col_G": "A Améliorer",
+        "col_H": "Non conforme",
+        "col_I": "Non Applicable*",
+        "col_J": "(unused)",
+        "col_K": "Fond/Forme label",
+        "col_L": "Points max",
+        "col_M": "Thresholds"
+      },
+      "data": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "BAREME NOTATION GRILLE ",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "Points max",
+          "Critères"
+        ],
+        [
+          null,
+          "CRITERES PRINCIPAUX",
+          null,
+          null,
+          null,
+          "Conforme",
+          "A Améliorer",
+          "Non conforme",
+          null,
+          null,
+          "Fond ",
+          72,
+          ">=62"
+        ],
+        [
+          null,
+          "Prise en charge et accompagnement du contact",
+          null,
+          null,
+          null,
+          20,
+          10,
+          0,
+          null,
+          null,
+          null,
+          null,
+          "Entre 55 et 61"
+        ],
+        [
+          null,
+          "Pertinence de la réponse",
+          null,
+          null,
+          null,
+          20,
+          10,
+          0,
+          null,
+          null,
+          null,
+          null,
+          "<55"
+        ],
+        [
+          null,
+          "Attitude et climat d'échange",
+          null,
+          null,
+          null,
+          20,
+          10,
+          0,
+          null,
+          null,
+          "Forme",
+          74,
+          ">=64"
+        ],
+        [
+          null,
+          "TOTAL",
+          null,
+          null,
+          null,
+          60,
+          30,
+          0,
+          null,
+          null,
+          null,
+          null,
+          "Entre 57 et 63"
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "<57"
+        ],
+        [
+          null,
+          "AXES DE COACHING",
+          null,
+          null,
+          null,
+          "Conforme",
+          "A Améliorer",
+          "Non conforme",
+          "Non Applicable*",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Accueil du client\nPrénom et nom de la société. Identifie son interlocuteur",
+          null,
+          null,
+          null,
+          6,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Découverte des attentes du client\nQuestionnement besoins du client",
+          null,
+          null,
+          null,
+          20,
+          10,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Traitement des objections",
+          null,
+          null,
+          null,
+          6,
+          3,
+          0,
+          6,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Respect procédures e-Vente / QUALIF",
+          null,
+          null,
+          null,
+          20,
+          10,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Mise en attente",
+          null,
+          null,
+          null,
+          6,
+          null,
+          0,
+          6,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Temps d'attente",
+          null,
+          null,
+          null,
+          6,
+          null,
+          0,
+          6,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Conclusion du contact",
+          null,
+          null,
+          null,
+          10,
+          5,
+          0,
+          6,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Prise de congé ",
+          null,
+          null,
+          null,
+          6,
+          null,
+          0,
+          6,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Qualification - Historisation ",
+          null,
+          null,
+          null,
+          6,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "TOTAL",
+          null,
+          null,
+          null,
+          86,
+          28,
+          0,
+          30,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          "Points:",
+          null,
+          146,
+          "/ 146",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Note MAX Conforme: ",
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Note MAX A Améliorer :",
+          null,
+          null,
+          0.3972602739726027,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          "Nb points requis pour MOYENNE:",
+          null,
+          null,
+          "110 points sur 146",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    },
+    "standard_grid_sheet": {
+      "description": "Grille sheet from Grille évaluation Standard.xlsx — raw row data (rows 1-27, cols A-G)",
+      "legend": {
+        "col_A": "Category",
+        "col_B": "Criteria",
+        "col_C": "Potentiel (max points)",
+        "col_D": "EVAL (evaluation score)",
+        "col_E": "Formule points (formula)",
+        "col_F": "POINTS (actual points)",
+        "col_G": "COMMENTAIRES"
+      },
+      "data": [
+        [
+          "Date de l'évaluation :",
+          "2025-12-19 00:00:00",
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "NOM Prénom :",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Activité / Service : ",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Evaluateur :",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Date & heure enregistrement",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "Catégorie",
+          "Critère",
+          "POTENTIEL",
+          "EVAL",
+          "formule points",
+          "POINTS",
+          "COMMENTAIRES"
+        ],
+        [
+          "Accueil du client",
+          "ByMyCar + nom concession + prénom",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          null,
+          "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          "Ecoute active",
+          "Prends le temps d'écouter sans interruption du client",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          null,
+          "Pose des questions et conseille",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          null,
+          "Oriente aux bons interlocuteurs en concessions",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          "Empathie",
+          "Désamorce, rassure, fais preuve de compréhension",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          null,
+          "Solutions proposées aux objections du client",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          "Professionnalisme",
+          "Courtoisie et politesse de bout en bout, ton professionnel",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          "Directivité/Efficacité",
+          "Recadre un échange trop long",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          null,
+          "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          "Capacité à restituer une information",
+          "En direct pendant un transfert d'appel",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          null,
+          "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule ",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          "Prise de congé",
+          "Prise de congé courtoise",
+          4,
+          null,
+          " ",
+          " ",
+          null
+        ],
+        [
+          null,
+          null,
+          52,
+          null,
+          null,
+          0,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "NOTE / 100 :",
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    }
   }
 }

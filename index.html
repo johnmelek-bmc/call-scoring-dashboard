@@ -3,164 +3,229 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Call Scoring — Supervision Qualité</title>
+<title>CallScoring · Évaluation Qualité BDC</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 /* ============================================================
-   DESIGN SYSTEM — BYMYCAR SUPERVISION
+   DESIGN SYSTEM — Apple-inspired
    ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+
 :root {
-  --navy: #0a1628;
-  --navy-light: #132240;
-  --primary: #2563eb;
-  --primary-light: #3b82f6;
-  --primary-dark: #1d4ed8;
-  --teal: #14b8a6;
-  --teal-light: #2dd4bf;
-  --green: #10b981;
-  --orange: #f59e0b;
-  --red: #ef4444;
-  --gray-50: #f8fafc;
-  --gray-100: #f1f5f9;
-  --gray-200: #e2e8f0;
-  --gray-300: #cbd5e1;
-  --gray-400: #94a3b8;
-  --gray-500: #64748b;
-  --gray-600: #475569;
-  --gray-700: #334155;
-  --gray-800: #1e293b;
-  --gray-900: #0f172a;
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --radius: 10px;
+  --bg: #f5f5f7;
+  --bg-alt: #ffffff;
+  --surface: #ffffff;
+  --surface-secondary: #f5f5f7;
+  --border: rgba(0,0,0,0.06);
+  --border-hover: rgba(0,0,0,0.10);
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-tertiary: #86868b;
+  --text-inverse: #ffffff;
+  --blue: #0071e3;
+  --blue-dim: #5ac8fa;
+  --green: #30d158;
+  --green-dim: #34c759;
+  --orange: #ff9f0a;
+  --red: #ff453a;
+  --red-dim: #ff3b30;
+  --purple: #bf5af2;
+  --teal: #64d2ff;
   --radius-sm: 6px;
-  --transition: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --radius: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --shadow: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.03);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.04);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.12), 0 8px 20px rgba(0,0,0,0.06);
+  --transition: 250ms cubic-bezier(0.22, 1, 0.36, 1);
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+  --font-mono: 'SF Mono', 'SFMono-Regular', 'ui-monospace', 'Menlo', monospace;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--gray-100); color: var(--gray-900); min-height: 100vh; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+body { font-family: var(--font); background: var(--bg); color: var(--text-primary); min-height: 100vh; line-height: 1.5; }
 
-/* ---- Layout ---- */
+/* ---- Sidebar ---- */
 .app { display: flex; min-height: 100vh; }
-.sidebar { width: 250px; background: var(--navy); color: white; display: flex; flex-direction: column; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
-.sidebar-brand { padding: 1.5rem 1.25rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
-.sidebar-brand h1 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.3; }
-.sidebar-brand span { font-size: .7rem; color: var(--gray-400); font-weight: 500; letter-spacing: .03em; text-transform: uppercase; }
-.sidebar-nav { padding: 1rem .75rem; display: flex; flex-direction: column; gap: .15rem; }
-.nav-label { font-size: .65rem; text-transform: uppercase; color: var(--gray-500); letter-spacing: .06em; font-weight: 700; padding: .75rem .75rem .35rem; }
-.sidebar-btn { display: flex; align-items: center; gap: .6rem; padding: .5rem .75rem; border-radius: var(--radius-sm); border: none; background: transparent; color: var(--gray-300); font-size: .85rem; font-weight: 500; cursor: pointer; transition: var(--transition); width: 100%; text-align: left; }
-.sidebar-btn:hover { background: rgba(255,255,255,.06); color: white; }
-.sidebar-btn.active { background: var(--primary); color: white; font-weight: 600; }
-.sidebar-btn .icon { font-size: 1rem; width: 1.4rem; text-align: center; flex-shrink: 0; }
+.sidebar { width: 220px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; position: sticky; top: 0; height: 100vh; z-index: 100; }
+.sidebar-brand { padding: 24px 20px 16px; border-bottom: 1px solid var(--border); }
+.sidebar-brand h1 { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); }
+.sidebar-brand span { font-size: 10px; font-weight: 500; color: var(--text-tertiary); letter-spacing: 0.03em; text-transform: uppercase; display: block; margin-top: 2px; }
+.sidebar-scroll { padding: 8px 8px; flex: 1; overflow-y: auto; }
+.nav-label { font-size: 10px; font-weight: 600; color: var(--text-tertiary); letter-spacing: 0.05em; text-transform: uppercase; padding: 16px 10px 6px; }
+.sidebar-btn { display: flex; align-items: center; gap: 8px; width: 100%; padding: 7px 10px; border-radius: var(--radius-sm); border: none; background: transparent; color: var(--text-secondary); font-size: 13px; font-weight: 500; cursor: pointer; transition: var(--transition); text-align: left; }
+.sidebar-btn:hover { background: var(--surface-secondary); color: var(--text-primary); }
+.sidebar-btn.active { background: var(--blue); color: var(--text-inverse); font-weight: 600; }
+.sidebar-btn .icon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
+.sidebar-divider { height: 1px; background: var(--border); margin: 8px 10px; }
+.data-badge { font-size: 10px; color: var(--text-tertiary); padding: 10px 16px; border-top: 1px solid var(--border); text-align: left; }
 
+/* ---- Main ---- */
 .main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 
 /* ---- Top Bar ---- */
-.topbar { background: white; border-bottom: 1px solid var(--gray-200); padding: .75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; position: sticky; top: 0; z-index: 50; }
-.topbar-title { font-size: 1.15rem; font-weight: 700; color: var(--gray-900); }
-.topbar-title small { font-weight: 500; color: var(--gray-400); font-size: .85rem; }
-.topbar-controls { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
-.topbar-controls select, .topbar-controls button { padding: .35rem .7rem; border-radius: var(--radius-sm); border: 1px solid var(--gray-200); background: white; font-size: .8rem; font-weight: 600; color: var(--gray-600); cursor: pointer; transition: var(--transition); }
-.topbar-controls select:hover, .topbar-controls button:hover { border-color: var(--primary); color: var(--primary); }
-.topbar-controls button.active { background: var(--primary); color: white; border-color: var(--primary); }
-.topbar-controls .period-group { display: flex; gap: 2px; }
-.topbar-controls .period-group button { border-radius: 0; }
-.topbar-controls .period-group button:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
-.topbar-controls .period-group button:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.topbar { background: rgba(255,255,255,0.80); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 12px 28px; display: flex; align-items: center; justify-content: space-between; gap: 12px; position: sticky; top: 0; z-index: 50; }
+.topbar-title { font-size: 16px; font-weight: 500; letter-spacing: -0.01em; }
+.topbar-title strong { font-weight: 700; }
+.topbar-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.period-group { display: flex; gap: 0; background: var(--surface-secondary); border-radius: var(--radius-sm); padding: 2px; }
+.period-btn { padding: 4px 10px; border: none; background: transparent; font-size: 11px; font-weight: 500; color: var(--text-secondary); cursor: pointer; border-radius: 4px; transition: var(--transition); font-family: var(--font); }
+.period-btn:hover { color: var(--text-primary); }
+.period-btn.active { background: var(--surface); color: var(--text-primary); box-shadow: var(--shadow-sm); }
+.filter-select { appearance: none; -webkit-appearance: none; padding: 4px 24px 4px 8px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface) url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%236e6e73' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 6px center; font-size: 11px; font-weight: 500; color: var(--text-secondary); cursor: pointer; outline: none; font-family: var(--font); }
+.filter-select:hover { border-color: var(--border-hover); }
 
 /* ---- Content ---- */
-.content { padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.content { padding: 20px 28px; display: flex; flex-direction: column; gap: 16px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
 /* ---- KPI Cards ---- */
-.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .85rem; }
-.kpi-card { background: white; border-radius: var(--radius); padding: 1rem 1.25rem; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm); transition: var(--transition); }
-.kpi-card:hover { box-shadow: var(--shadow-md); }
-.kpi-card .kpi-label { font-size: .7rem; text-transform: uppercase; color: var(--gray-400); font-weight: 700; letter-spacing: .04em; margin-bottom: .15rem; }
-.kpi-card .kpi-value { font-size: 1.65rem; font-weight: 800; line-height: 1.2; }
-.kpi-card .kpi-sub { font-size: .75rem; color: var(--gray-400); margin-top: .15rem; }
-.kpi-primary .kpi-value { color: var(--primary); }
-.kpi-teal .kpi-value { color: var(--teal); }
-.kpi-green .kpi-value { color: var(--green); }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+.kpi-card { background: var(--surface); border-radius: var(--radius-lg); padding: 16px 18px; border: 1px solid var(--border); transition: var(--transition); position: relative; overflow: hidden; }
+.kpi-card:hover { box-shadow: var(--shadow-md); border-color: var(--border-hover); }
+.kpi-card .kpi-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.kpi-bar.blue { background: var(--blue); }
+.kpi-bar.green { background: var(--green-dim); }
+.kpi-bar.orange { background: var(--orange); }
+.kpi-bar.red { background: var(--red-dim); }
+.kpi-bar.purple { background: var(--purple); }
+.kpi-label { font-size: 10px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+.kpi-value { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; }
+.kpi-value .unit { font-size: 14px; font-weight: 500; color: var(--text-tertiary); }
+.kpi-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 3px; font-weight: 400; }
+.kpi-blue .kpi-value { color: var(--blue); }
+.kpi-green .kpi-value { color: var(--green-dim); }
 .kpi-orange .kpi-value { color: var(--orange); }
-.kpi-red .kpi-value { color: var(--red); }
+.kpi-red .kpi-value { color: var(--red-dim); }
+.kpi-purple .kpi-value { color: var(--purple); }
 
-/* ---- Charts Row ---- */
-.charts-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-@media (max-width: 900px) { .charts-row { grid-template-columns: 1fr; } }
-.chart-card { background: white; border-radius: var(--radius); border: 1px solid var(--gray-200); padding: 1rem 1.25rem; box-shadow: var(--shadow-sm); }
-.chart-card h3 { font-size: .85rem; font-weight: 700; color: var(--gray-600); text-transform: uppercase; letter-spacing: .03em; margin-bottom: .75rem; }
+/* ---- Charts ---- */
+.charts-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+@media (max-width: 1100px) { .charts-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 700px) { .charts-grid { grid-template-columns: 1fr; } }
+.chart-card { background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 16px 20px; box-shadow: var(--shadow-sm); }
+.chart-card h3 { font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 12px; letter-spacing: -0.01em; }
+.chart-wrap { position: relative; width: 100%; display: flex; justify-content: center; }
+.chart-wrap canvas { display: block; width: 100% !important; max-width: 100%; max-height: 180px; }
 
-/* ---- Agent Table ---- */
-.table-card { background: white; border-radius: var(--radius); border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm); overflow: hidden; }
-.table-card .table-header { display: flex; justify-content: space-between; align-items: center; padding: .85rem 1.25rem; border-bottom: 1px solid var(--gray-200); }
-.table-card .table-header h3 { font-size: .85rem; font-weight: 700; color: var(--gray-600); text-transform: uppercase; letter-spacing: .03em; }
-.table-card .table-header .table-count { font-size: .8rem; color: var(--gray-400); }
-.table-wrap { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
-thead th { background: var(--gray-50); padding: .6rem .85rem; font-size: .7rem; text-transform: uppercase; color: var(--gray-400); font-weight: 700; letter-spacing: .04em; text-align: left; border-bottom: 1px solid var(--gray-200); white-space: nowrap; }
-tbody td { padding: .6rem .85rem; border-bottom: 1px solid var(--gray-100); vertical-align: middle; }
-tbody tr { transition: var(--transition); }
-tbody tr:hover { background: var(--gray-50); }
+/* ---- Table ---- */
+.table-card { background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-sm); overflow: hidden; }
+.table-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; border-bottom: 1px solid var(--border); }
+.table-header h3 { font-size: 12px; font-weight: 600; color: var(--text-secondary); }
+.table-header .count { font-size: 11px; color: var(--text-tertiary); }
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+thead th { padding: 8px 14px; font-size: 9px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.05em; text-align: left; border-bottom: 1px solid var(--border); background: var(--surface-secondary); white-space: nowrap; user-select: none; }
+tbody td { padding: 8px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
 tbody tr:last-child td { border-bottom: none; }
-.agent-link { color: var(--primary); font-weight: 700; cursor: pointer; background: none; border: none; font-size: .875rem; padding: 0; text-decoration: none; }
+tbody tr { transition: background 150ms; }
+tbody tr:hover { background: var(--surface-secondary); }
+.agent-link { color: var(--blue); font-weight: 600; cursor: pointer; background: none; border: none; font-size: 12px; padding: 0; text-decoration: none; font-family: var(--font); }
 .agent-link:hover { text-decoration: underline; }
 
-/* Grade colors */
-.grade-a { color: var(--green); }
-.grade-b { color: var(--teal); }
-.grade-c { color: var(--orange); }
-.grade-d { color: var(--red); }
+/* Grade badges */
+.grade-badge { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; }
+.grade-A { background: rgba(48,209,88,0.12); color: #248a3d; }
+.grade-B { background: rgba(255,159,10,0.12); color: #b87800; }
+.grade-C { background: rgba(255,69,58,0.10); color: #bf2a1f; }
 
-/* Mini bar */
-.minibar { display: flex; width: 100px; height: 8px; border-radius: 4px; overflow: hidden; background: var(--gray-200); }
-.minibar div { height: 100%; transition: width .3s; }
+/* Sentiment bar */
+.sentiment-bar { display: flex; width: 80px; height: 5px; border-radius: 3px; overflow: hidden; background: var(--border); }
+.sentiment-bar div { height: 100%; transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
 
 /* ---- Modal ---- */
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,22,40,.6); backdrop-filter: blur(4px); z-index: 999; justify-content: center; align-items: center; padding: 1rem; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.35); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 999; justify-content: center; align-items: flex-start; padding: 40px 20px; overflow-y: auto; }
 .modal-overlay.active { display: flex; }
-.modal { background: white; border-radius: 12px; width: 100%; max-width: 780px; max-height: 85vh; overflow-y: auto; box-shadow: var(--shadow-lg); position: relative; }
-.modal-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gray-200); display: flex; justify-content: space-between; align-items: flex-start; }
-.modal-header h2 { font-size: 1.15rem; font-weight: 700; }
-.modal-header p { font-size: .8rem; color: var(--gray-400); margin-top: .15rem; }
-.modal-close { background: none; border: none; font-size: 1.5rem; color: var(--gray-400); cursor: pointer; padding: .25rem; line-height: 1; }
-.modal-close:hover { color: var(--gray-700); }
-.modal-body { padding: 1.25rem 1.5rem; }
-.modal-agent-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; margin-bottom: 1.25rem; }
-.stat-box { text-align: center; background: var(--gray-50); border-radius: var(--radius-sm); padding: .75rem; }
-.stat-box .stat-num { font-size: 1.3rem; font-weight: 800; }
-.stat-box .stat-label { font-size: .7rem; text-transform: uppercase; color: var(--gray-400); font-weight: 600; letter-spacing: .03em; }
+.modal { background: var(--surface); border-radius: var(--radius-xl); width: 100%; max-width: 820px; margin: auto; box-shadow: var(--shadow-xl); overflow: hidden; }
+.modal-header { padding: 22px 28px 14px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.modal-header h2 { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+.modal-header .meta { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+.modal-close { background: var(--surface-secondary); border: none; width: 28px; height: 28px; border-radius: 50%; font-size: 14px; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); flex-shrink: 0; }
+.modal-close:hover { background: var(--border); }
+.modal-body { padding: 18px 28px 24px; max-height: 70vh; overflow-y: auto; }
 
-.call-card { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: .85rem 1rem; margin-bottom: .6rem; }
-.call-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .35rem; font-size: .8rem; color: var(--gray-500); }
-.call-card-grade { font-weight: 800; font-size: 1rem; }
-.call-card-detail { font-size: .8rem; color: var(--gray-600); line-height: 1.5; }
+/* Agent stats in modal */
+.agent-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+.stat-pill { text-align: center; background: var(--surface-secondary); border-radius: var(--radius); padding: 10px 6px; }
+.stat-pill .num { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+.stat-pill .lbl { font-size: 9px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.03em; margin-top: 1px; }
 
-/* ---- Empty state ---- */
-.empty { text-align: center; padding: 3rem 2rem; color: var(--gray-400); }
-.empty h3 { font-size: 1rem; margin-bottom: .25rem; color: var(--gray-500); }
-.empty p { font-size: .85rem; }
+/* Grille evaluation in modal */
+.grille-section { margin-bottom: 16px; }
+.grille-section h4 { font-size: 11px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+.grille-row { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: var(--radius-sm); background: var(--surface-secondary); margin-bottom: 4px; border-left: 3px solid var(--border); }
+.grille-row.conforme { border-left-color: var(--green-dim); }
+.grille-row.ameliorer { border-left-color: var(--orange); }
+.grille-row.non-conforme { border-left-color: var(--red-dim); }
+.grille-row.na { border-left-color: var(--border); opacity: 0.6; }
+.grille-label { flex: 1; font-size: 12px; font-weight: 500; color: var(--text-primary); }
+.grille-level { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 8px; white-space: nowrap; }
+.gl-conforme { background: rgba(48,209,88,0.12); color: #248a3d; }
+.gl-ameliorer { background: rgba(255,159,10,0.12); color: #b87800; }
+.gl-nonconforme { background: rgba(255,69,58,0.10); color: #bf2a1f; }
+.gl-na { background: var(--border); color: var(--text-tertiary); }
+.grille-points { font-size: 11px; color: var(--text-secondary); font-weight: 500; white-space: nowrap; }
+.grille-pct { font-size: 11px; color: var(--text-secondary); min-width: 40px; text-align: right; font-variant-numeric: tabular-nums; }
 
-/* ---- Loading ---- */
-.loading { display: flex; justify-content: center; align-items: center; padding: 4rem 2rem; color: var(--gray-400); gap: .5rem; }
-.spinner { width: 20px; height: 20px; border: 2px solid var(--gray-200); border-top-color: var(--primary); border-radius: 50%; animation: spin .6s linear infinite; }
+/* Points forts/faibles */
+.notes-section { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 14px 0; }
+.notes-box { border-radius: var(--radius); padding: 12px 14px; }
+.notes-box h5 { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+.notes-box ul { list-style: none; padding: 0; }
+.notes-box li { font-size: 11px; padding: 2px 0; line-height: 1.5; }
+.notes-pro { background: rgba(48,209,88,0.06); border: 1px solid rgba(48,209,88,0.15); }
+.notes-pro h5 { color: #248a3d; }
+.notes-con { background: rgba(255,69,58,0.05); border: 1px solid rgba(255,69,58,0.12); }
+.notes-con h5 { color: #bf2a1f; }
+.notes-amelio { background: rgba(255,159,10,0.06); border: 1px solid rgba(255,159,10,0.15); }
+.notes-amelio h5 { color: #b87800; }
+
+/* Breakdown bar */
+.breakdown-bar { display: flex; height: 6px; border-radius: 3px; overflow: hidden; margin: 10px 0; background: var(--border); }
+.breakdown-bar .seg-conforme { background: var(--green-dim); }
+.breakdown-bar .seg-ameliorer { background: var(--orange); }
+.breakdown-bar .seg-nonconforme { background: var(--red-dim); }
+.breakdown-bar .seg-na { background: var(--border); }
+
+/* Call timeline in modal */
+.call-entry { background: var(--surface-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 14px; margin-bottom: 6px; transition: var(--transition); }
+.call-entry:hover { border-color: var(--border-hover); }
+.call-entry-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-bottom: 4px; }
+.call-entry-date { font-size: 11px; color: var(--text-tertiary); }
+.call-entry-grade { font-size: 13px; font-weight: 700; letter-spacing: -0.01em; }
+.call-entry-detail { font-size: 11px; color: var(--text-secondary); line-height: 1.5; }
+
+/* ---- Empty & Loading ---- */
+.empty-state { text-align: center; padding: 50px 20px; }
+.empty-state h3 { font-size: 15px; font-weight: 600; color: var(--text-secondary); margin-bottom: 3px; }
+.empty-state p { font-size: 12px; color: var(--text-tertiary); }
+.loading { display: flex; justify-content: center; align-items: center; padding: 70px; gap: 10px; color: var(--text-tertiary); font-size: 13px; }
+.spinner { width: 16px; height: 16px; border: 2px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.7s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ---- Last update badge ---- */
-.last-update { font-size: .7rem; color: var(--gray-400); text-align: right; padding: .5rem 0; }
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
 
-/* Responsive */
+/* ---- Responsive ---- */
 @media (max-width: 768px) {
-  .sidebar { width: 56px; }
+  .sidebar { width: 48px; }
   .sidebar-brand h1, .sidebar-brand span, .nav-label, .sidebar-btn span { display: none; }
-  .sidebar-btn { justify-content: center; padding: .6rem; }
+  .sidebar-btn { justify-content: center; padding: 6px; }
   .sidebar-btn .icon { margin: 0; }
-  .topbar { padding: .6rem 1rem; }
-  .topbar-title { font-size: 1rem; }
-  .content { padding: .85rem 1rem; }
-  .kpi-grid { grid-template-columns: repeat(2,1fr); }
-  .modal { max-width: 95vw; }
+  .topbar { padding: 10px 14px; flex-wrap: wrap; }
+  .topbar-title { font-size: 14px; }
+  .content { padding: 12px; }
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .kpi-value { font-size: 20px; }
+  .notes-section { grid-template-columns: 1fr; }
+  .agent-stats { grid-template-columns: repeat(2, 1fr); }
+  .modal { max-width: 100%; margin: 8px; border-radius: var(--radius-lg); }
 }
 </style>
 </head>
@@ -169,43 +234,41 @@ tbody tr:last-child td { border-bottom: none; }
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-brand">
-      <h1>Call Scoring</h1>
-      <span>Supervision Qualité</span>
+      <h1>CallScoring</h1>
+      <span>Qualité BDC</span>
     </div>
-    <nav class="sidebar-nav">
+    <div class="sidebar-scroll">
       <div class="nav-label">Services</div>
-      <button class="sidebar-btn active" data-service="E-vendeurs"><span class="icon">📞</span><span>E-vendeurs</span></button>
-      <button class="sidebar-btn" data-service="Qualifieurs"><span class="icon">🎯</span><span>Qualifieurs</span></button>
-      <button class="sidebar-btn" data-service="APV GVA"><span class="icon">🔧</span><span>APV GVA</span></button>
-      <button class="sidebar-btn" data-service="APV FMC/NSA/BMW"><span class="icon">🚗</span><span>APV FMC/BMW</span></button>
-      <button class="sidebar-btn" data-service="Standard"><span class="icon">🏢</span><span>Standard</span></button>
-      <hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:.5rem 0;">
-      <button class="sidebar-btn" data-service="__all__"><span class="icon">📊</span><span>Vue d'ensemble</span></button>
-    </nav>
-    <div style="margin-top:auto;padding:.75rem;font-size:.65rem;color:var(--gray-600);text-align:center;border-top:1px solid rgba(255,255,255,.06);">
-      <div id="data-badge">—</div>
+      <button class="sidebar-btn active" data-svc="E-vendeurs"><span class="icon">📞</span><span>E‑vendeurs</span></button>
+      <button class="sidebar-btn" data-svc="Qualifieurs"><span class="icon">🎯</span><span>Qualifieurs</span></button>
+      <button class="sidebar-btn" data-svc="APV GVA"><span class="icon">🔧</span><span>APV GVA</span></button>
+      <button class="sidebar-btn" data-svc="APV FMC/NSA/BMW"><span class="icon">🚗</span><span>APV FMC/BMW</span></button>
+      <button class="sidebar-btn" data-svc="Standard"><span class="icon">🏢</span><span>Standard</span></button>
+      <div class="sidebar-divider"></div>
+      <button class="sidebar-btn" data-svc="__all__"><span class="icon">◉</span><span>Vue d'ensemble</span></button>
     </div>
+    <div class="data-badge" id="dataBadge">—</div>
   </aside>
 
   <!-- Main -->
   <div class="main">
-    <!-- Top bar -->
+    <!-- Top Bar -->
     <div class="topbar">
-      <div class="topbar-title" id="page-title">Service : <strong>E-vendeurs</strong></div>
-      <div class="topbar-controls">
-        <div class="period-group">
-          <button class="active" data-period="all">Tout</button>
-          <button data-period="month">Ce mois</button>
-          <button data-period="3months">3 mois</button>
+      <div class="topbar-title" id="pageTitle">Service : <strong>E‑vendeurs</strong></div>
+      <div class="topbar-right">
+        <div class="period-group" id="periodGroup">
+          <button class="period-btn active" data-p="all">Tout</button>
+          <button class="period-btn" data-p="month">Ce mois</button>
+          <button class="period-btn" data-p="3m">3 mois</button>
         </div>
-        <select id="monthSel"></select>
-        <select id="yearSel"></select>
+        <select class="filter-select" id="monthSel"></select>
+        <select class="filter-select" id="yearSel"></select>
       </div>
     </div>
 
     <!-- Content -->
-    <div class="content" id="app-content">
-      <div class="loading"><div class="spinner"></div> Chargement...</div>
+    <div class="content" id="contentArea">
+      <div class="loading"><div class="spinner"></div> Chargement des données…</div>
     </div>
   </div>
 </div>
@@ -214,13 +277,10 @@ tbody tr:last-child td { border-bottom: none; }
 <div class="modal-overlay" id="modal">
   <div class="modal">
     <div class="modal-header">
-      <div>
-        <h2 id="modal-name"></h2>
-        <p id="modal-meta"></p>
-      </div>
-      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div><h2 id="modalName"></h2><div class="meta" id="modalMeta"></div></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
-    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-body" id="modalBody"></div>
   </div>
 </div>
 
@@ -228,64 +288,66 @@ tbody tr:last-child td { border-bottom: none; }
 // ============================================================
 // STATE
 // ============================================================
-let data = {};
-let currentService = 'E-vendeurs';
-let period = 'all';
-let month = new Date().getMonth();
-let year = new Date().getFullYear();
-let charts = { dist: null, trend: null };
+let DATA = {};
+let SVC = 'E-vendeurs';
+let PERIOD = 'all';
+let MONTH = new Date().getMonth();
+let YEAR = new Date().getFullYear();
+let CHARTS = {};
 
 // ============================================================
 // INIT
 // ============================================================
-async function init() {
-  // Populate month/year selects
+document.addEventListener('DOMContentLoaded', () => {
+  // Populate month select
   const ms = document.getElementById('monthSel');
-  ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre']
-    .forEach((m,i) => { const o=document.createElement('option'); o.value=i; o.textContent=m; if(i===month)o.selected=true; ms.appendChild(o); });
+  const months = 'Janvier Février Mars Avril Mai Juin Juillet Août Septembre Octobre Novembre Décembre'.split(' ');
+  months.forEach((m,i) => { const o=document.createElement('option'); o.value=i; o.textContent=m; if(i===MONTH)o.selected=true; ms.appendChild(o); });
+
+  // Populate year select
   const ys = document.getElementById('yearSel');
   const cy = new Date().getFullYear();
   for(let y=cy+1; y>=cy-2; y--) { const o=document.createElement('option'); o.value=y; o.textContent=y; if(y===cy)o.selected=true; ys.appendChild(o); }
 
-  // Sidebar clicks
-  document.querySelectorAll('.sidebar-btn').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('.sidebar-btn').forEach(x => x.classList.remove('active'));
+  // Sidebar buttons
+  document.querySelectorAll('[data-svc]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-svc]').forEach(x => x.classList.remove('active'));
     b.classList.add('active');
-    currentService = b.dataset.service;
+    SVC = b.dataset.svc;
     render();
   }));
 
   // Period buttons
-  document.querySelectorAll('[data-period]').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('[data-period]').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('[data-p]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('[data-p]').forEach(x => x.classList.remove('active'));
     b.classList.add('active');
-    period = b.dataset.period;
+    PERIOD = b.dataset.p;
     render();
   }));
 
-  // Month/year change
-  document.getElementById('monthSel').addEventListener('change', e => { month = parseInt(e.target.value); render(); });
-  document.getElementById('yearSel').addEventListener('change', e => { year = parseInt(e.target.value); render(); });
+  document.getElementById('monthSel').addEventListener('change', e => { MONTH = +e.target.value; render(); });
+  document.getElementById('yearSel').addEventListener('change', e => { YEAR = +e.target.value; render(); });
 
   // Modal backdrop close
   document.getElementById('modal').addEventListener('click', e => { if(e.target===e.currentTarget) closeModal(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 
-  await loadData();
-}
+  load();
+});
 
-async function loadData() {
-  const badge = document.getElementById('data-badge');
+async function load() {
   try {
-    const r = await fetch('data.json?'+Date.now());
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    data = await r.json();
-    const dates = Object.keys(data).sort();
-    badge.textContent = '📅 '+(dates[dates.length-1]||'—') + ' · ' + 
-      dates.reduce((s,d) => s+data[d].length, 0) + ' appels';
+    const r = await fetch('data.json?' + Date.now());
+    if (!r.ok) throw new Error(String(r.status));
+    DATA = await r.json();
+    const dates = Object.keys(DATA).sort();
+    const total = dates.reduce((s,d) => s + DATA[d].length, 0);
+    const last = dates[dates.length-1] || '—';
+    document.getElementById('dataBadge').textContent = '📦 ' + total + ' appels · ' + last;
   } catch(e) {
-    console.warn(e);
-    data = {};
-    badge.textContent = '⚠️ Données non chargées';
+    console.warn('Load error:', e);
+    DATA = {};
+    document.getElementById('dataBadge').textContent = '⚠️ Données indisponibles';
   }
   render();
 }
@@ -294,23 +356,20 @@ async function loadData() {
 // FILTER
 // ============================================================
 function getCalls() {
-  const minDate = period==='all' ? null :
-    period==='month' ? new Date(year, month, 1) :
-    new Date(year, month-2, 1);
-  const maxDate = period==='all' ? null :
-    new Date(year, month+1, 0, 23, 59, 59);
-
-  let calls = [];
-  Object.keys(data).forEach(dk => {
+  const min = PERIOD === 'all' ? null :
+    PERIOD === 'month' ? new Date(YEAR, MONTH, 1) :
+    new Date(YEAR, MONTH-2, 1);
+  const max = PERIOD === 'all' ? null : new Date(YEAR, MONTH+1, 0, 23, 59, 59);
+  const out = [];
+  Object.keys(DATA).forEach(dk => {
     const d = new Date(dk+'T00:00:00');
-    if(minDate && d<minDate) return;
-    if(maxDate && d>maxDate) return;
-    if(!data[dk]) return;
-    data[dk].forEach(c => {
-      if(currentService==='__all__' || c.service===currentService) calls.push(c);
+    if (min && d < min) return;
+    if (max && d > max) return;
+    (DATA[dk]||[]).forEach(c => {
+      if (SVC === '__all__' || c.service === SVC) out.push(c);
     });
   });
-  return calls;
+  return out;
 }
 
 // ============================================================
@@ -318,228 +377,296 @@ function getCalls() {
 // ============================================================
 function render() {
   const calls = getCalls();
-  const label = currentService==='__all__' ? 'Vue d\'ensemble' : currentService;
-  document.getElementById('page-title').innerHTML = 'Service : <strong>'+label+'</strong>';
-
-  const content = document.getElementById('app-content');
-  content.innerHTML = buildKPI(calls) + buildCharts(calls) + buildTable(calls);
-  setTimeout(() => initCharts(calls), 50);
+  const label = SVC === '__all__' ? 'Vue d\'ensemble' : SVC;
+  document.getElementById('pageTitle').innerHTML = 'Service : <strong>' + esc(label) + '</strong>';
+  document.getElementById('contentArea').innerHTML = buildKPI(calls) + buildCharts(calls) + buildTable(calls);
+  if (calls.length) requestAnimationFrame(() => initCharts(calls));
 }
 
 // ---- KPI ----
 function buildKPI(calls) {
-  if(!calls.length) return `
-    <div class="kpi-grid">
-      <div class="kpi-card kpi-primary"><div class="kpi-label">Appels</div><div class="kpi-value">0</div></div>
-      <div class="kpi-card kpi-teal"><div class="kpi-label">Note moyenne</div><div class="kpi-value">—</div></div>
-      <div class="kpi-card kpi-green"><div class="kpi-label">Satisfaction</div><div class="kpi-value">—</div></div>
-      <div class="kpi-card kpi-orange"><div class="kpi-label">Agents</div><div class="kpi-value">0</div></div>
-      <div class="kpi-card kpi-red"><div class="kpi-label">Friction</div><div class="kpi-value">—</div></div>
-    </div>
-    <div class="empty"><h3>Aucun appel pour la période sélectionnée</h3><p>Modifiez les filtres pour voir les données.</p></div>`;
-
-  let sumScore=0, sumSat=0, sumFric=0, sumDur=0;
-  const agents = new Set();
+  if (!calls.length) {
+    return `<div class="kpi-grid">${[['Appels','0',''],['Note moyenne','—','%'],['Conformité','—',''],['Agents','0',''],['Satisfaction','—','%']].map(([l,v,u])=>`<div class="kpi-card kpi-neutral"><div class="kpi-bar blue"></div><div class="kpi-label">${l}</div><div class="kpi-value">${v}${u?`<span class="unit">${u}</span>`:''}</div></div>`).join('')}</div><div class="empty-state"><h3>Aucun appel pour cette période</h3><p>Ajustez les filtres pour visualiser les données.</p></div>`;
+  }
+  let sumPct = 0, sumSat = 0, sumFric = 0, sumDur = 0, sumConf = 0;
+  const ag = new Set();
   calls.forEach(c => {
-    const sc = c.score || parseFloat((c.grade||'0').split('/')[0]) || 0;
-    sumScore += sc;
-    if(c.client_sentiment) { sumSat += c.client_sentiment.Satisfied||0; sumFric += c.client_sentiment.Frustrated||0; }
-    sumDur += c.duration_sec||0;
-    if(c.agent_name) agents.add(c.agent_name);
+    const pct = c.score || 0;
+    sumPct += pct;
+    const sat = c.client_sentiment;
+    if (sat) { sumSat += sat.Satisfied||0; sumFric += sat.Frustrated||0; }
+    if (c.agent_name) ag.add(c.agent_name);
+    sumDur += c.duration_sec || 0;
+    if (c.grade_label === 'Conforme') sumConf++;
   });
-  const n=calls.length, avg=(sumScore/n).toFixed(1), sat=Math.round(sumSat/n), fric=Math.round(sumFric/n);
-  const durMin = Math.round(sumDur/60);
+  const n = calls.length;
+  const avg = (sumPct / n).toFixed(1);
+  const sat = Math.round(sumSat / n);
+  const fric = Math.round(sumFric / n);
+  const conformite = Math.round(sumConf / n * 100);
 
   return `<div class="kpi-grid">
-    <div class="kpi-card kpi-primary"><div class="kpi-label">Appels traités</div><div class="kpi-value">${n}</div><div class="kpi-sub">${durMin} min de conversation</div></div>
-    <div class="kpi-card kpi-teal"><div class="kpi-label">Note moyenne</div><div class="kpi-value">${avg}<span style="font-size:.9rem;font-weight:500;color:var(--gray-400)">/20</span></div><div class="kpi-sub">${calls.filter(c=>(c.score||0)>=14).length} appels ≥ 14/20</div></div>
-    <div class="kpi-card kpi-green"><div class="kpi-label">Taux satisfaction</div><div class="kpi-value">${sat}%</div><div class="kpi-sub">Clients satisfaits</div></div>
-    <div class="kpi-card kpi-orange"><div class="kpi-label">Agents actifs</div><div class="kpi-value">${agents.size}</div><div class="kpi-sub">${Object.keys(groupBy(calls,'agent_name')).length} évalués</div></div>
-    <div class="kpi-card kpi-red"><div class="kpi-label">Taux friction</div><div class="kpi-value">${fric}%</div><div class="kpi-sub">Clients frustrés</div></div>
+    <div class="kpi-card kpi-neutral"><div class="kpi-bar blue"></div><div class="kpi-label">Appels traités</div><div class="kpi-value">${n}</div><div class="kpi-sub">${Math.round(sumDur/60)} min de conversation</div></div>
+    <div class="kpi-card kpi-blue"><div class="kpi-bar blue"></div><div class="kpi-label">Note moyenne</div><div class="kpi-value">${avg}<span class="unit">%</span></div><div class="kpi-sub">${calls.filter(c=>(c.score||0)>=75).length} appels ≥ 75%</div></div>
+    <div class="kpi-card kpi-green"><div class="kpi-bar green"></div><div class="kpi-label">Conformité</div><div class="kpi-value">${conformite}<span class="unit">%</span></div><div class="kpi-sub">${sumConf}/${n} appels conformes</div></div>
+    <div class="kpi-card kpi-purple"><div class="kpi-bar purple"></div><div class="kpi-label">Agents évalués</div><div class="kpi-value">${ag.size}</div><div class="kpi-sub">sur la période</div></div>
+    <div class="kpi-card kpi-red"><div class="kpi-bar red"></div><div class="kpi-label">Satisfaction client</div><div class="kpi-value">${sat}<span class="unit">%</span></div><div class="kpi-sub">Friction: ${fric}%</div></div>
   </div>`;
 }
 
 // ---- Charts ----
 function buildCharts(calls) {
-  if(!calls.length) return '';
-  return `<div class="charts-row">
-    <div class="chart-card"><h3>Distribution des notes</h3><canvas id="chart-dist" height="180"></canvas></div>
-    <div class="chart-card"><h3>Top 5 agents (note moyenne)</h3><canvas id="chart-top" height="180"></canvas></div>
+  if (!calls.length) return '';
+  return `<div class="charts-grid">
+    <div class="chart-card"><h3>Distribution des notes</h3><div class="chart-wrap"><canvas id="chDist" height="160"></canvas></div></div>
+    <div class="chart-card"><h3>Top 5 agents · Note moyenne</h3><div class="chart-wrap"><canvas id="chTop" height="160"></canvas></div></div>
+    <div class="chart-card"><h3>Répartition par grade</h3><div class="chart-wrap"><canvas id="chGrade" height="160"></canvas></div></div>
   </div>`;
 }
 
 function initCharts(calls) {
-  if(!calls.length) return;
-  // Clean up old charts
-  Object.values(charts).forEach(c => { if(c) { c.destroy(); } });
+  Object.values(CHARTS).forEach(c => { try { c.destroy(); } catch(e) {} });
+  CHARTS = {};
+  if (!calls.length) return;
 
-  // Grade distribution
-  const bins = {'0-5':0,'5-8':0,'8-12':0,'12-16':0,'16-20':0};
+  // Distribution histogram (buckets: 0-30%, 30-55%, 55-75%, 75-90%, 90-100%)
+  const bins = {'0–30%':0,'30–55%':0,'55–75%':0,'75–90%':0,'90–100%':0};
   calls.forEach(c => {
-    const sc = c.score || parseFloat((c.grade||'0').split('/')[0]) || 0;
-    if(sc<5) bins['0-5']++;
-    else if(sc<8) bins['5-8']++;
-    else if(sc<12) bins['8-12']++;
-    else if(sc<16) bins['12-16']++;
-    else bins['16-20']++;
+    const s = c.score || 0;
+    if (s < 30) bins['0–30%']++;
+    else if (s < 55) bins['30–55%']++;
+    else if (s < 75) bins['55–75%']++;
+    else if (s < 90) bins['75–90%']++;
+    else bins['90–100%']++;
   });
-  const c1 = document.getElementById('chart-dist');
-  if(c1) charts.dist = new Chart(c1, {
+  const c1 = document.getElementById('chDist');
+  if (c1) CHARTS.dist = new Chart(c1, {
     type: 'bar',
     data: {
       labels: Object.keys(bins),
-      datasets: [{
-        label: 'Appels',
-        data: Object.values(bins),
-        backgroundColor: ['#ef4444','#f59e0b','#facc15','#2dd4bf','#10b981'],
-        borderRadius: 4,
-      }]
+      datasets: [{ label: 'Appels', data: Object.values(bins), backgroundColor: ['#ff453a','#ff9f0a','#ffd60a','#64d2ff','#30d158'], borderRadius: 4, borderSkipped: false }]
     },
     options: {
-      responsive: true, maintainAspectRatio: false,
+      responsive: true, maintainAspectRatio: true, aspectRatio: 2.4,
       plugins: { legend: { display: false } },
-      scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+      scales: {
+        y: { beginAtZero: true, ticks: { stepSize: 1, font: { size: 10, family: 'Inter' }, color: '#86868b' }, grid: { color: 'rgba(0,0,0,0.04)' } },
+        x: { ticks: { font: { size: 10, family: 'Inter' }, color: '#86868b' }, grid: { display: false } }
+      }
     }
   });
 
   // Top 5 agents
-  const grp = groupBy(calls, 'agent_name');
-  const scores = Object.entries(grp).map(([name,list]) => {
-    const avg = list.reduce((s,c) => s+(c.score||parseFloat((c.grade||'0').split('/')[0])||0),0)/list.length;
-    return {name, avg, count: list.length};
-  }).sort((a,b) => b.avg - a.avg).slice(0,5);
-
-  const c2 = document.getElementById('chart-top');
-  if(c2) charts.top = new Chart(c2, {
+  const grp = {};
+  calls.forEach(c => { const k=c.agent_name||'?'; if (!grp[k]) grp[k]=[]; grp[k].push(c); });
+  const top = Object.entries(grp).map(([n,ll]) => ({n, avg: ll.reduce((s,c)=>s+(c.score||0),0)/ll.length})).sort((a,b)=>b.avg-a.avg).slice(0,5);
+  const c2 = document.getElementById('chTop');
+  if (c2) CHARTS.top = new Chart(c2, {
     type: 'bar',
     data: {
-      labels: scores.map(s => s.name.split(' ').slice(0,2).join(' ')),
-      datasets: [{
-        label: 'Note /20',
-        data: scores.map(s => s.avg),
-        backgroundColor: '#3b82f6',
-        borderRadius: 4,
-      }]
+      labels: top.map(t => t.n.split(' ').slice(0,2).join(' ')),
+      datasets: [{ label: 'Note %', data: top.map(t => t.avg), backgroundColor: '#0071e3', borderRadius: 4, borderSkipped: false }]
     },
     options: {
-      indexAxis: 'y',
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false } },
-      scales: { x: { min: 0, max: 20 } }
+      indexAxis: 'y', responsive: true, maintainAspectRatio: true, aspectRatio: 2.4,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.x + '%' } } },
+      scales: {
+        x: { min: 0, max: 100, ticks: { font: { size: 10, family: 'Inter' }, color: '#86868b' }, grid: { color: 'rgba(0,0,0,0.04)' } },
+        y: { ticks: { font: { size: 10, family: 'Inter' }, color: '#86868b' }, grid: { display: false } }
+      }
+    }
+  });
+
+  // Grade distribution (pie)
+  let gA=0, gB=0, gC=0;
+  calls.forEach(c => {
+    const gl = c.grade_label || '';
+    if (gl === 'Conforme') gA++;
+    else if (gl === 'À améliorer' || gl === 'A ameliorer') gB++;
+    else gC++;
+  });
+  const c3 = document.getElementById('chGrade');
+  if (c3 && (gA+gB+gC) > 0) CHARTS.grade = new Chart(c3, {
+    type: 'doughnut',
+    data: {
+      labels: ['Conforme', 'À améliorer', 'Non conforme'],
+      datasets: [{ data: [gA, gB, gC], backgroundColor: ['#30d158', '#ff9f0a', '#ff453a'], borderWidth: 2, borderColor: '#fff' }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true, aspectRatio: 1.6,
+      plugins: {
+        legend: { position: 'right', labels: { font: { size: 10, family: 'Inter' }, color: '#6e6e73', padding: 8 } }
+      },
+      cutout: '60%'
     }
   });
 }
 
 // ---- Table ----
 function buildTable(calls) {
-  if(!calls.length) return '';
-  const grp = groupBy(calls, 'agent_name');
+  if (!calls.length) return '';
+  const grp = {};
+  calls.forEach(c => { const k=c.agent_name||'?'; if (!grp[k]) grp[k]=[]; grp[k].push(c); });
   const rows = Object.entries(grp).map(([name,list]) => {
-    const mgr = list[0].manager||'—';
-    const n=list.length;
-    const avg = list.reduce((s,c) => s+(c.score||parseFloat((c.grade||'0').split('/')[0])||0),0)/n;
-    let sumSat=0,sumNeu=0,sumFric=0;
-    list.forEach(c => { if(c.client_sentiment) { sumSat+=c.client_sentiment.Satisfied||0; sumNeu+=c.client_sentiment.Neutral||0; sumFric+=c.client_sentiment.Frustrated||0; }});
-    const sat=Math.round(sumSat/n), neu=Math.round(sumNeu/n), fric=Math.round(sumFric/n);
-    const gc = avg>=14?'grade-a':avg>=10?'grade-b':avg>=7?'grade-c':'grade-d';
+    const n = list.length;
+    const avg = list.reduce((s,c) => s+(c.score||0),0) / n;
+    let su=0, sn=0, sf=0;
+    list.forEach(c => { const s=c.client_sentiment; if(s){su+=s.Satisfied||0;sn+=s.Neutral||0;sf+=s.Frustrated||0;} });
+    const letter = avg >= 75 ? 'A' : avg >= 55 ? 'B' : 'C';
     const enc = btoa(encodeURIComponent(JSON.stringify(list)));
-    return {name, mgr, n, avg: avg.toFixed(1), gc, sat, neu, fric, enc};
-  }).sort((a,b) => b.n - a.n || b.avg - a.avg);
+    return {name, n, avg: avg.toFixed(1), letter, su: Math.round(su/n), sn: Math.round(sn/n), sf: Math.round(sf/n), enc};
+  }).sort((a,b) => b.n - a.n || +b.avg - +a.avg);
 
   return `<div class="table-card">
-    <div class="table-header">
-      <h3>Conseillers · ${rows.length} agents</h3>
-      <span class="table-count">${calls.length} appels analysés</span>
-    </div>
-    <div class="table-wrap">
-    <table>
-      <thead><tr>
-        <th>Conseiller</th><th>Manager</th><th>Appels</th><th>Note ø</th><th>Sentiment client</th>
-      </tr></thead>
-      <tbody>${rows.map(r => `<tr>
-        <td><button class="agent-link" onclick="openModal('${r.enc}')">${esc(r.name)}</button></td>
-        <td style="color:var(--gray-400);font-size:.8rem;">${esc(r.mgr)}</td>
-        <td><strong>${r.n}</strong></td>
-        <td class="${r.gc}" style="font-weight:700;font-size:1rem;">${r.avg}/20</td>
-        <td><div class="minibar"><div style="background:var(--green);width:${r.sat}%"></div><div style="background:var(--orange);width:${r.neu}%"></div><div style="background:var(--red);width:${r.fric}%"></div></div></td>
-      </tr>`).join('')}</tbody>
-    </table>
-    </div>
-  </div>`;
+    <div class="table-header"><h3>Conseillers</h3><span class="count">${rows.length} agents · ${calls.length} appels</span></div>
+    <div class="table-scroll">
+    <table><thead><tr><th>Conseiller</th><th>Appels</th><th>Note</th><th>Grade</th><th>Sentiment</th></tr></thead>
+    <tbody>${rows.map(r => `<tr>
+      <td><button class="agent-link" onclick="openModal('${r.enc}')">${esc(r.name)}</button></td>
+      <td><strong>${r.n}</strong></td>
+      <td style="font-weight:700;font-size:14px">${r.avg}<span style="font-weight:400;font-size:10px;color:var(--text-tertiary)">%</span></td>
+      <td><span class="grade-badge grade-${r.letter}">${r.letter === 'A' ? 'Conforme' : r.letter === 'B' ? 'À améliorer' : 'Non conforme'}</span></td>
+      <td><div class="sentiment-bar"><div style="background:var(--green-dim);width:${r.su}%"></div><div style="background:var(--orange);width:${r.sn}%"></div><div style="background:var(--red-dim);width:${r.sf}%"></div></div></td>
+    </tr>`).join('')}</tbody></table></div></div>`;
 }
 
-// ---- Modal ----
+// ---- Modal with Grille Details ----
 function openModal(enc) {
   const calls = JSON.parse(decodeURIComponent(atob(enc)));
-  if(!calls||!calls.length) return;
+  if (!calls || !calls.length) return;
   const c0 = calls[0];
-  document.getElementById('modal-name').textContent = c0.agent_name||'Agent';
-  document.getElementById('modal-meta').textContent = 
-    'Manager : '+(c0.manager||'—')+' · Service : '+(c0.service||'—');
+  const evalData = c0.evaluation || {};
 
-  let sum=0, sumSat=0, sumFric=0;
-  calls.forEach(c => { sum+=c.score||parseFloat((c.grade||'0').split('/')[0])||0; if(c.client_sentiment){sumSat+=c.client_sentiment.Satisfied||0;sumFric+=c.client_sentiment.Frustrated||0;}});
-  const n=calls.length, avg=(sum/n).toFixed(1), sat=Math.round(sumSat/n), fric=Math.round(sumFric/n);
-  const gc = avg>=14?'grade-a':avg>=10?'grade-b':avg>=7?'grade-c':'grade-d';
+  document.getElementById('modalName').textContent = c0.agent_name || 'Agent';
+  document.getElementById('modalMeta').textContent = 'Service : '+(c0.service||'—')+' · Manager : '+(c0.manager||'—');
 
-  const body = document.getElementById('modal-body');
-  body.innerHTML = `
-    <div class="modal-agent-stats">
-      <div class="stat-box"><div class="stat-num ${gc}">${avg}</div><div class="stat-label">Note /20</div></div>
-      <div class="stat-box"><div class="stat-num" style="color:var(--green)">${sat}%</div><div class="stat-label">Satisfaction</div></div>
-      <div class="stat-box"><div class="stat-num" style="color:var(--red)">${fric}%</div><div class="stat-label">Friction</div></div>
+  let sum = 0, su = 0, sf = 0, gConforme=0, gAmeliorer=0, gNonConf=0;
+  calls.forEach(c => {
+    sum += c.score || 0;
+    const s = c.client_sentiment;
+    if (s) { su += s.Satisfied||0; sf += s.Frustrated||0; }
+    if (c.grade_label === 'Conforme') gConforme++;
+    else if (c.grade_label === 'À améliorer' || c.grade_label === 'A ameliorer') gAmeliorer++;
+    else gNonConf++;
+  });
+  const n = calls.length;
+  const avg = (sum / n).toFixed(1);
+  const sat = Math.round(su / n);
+  const fric = Math.round(sf / n);
+  const letter = avg >= 75 ? 'A' : avg >= 55 ? 'B' : 'C';
+
+  // Get criteria from first call with eval data
+  const criteria = evalData.criteria || [];
+  const breakdown = evalData.category_breakdown || {};
+
+  // Build grille sections
+  let grilleHTML = '';
+  if (criteria.length) {
+    // Group by category
+    const cats = {};
+    criteria.forEach(cr => {
+      const cat = cr.category || 'Autre';
+      if (!cats[cat]) cats[cat] = [];
+      cats[cat].push(cr);
+    });
+
+    grilleHTML = Object.entries(cats).map(([cat, crits]) => {
+      const bd = breakdown[cat] || {};
+      const bdPct = bd.pct !== undefined ? bd.pct + '%' : '—';
+      const bdPts = bd.earned !== undefined ? bd.earned + '/' + bd.possible + ' pts' : '';
+      return `<div class="grille-section">
+        <h4>${esc(cat)} ${bdPts ? '· ' + bdPts + ' (' + bdPct + ')' : ''}</h4>
+        ${crits.map(cr => {
+          const lvl = cr.level || 'N/A';
+          const cls = lvl === 'Conforme' ? 'conforme' : 
+            (lvl === 'A ameliorer' || lvl === 'À améliorer') ? 'ameliorer' :
+            lvl === 'Non conforme' ? 'non-conforme' : 'na';
+          const lvlCls = lvl === 'Conforme' ? 'gl-conforme' :
+            (lvl === 'A ameliorer' || lvl === 'À améliorer') ? 'gl-ameliorer' :
+            lvl === 'Non conforme' ? 'gl-nonconforme' : 'gl-na';
+          const pct = cr.pct !== null && cr.pct !== undefined ? cr.pct + '%' : '—';
+          const pts = cr.points !== undefined && cr.max_points ? cr.points + '/' + cr.max_points : '';
+          return `<div class="grille-row ${cls}">
+            <span class="grille-label">${esc(cr.label)}</span>
+            <span class="grille-level ${lvlCls}">${esc(lvl)}</span>
+            <span class="grille-points">${pts}</span>
+            <span class="grille-pct">${pct}</span>
+          </div>`;
+        }).join('')}
+      </div>`;
+    }).join('');
+  } else {
+    grilleHTML = '<p style="color:var(--text-tertiary);font-size:12px;">Évaluation détaillée non disponible pour cet appel.</p>';
+  }
+
+  // Build pros/cons/amelioration
+  const allPros = calls.flatMap(c => Array.isArray(c.pros) ? c.pros : []);
+  const allCons = calls.flatMap(c => Array.isArray(c.cons) ? c.cons : []);
+  const allAmelio = calls.flatMap(c => Array.isArray(c.a_ameliorer) ? c.a_ameliorer : []);
+
+  document.getElementById('modalBody').innerHTML = `
+    <div class="agent-stats">
+      <div class="stat-pill"><div class="num grade-${letter}">${avg}%</div><div class="lbl">Note moyenne</div></div>
+      <div class="stat-pill"><div class="num" style="color:var(--green-dim)">${sat}%</div><div class="lbl">Satisfaction</div></div>
+      <div class="stat-pill"><div class="num" style="color:var(--red-dim)">${fric}%</div><div class="lbl">Friction</div></div>
+      <div class="stat-pill"><div class="num" style="color:var(--blue)">${n}</div><div class="lbl">Appels</div></div>
     </div>
-    <h4 style="font-size:.85rem;color:var(--gray-500);margin-bottom:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;">Historique des appels (${n})</h4>
-    ${calls.sort((a,b)=>(b.datetime||b.date||'').localeCompare(a.datetime||a.date||'')).slice(0,20).map(c => {
-      const sc = c.score||parseFloat((c.grade||'0').split('/')[0])||0;
-      const gcc = sc>=14?'grade-a':sc>=10?'grade-b':sc>=7?'grade-c':'grade-d';
-      const dt = (c.datetime||c.date||'').slice(0,16).replace('T',' ');
+
+    <div class="breakdown-bar">
+      <div class="seg-conforme" style="width:${(gConforme/n*100)||0}%" title="Conforme: ${gConforme}"></div>
+      <div class="seg-ameliorer" style="width:${(gAmeliorer/n*100)||0}%" title="À améliorer: ${gAmeliorer}"></div>
+      <div class="seg-nonconforme" style="width:${(gNonConf/n*100)||0}%" title="Non conforme: ${gNonConf}"></div>
+    </div>
+
+    ${grilleHTML}
+
+    <div class="notes-section">
+      <div class="notes-box notes-pro">
+        <h5>Points forts</h5>
+        <ul>${allPros.length ? allPros.slice(0,5).map(p => '<li>'+esc(p)+'</li>').join('') : '<li style="color:var(--text-tertiary)">Aucun point fort majeur</li>'}</ul>
+      </div>
+      <div class="notes-box notes-con">
+        <h5>Points faibles</h5>
+        <ul>${allCons.length ? allCons.slice(0,3).map(c => '<li>'+esc(c)+'</li>').join('') : '<li style="color:var(--text-tertiary)">Aucun écart significatif</li>'}</ul>
+      </div>
+      <div class="notes-box notes-amelio">
+        <h5>À améliorer</h5>
+        <ul>${allAmelio.length ? allAmelio.slice(0,5).map(a => '<li>'+esc(a)+'</li>').join('') : '<li style="color:var(--text-tertiary)">Continuer sur cette lancée</li>'}</ul>
+      </div>
+    </div>
+
+    <h4 style="font-size:10px;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Appels récents (${Math.min(n,20)}/${n})</h4>
+    <div class="call-timeline">${calls.sort((a,b)=>(b.datetime||b.date||'').localeCompare(a.datetime||a.date||'')).slice(0,20).map(c => {
+      const sc = c.score || 0;
+      const l = sc >= 75 ? 'A' : sc >= 55 ? 'B' : 'C';
+      const dt = ((c.datetime||c.date||'').slice(0,16).replace('T',' '));
       const dur = c.duration_sec ? Math.round(c.duration_sec/60)+'min' : '—';
-      const sent = c.client_sentiment||{};
-      const pros = c.pros ? '<br><span style="color:var(--green)">+ '+esc(c.pros)+'</span>' : '';
-      const cons = c.cons ? '<br><span style="color:var(--orange)">− '+esc(c.cons)+'</span>' : '';
-      const link = c.url&&c.url!=='#' ? ' · <a href="'+esc(c.url)+'" target="_blank" style="color:var(--primary);text-decoration:none;">Genesys ↗</a>' : '';
-      return `<div class="call-card">
-        <div class="call-card-top"><span>${esc(dt)} · ${dur}${link}</span><span class="call-card-grade ${gcc}">${sc.toFixed(1)}/20</span></div>
-        <div class="call-card-detail">
-          <span>Ton : <strong>${esc(c.agent_tone||'—')}</strong></span>
-          <span style="margin-left:.75rem;color:var(--green)">${sent.Satisfied||0}%</span>
-          <span style="color:var(--orange)">${sent.Neutral||0}%</span>
-          <span style="color:var(--red)">${sent.Frustrated||0}%</span>
-          ${pros}${cons}
+      const s = c.client_sentiment || {};
+      const prosArr = Array.isArray(c.pros) ? c.pros.slice(0,1) : [];
+      const consArr = Array.isArray(c.cons) ? c.cons.slice(0,1) : [];
+      const link = c.url && c.url !== '#' ? ' · <a href="'+esc(c.url)+'" target="_blank" style="color:var(--blue);text-decoration:none;font-weight:500;">Genesys ↗</a>' : '';
+      return `<div class="call-entry">
+        <div class="call-entry-top">
+          <span class="call-entry-date">${esc(dt)} · ${dur}${link}</span>
+          <span class="call-entry-grade grade-${l}">${sc.toFixed(1)}%</span>
+        </div>
+        <div class="call-entry-detail">
+          <span style="color:var(--green-dim)">${s.Satisfied||0}%</span>
+          <span style="color:var(--orange)">${s.Neutral||0}%</span>
+          <span style="color:var(--red-dim)">${s.Frustrated||0}%</span>
+          ${prosArr.length ? ' · <span style="color:#248a3d">'+esc(prosArr[0])+'</span>' : ''}
+          ${consArr.length ? ' · <span style="color:#bf2a1f">'+esc(consArr[0])+'</span>' : ''}
         </div>
       </div>`;
-    }).join('')}
-    ${calls.length>20 ? '<p style="text-align:center;color:var(--gray-400);font-size:.8rem;margin-top:.5rem;">Affichage des 20 derniers appels (sur '+calls.length+')</p>' : ''}
-  `;
+    }).join('')}</div>
+    ${n>20 ? '<p style="text-align:center;font-size:11px;color:var(--text-tertiary);margin-top:10px;">Affichage des 20 derniers appels sur '+n+'</p>' : ''}`;
+
   document.getElementById('modal').classList.add('active');
 }
 
 function closeModal() { document.getElementById('modal').classList.remove('active'); }
 
-// ============================================================
-// HELPERS
-// ============================================================
-function groupBy(arr, key) {
-  const g = {};
-  arr.forEach(item => {
-    const k = item[key] || 'Inconnu';
-    if(!g[k]) g[k] = [];
-    g[k].push(item);
-  });
-  return g;
-}
-
-function esc(s) {
-  if(typeof s!=='string') return s;
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-// Keyboard shortcut
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
-
-// Start
-document.addEventListener('DOMContentLoaded', init);
+function esc(s) { return typeof s==='string' ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : (s||''); }
 </script>
 </body>
 </html>
