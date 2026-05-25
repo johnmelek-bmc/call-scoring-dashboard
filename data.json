@@ -1,0 +1,1824 @@
+{
+  "2026-05-22": [
+    {
+      "id": "69465751",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:15:26.302Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/d72fc9cf-4d84-48cb-9c1f-b03269465751",
+      "grade": "10.0/20",
+      "score": 10.0,
+      "agent_tone": "À améliorer — manque de structure",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "Yasmine SMAHI",
+      "agent_id": "23c3cf76-35ee-40f3-b9e7-eeb5ef55044f",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Appel trop court, message non passé",
+      "duration_sec": 38,
+      "metrics": {
+        "tTalk": 37591,
+        "tHandle": 85134,
+        "tAcw": 20000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "2901a073",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:14:29.788Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/a3dc564d-7b16-4601-b4c0-b43c2901a073",
+      "grade": "8.0/20",
+      "score": 8.0,
+      "agent_tone": "À améliorer — manque de structure",
+      "client_sentiment": {
+        "Satisfied": 20,
+        "Neutral": 35,
+        "Frustrated": 45
+      },
+      "agent_name": "Yasmine SMAHI",
+      "agent_id": "23c3cf76-35ee-40f3-b9e7-eeb5ef55044f",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Appel trop court, message non passé; Qualité de l'appel à améliorer — revoir la structure",
+      "duration_sec": 28,
+      "metrics": {
+        "tTalk": 27812,
+        "tHandle": 72818,
+        "tAcw": 20000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "2277b6e6",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:09:38.723Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/88ce0974-b0ea-4691-bef3-39b32277b6e6",
+      "grade": "9.0/20",
+      "score": 9.0,
+      "agent_tone": "À améliorer — manque de structure",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "FERNANDEZ-DIAZ Montse",
+      "agent_id": "a2c11787-bfec-400c-a6b0-394e6e09446b",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel; Appel productif et structuré",
+      "cons": "Appel trop long, manque de synthèse; Qualité de l'appel à améliorer — revoir la structure",
+      "duration_sec": 744,
+      "metrics": {
+        "tTalk": 744178,
+        "tHandle": 781947,
+        "tAcw": 37769
+      },
+      "recording_available": false
+    },
+    {
+      "id": "1b234bb4",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:06:44.836Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/7901b120-fa7a-4674-a47d-e2281b234bb4",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Très bon — structuré et courtois",
+      "client_sentiment": {
+        "Satisfied": 70,
+        "Neutral": 20,
+        "Frustrated": 10
+      },
+      "agent_name": "BERMUDEZ PAVON Alicia",
+      "agent_id": "09bf7fee-981f-42fd-8b95-329d430e10d8",
+      "manager": "Constanti Sanchez Jenifer",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Durée de conversation adaptée; Bonne qualité d'échange téléphonique; Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 235,
+      "metrics": {
+        "tTalk": 234616,
+        "tHandle": 253608,
+        "tAcw": 12273
+      },
+      "recording_available": false
+    },
+    {
+      "id": "8a5d6976",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:06:21.775Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/7139600b-3888-46ba-8b97-0b1c8a5d6976",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Satisfaisant — correct et professionnel",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "FERNANDEZ-DIAZ Montse",
+      "agent_id": "a2c11787-bfec-400c-a6b0-394e6e09446b",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Appel trop court, message non passé",
+      "duration_sec": 38,
+      "metrics": {
+        "tTalk": 37613,
+        "tHandle": 148276,
+        "tAcw": 3968
+      },
+      "recording_available": false
+    },
+    {
+      "id": "e77efc2d",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:06:14.935Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/c7251ce2-9770-4fda-82a0-2f70e77efc2d",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Satisfaisant — correct et professionnel",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "BERMUDEZ PAVON Alicia",
+      "agent_id": "09bf7fee-981f-42fd-8b95-329d430e10d8",
+      "manager": "Constanti Sanchez Jenifer",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 72,
+      "metrics": {
+        "tTalk": 71544,
+        "tHandle": 143223,
+        "tAcw": 3050
+      },
+      "recording_available": false
+    },
+    {
+      "id": "27e855c4",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:06:13.137Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/e13657ee-3566-4e7f-af39-213b27e855c4",
+      "grade": "16.0/20",
+      "score": 16.0,
+      "agent_tone": "Très bon — structuré et courtois",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Laurie BORGESE",
+      "agent_id": "184da7ba-500c-498b-8953-25b6b068be2b",
+      "manager": "Michael Cohen Solal",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Durée de conversation adaptée; Bonne qualité d'échange téléphonique; Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 97,
+      "metrics": {
+        "tTalk": 97019,
+        "tHandle": 179607,
+        "tAcw": 60000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "0b3b6d7e",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:05:28.176Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/871cc221-d45a-495c-a115-7bbe0b3b6d7e",
+      "grade": "12.0/20",
+      "score": 12.0,
+      "agent_tone": "Satisfaisant — correct et professionnel",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "BERMUDEZ PAVON Alicia",
+      "agent_id": "09bf7fee-981f-42fd-8b95-329d430e10d8",
+      "manager": "Constanti Sanchez Jenifer",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 65,
+      "metrics": {
+        "tTalk": 65182,
+        "tHandle": 166280,
+        "tAcw": 18788
+      },
+      "recording_available": false
+    },
+    {
+      "id": "91008b9f",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:04:45.109Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/37497e22-d8c8-47d4-a895-76f891008b9f",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Très bon — structuré et courtois",
+      "client_sentiment": {
+        "Satisfied": 70,
+        "Neutral": 20,
+        "Frustrated": 10
+      },
+      "agent_name": "GALVAN MADURGA Beatriz",
+      "agent_id": "b776762b-e875-49aa-86b8-101e16ddcce6",
+      "manager": "Constanti Sanchez Jenifer",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Durée de conversation adaptée; Bonne qualité d'échange téléphonique; Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 267,
+      "metrics": {
+        "tTalk": 266913,
+        "tHandle": 294245,
+        "tAcw": 4585
+      },
+      "recording_available": false
+    },
+    {
+      "id": "410cab10",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:03:59.484Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/55f13eae-89bc-4d3e-98aa-4eb6410cab10",
+      "grade": "12.0/20",
+      "score": 12.0,
+      "agent_tone": "Satisfaisant — correct et professionnel",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "Laëtitia BÉJEANNIN",
+      "agent_id": "9e2e0d98-a22e-4371-8b7f-1f52d90ade59",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 75,
+      "metrics": {
+        "tTalk": 74781,
+        "tHandle": 78365,
+        "tAcw": 3584
+      },
+      "recording_available": false
+    },
+    {
+      "id": "6c9ed255",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:03:03.296Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/3857b141-9c2a-48f4-a1ec-b9e26c9ed255",
+      "grade": "17.0/20",
+      "score": 17.0,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "FERNANDEZ-DIAZ Montse",
+      "agent_id": "a2c11787-bfec-400c-a6b0-394e6e09446b",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Durée de conversation adaptée; Bonne qualité d'échange téléphonique; Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 119,
+      "metrics": {
+        "tTalk": 119004,
+        "tHandle": 237603,
+        "tAcw": 60000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "40d3223a",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T11:02:11.443Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/8c15176c-c5ee-4ee3-8328-9b1e40d3223a",
+      "grade": "10.0/20",
+      "score": 10.0,
+      "agent_tone": "À améliorer — manque de structure",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "Yasmine SMAHI",
+      "agent_id": "23c3cf76-35ee-40f3-b9e7-eeb5ef55044f",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Appel trop court, message non passé",
+      "duration_sec": 42,
+      "metrics": {
+        "tTalk": 41502,
+        "tHandle": 56344,
+        "tAcw": 14842
+      },
+      "recording_available": false
+    },
+    {
+      "id": "46e77089",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:59:20.760Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/1d8a56ba-9c77-485d-8040-0a8946e77089",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Satisfaisant — correct et professionnel",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "VAZQUEZ Carolina",
+      "agent_id": "9ba3593c-26c4-4fb4-bbeb-1cb112e712d7",
+      "manager": "Constanti Sanchez Jenifer",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Appel trop court, message non passé",
+      "duration_sec": 48,
+      "metrics": {
+        "tTalk": 47521,
+        "tHandle": 126018,
+        "tAcw": 4004
+      },
+      "recording_available": false
+    },
+    {
+      "id": "c8bcd3c3",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:59:10.988Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/0c78b95f-bfe3-4507-a4f3-1f03c8bcd3c3",
+      "grade": "12.0/20",
+      "score": 12.0,
+      "agent_tone": "Satisfaisant — correct et professionnel",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "BERMUDEZ PAVON Alicia",
+      "agent_id": "09bf7fee-981f-42fd-8b95-329d430e10d8",
+      "manager": "Constanti Sanchez Jenifer",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Appel trop court, message non passé",
+      "duration_sec": 46,
+      "metrics": {
+        "tTalk": 45656,
+        "tHandle": 122713,
+        "tAcw": 18096
+      },
+      "recording_available": false
+    },
+    {
+      "id": "a5cd729c",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:58:17.779Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/30030f1a-d47a-4e05-8bda-e607a5cd729c",
+      "grade": "18.0/20",
+      "score": 18.0,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Yasmine SMAHI",
+      "agent_id": "23c3cf76-35ee-40f3-b9e7-eeb5ef55044f",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Durée de conversation adaptée; Bonne qualité d'échange téléphonique; Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 144,
+      "metrics": {
+        "tTalk": 143751,
+        "tHandle": 174513,
+        "tAcw": 20000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "22caeb4b",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:58:04.361Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/ec82a49b-67e4-48c8-8a5b-a9e822caeb4b",
+      "grade": "17.0/20",
+      "score": 17.0,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "GUERRA Catalina",
+      "agent_id": "5f1258b0-56fa-4fcf-bc54-1a644a89ca36",
+      "manager": "Constanti Sanchez Jenifer",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Durée de conversation adaptée; Bonne qualité d'échange téléphonique; Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 108,
+      "metrics": {
+        "tTalk": 107752,
+        "tHandle": 111630,
+        "tAcw": 3878
+      },
+      "recording_available": false
+    },
+    {
+      "id": "c2b0181c",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:57:58.719Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/4bee0314-50cd-4268-914d-2f1ac2b0181c",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Satisfaisant — correct et professionnel",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "FERNANDEZ-DIAZ Montse",
+      "agent_id": "a2c11787-bfec-400c-a6b0-394e6e09446b",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 86,
+      "metrics": {
+        "tTalk": 86193,
+        "tHandle": 196406,
+        "tAcw": 3334
+      },
+      "recording_available": false
+    },
+    {
+      "id": "05d4e41c",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:57:35.980Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/307cd9a8-3532-4409-998c-c51e05d4e41c",
+      "grade": "16.0/20",
+      "score": 16.0,
+      "agent_tone": "Très bon — structuré et courtois",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Lounis OUARET",
+      "agent_id": "0aab9b4f-16fa-4651-8546-cb218a9bc7df",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Durée de conversation adaptée; Bonne qualité d'échange téléphonique; Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 97,
+      "metrics": {
+        "tTalk": 97049,
+        "tHandle": 115304,
+        "tAcw": 3342
+      },
+      "recording_available": false
+    },
+    {
+      "id": "692800c4",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:56:11.849Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/90569db4-61f4-460d-9f03-0ee4692800c4",
+      "grade": "9.0/20",
+      "score": 9.0,
+      "agent_tone": "À améliorer — manque de structure",
+      "client_sentiment": {
+        "Satisfied": 20,
+        "Neutral": 35,
+        "Frustrated": 45
+      },
+      "agent_name": "Laurie BORGESE",
+      "agent_id": "184da7ba-500c-498b-8953-25b6b068be2b",
+      "manager": "Michael Cohen Solal",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Appel conforme aux standards",
+      "cons": "Appel trop court, message non passé; Traitement après appel à optimiser; Qualité de l'appel à améliorer — revoir la structure",
+      "duration_sec": 7,
+      "metrics": {
+        "tTalk": 6623,
+        "tHandle": 250960,
+        "tAcw": 60000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "5553f082",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:55:50.996Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/5c169c06-1b9a-4802-b7cb-90b15553f082",
+      "grade": "12.0/20",
+      "score": 12.0,
+      "agent_tone": "Satisfaisant — correct et professionnel",
+      "client_sentiment": {
+        "Satisfied": 70,
+        "Neutral": 20,
+        "Frustrated": 10
+      },
+      "agent_name": "AGUILA Lilianny",
+      "agent_id": "894f2aa5-7ae5-44bb-86b4-0c3e3d81ebfb",
+      "manager": "Constanti Sanchez Jenifer",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Durée de conversation adaptée; Appel productif et structuré",
+      "cons": "Traitement après appel à optimiser",
+      "duration_sec": 220,
+      "metrics": {
+        "tTalk": 219724,
+        "tHandle": 588917,
+        "tAcw": 52392
+      },
+      "recording_available": false
+    },
+    {
+      "id": "ae8f28ab",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:55:06.185Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/d1637074-9c1d-484c-8b4d-56eaae8f28ab",
+      "grade": "15.0/20",
+      "score": 15.0,
+      "agent_tone": "Très bon — structuré et courtois",
+      "client_sentiment": {
+        "Satisfied": 70,
+        "Neutral": 20,
+        "Frustrated": 10
+      },
+      "agent_name": "CABANAS AGUILERA Sandra",
+      "agent_id": "372517e7-4815-4ded-bdfa-86d369830458",
+      "manager": "Constanti Sanchez Jenifer",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Durée de conversation adaptée; Bonne qualité d'échange téléphonique; Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 408,
+      "metrics": {
+        "tTalk": 407951,
+        "tHandle": 456329,
+        "tAcw": 48378
+      },
+      "recording_available": false
+    },
+    {
+      "id": "116f736f",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:54:42.520Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/619a8bcf-65ef-49e4-b505-cbe0116f736f",
+      "grade": "15.0/20",
+      "score": 15.0,
+      "agent_tone": "Très bon — structuré et courtois",
+      "client_sentiment": {
+        "Satisfied": 70,
+        "Neutral": 20,
+        "Frustrated": 10
+      },
+      "agent_name": "MIRAS Marc",
+      "agent_id": "4d5de6a8-5e5e-4e91-ba41-072a9a034bf9",
+      "manager": "Constanti Sanchez Jenifer",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Durée de conversation adaptée; Bonne qualité d'échange téléphonique; Traitement rapide après appel",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 194,
+      "metrics": {
+        "tTalk": 194007,
+        "tHandle": 254007,
+        "tAcw": 60000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "c639b93f",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:43:59.124Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/c3fe9693-738f-41f8-b02c-ebd8c639b93f",
+      "grade": "8.0/20",
+      "score": 8.0,
+      "agent_tone": "À améliorer — manque de structure",
+      "client_sentiment": {
+        "Satisfied": 20,
+        "Neutral": 35,
+        "Frustrated": 45
+      },
+      "agent_name": "Husna KHAM",
+      "agent_id": "97c4b1d4-50dd-453c-b2ed-13c35135c24f",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Appel trop court, message non passé; Qualité de l'appel à améliorer — revoir la structure",
+      "duration_sec": 3,
+      "metrics": {
+        "tTalk": 2800,
+        "tHandle": 28345,
+        "tAcw": 5555
+      },
+      "recording_available": false
+    },
+    {
+      "id": "6da14214",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:41:41.725Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/1659139b-538e-4147-84f3-c43a6da14214",
+      "grade": "8.0/20",
+      "score": 8.0,
+      "agent_tone": "À améliorer — manque de structure",
+      "client_sentiment": {
+        "Satisfied": 20,
+        "Neutral": 35,
+        "Frustrated": 45
+      },
+      "agent_name": "Aouatef BARHOUMI",
+      "agent_id": "af4f0749-2b98-4085-9552-28d1cf131b5b",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Appel trop court, message non passé; Qualité de l'appel à améliorer — revoir la structure",
+      "duration_sec": 5,
+      "metrics": {
+        "tTalk": 4690,
+        "tHandle": 31472,
+        "tAcw": 6137
+      },
+      "recording_available": false
+    },
+    {
+      "id": "414fbe99",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:38:42.012Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/ac583ba4-5d7c-4667-af70-00a0414fbe99",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Satisfaisant — correct et professionnel",
+      "client_sentiment": {
+        "Satisfied": 20,
+        "Neutral": 35,
+        "Frustrated": 45
+      },
+      "agent_name": "Margot MILLIERET",
+      "agent_id": "3df74fc1-3567-4116-a584-9fdae1e03551",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Appel trop court, message non passé",
+      "duration_sec": 23,
+      "metrics": {
+        "tTalk": 22908,
+        "tHandle": 53316,
+        "tAcw": 7156
+      },
+      "recording_available": false
+    },
+    {
+      "id": "e2a77031",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:38:40.451Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/050e3a3f-73c4-40da-9576-c9e2e2a77031",
+      "grade": "15.0/20",
+      "score": 15.0,
+      "agent_tone": "Très bon — structuré et courtois",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Camille DURAND",
+      "agent_id": "d7b60f32-0b68-449d-b98b-5cced060aafd",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Durée de conversation adaptée; Bonne qualité d'échange téléphonique; Appel productif et structuré",
+      "cons": "Aucun écart significatif détecté",
+      "duration_sec": 154,
+      "metrics": {
+        "tTalk": 153701,
+        "tHandle": 291505,
+        "tAcw": 2578
+      },
+      "recording_available": false
+    },
+    {
+      "id": "b0cb29cd",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:37:51.973Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/a319275a-4928-4f1b-88fe-fa97b0cb29cd",
+      "grade": "7.0/20",
+      "score": 7.0,
+      "agent_tone": "Insuffisant — doit être accompagné",
+      "client_sentiment": {
+        "Satisfied": 20,
+        "Neutral": 35,
+        "Frustrated": 45
+      },
+      "agent_name": "Husna KHAM",
+      "agent_id": "97c4b1d4-50dd-453c-b2ed-13c35135c24f",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement rapide après appel",
+      "cons": "Appel trop court, message non passé; Qualité de l'appel à améliorer — revoir la structure",
+      "duration_sec": 3,
+      "metrics": {
+        "tTalk": 2774,
+        "tHandle": 42374,
+        "tAcw": 17266
+      },
+      "recording_available": false
+    },
+    {
+      "id": "9fb0865a",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:16:31.131Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/e07925d6-c632-4cad-89fa-36029fb0865a",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Joséphine AZOA NAMA",
+      "agent_id": "83c78ad8-fdcd-48f2-bb96-3d4da67be874",
+      "manager": "CÉDRIC KOUDJENOUME",
+      "service": "APV FMC/NSA/BMW",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel; Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 86,
+      "metrics": {
+        "tTalk": 86466,
+        "tHandle": 112279,
+        "tAcw": 10289
+      },
+      "recording_available": false
+    },
+    {
+      "id": "f5bc0a04",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:15:27.113Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/15e4c46f-59ac-49f8-908a-5c34f5bc0a04",
+      "grade": "15.0/20",
+      "score": 15.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 65,
+        "Neutral": 25,
+        "Frustrated": 10
+      },
+      "agent_name": "Francesca PIVA",
+      "agent_id": "8acdad0e-bdbb-4ced-8cf2-4c37fd564381",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 282,
+      "metrics": {
+        "tTalk": 281521,
+        "tHandle": 371521,
+        "tAcw": 90000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "c027e2d8",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:15:13.471Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/63c71d6f-d7d4-4f33-b8ea-bbc8c027e2d8",
+      "grade": "10.0/20",
+      "score": 10.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 45,
+        "Neutral": 35,
+        "Frustrated": 20
+      },
+      "agent_name": "Paola SARDENNA",
+      "agent_id": "fc0d44e0-3cb7-47ae-8776-a4cd52ff82d0",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel; Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 744,
+      "metrics": {
+        "tTalk": 744301,
+        "tHandle": 750691,
+        "tAcw": 6390
+      },
+      "recording_available": false
+    },
+    {
+      "id": "cd2df51b",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:15:12.147Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/d9a333ac-96bd-4492-b666-2541cd2df51b",
+      "grade": "9.0/20",
+      "score": 9.0,
+      "agent_tone": "À améliorer",
+      "client_sentiment": {
+        "Satisfied": 30,
+        "Neutral": 40,
+        "Frustrated": 30
+      },
+      "agent_name": "Lounis OUARET",
+      "agent_id": "0aab9b4f-16fa-4651-8546-cb218a9bc7df",
+      "manager": "MICKAEL ROCHEGUDE",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel",
+      "cons": "Appel trop court; Qualité d'appel à améliorer",
+      "duration_sec": 28,
+      "metrics": {
+        "tTalk": 27768,
+        "tHandle": 37031,
+        "tAcw": 1696
+      },
+      "recording_available": false
+    },
+    {
+      "id": "f3056245",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:13:54.263Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/c8123724-bf02-4016-acfa-a2d6f3056245",
+      "grade": "9.0/20",
+      "score": 9.0,
+      "agent_tone": "À améliorer",
+      "client_sentiment": {
+        "Satisfied": 30,
+        "Neutral": 40,
+        "Frustrated": 30
+      },
+      "agent_name": "Lounis OUARET",
+      "agent_id": "0aab9b4f-16fa-4651-8546-cb218a9bc7df",
+      "manager": "MICKAEL ROCHEGUDE",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel",
+      "cons": "Appel trop court; Qualité d'appel à améliorer",
+      "duration_sec": 24,
+      "metrics": {
+        "tTalk": 23825,
+        "tHandle": 45137,
+        "tAcw": 2239
+      },
+      "recording_available": false
+    },
+    {
+      "id": "70ef8b27",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:13:08.595Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/5b2960a6-b40e-4989-ade8-915070ef8b27",
+      "grade": "9.0/20",
+      "score": 9.0,
+      "agent_tone": "À améliorer",
+      "client_sentiment": {
+        "Satisfied": 30,
+        "Neutral": 40,
+        "Frustrated": 30
+      },
+      "agent_name": "Lounis OUARET",
+      "agent_id": "0aab9b4f-16fa-4651-8546-cb218a9bc7df",
+      "manager": "MICKAEL ROCHEGUDE",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel",
+      "cons": "Appel trop court; Qualité d'appel à améliorer",
+      "duration_sec": 24,
+      "metrics": {
+        "tTalk": 23958,
+        "tHandle": 34031,
+        "tAcw": 1755
+      },
+      "recording_available": false
+    },
+    {
+      "id": "47a99f62",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:12:36.591Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/697257ec-11d2-4c76-bc34-b93747a99f62",
+      "grade": "7.0/20",
+      "score": 7.0,
+      "agent_tone": "À améliorer",
+      "client_sentiment": {
+        "Satisfied": 30,
+        "Neutral": 40,
+        "Frustrated": 30
+      },
+      "agent_name": "Raphaelle PERNOT",
+      "agent_id": "ee081999-3da6-4fd8-b25d-d02ac28a5cf3",
+      "manager": "LEILA BOUHAFS",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Appel standard",
+      "cons": "Appel trop court; Qualité d'appel à améliorer; Trop de temps en traitement après appel",
+      "duration_sec": 4,
+      "metrics": {
+        "tTalk": 4162,
+        "tHandle": 336711,
+        "tAcw": 3494
+      },
+      "recording_available": false
+    },
+    {
+      "id": "5dbad127",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:12:15.285Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/47768fa3-e85e-4d9a-89ba-7eda5dbad127",
+      "grade": "12.0/20",
+      "score": 12.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "AGUILA Lilianny",
+      "agent_id": "894f2aa5-7ae5-44bb-86b4-0c3e3d81ebfb",
+      "manager": "CONSTANTI SANCHEZ JENIFER",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 84,
+      "metrics": {
+        "tTalk": 84274,
+        "tHandle": 208171,
+        "tAcw": 33661
+      },
+      "recording_available": false
+    },
+    {
+      "id": "c095e4cb",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:12:07.822Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/a6758794-0d65-4209-a013-3453c095e4cb",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Rubén Yagüe Barrigao",
+      "agent_id": "369aaa57-b63a-48f2-8bc3-eec3fa250156",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel; Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 83,
+      "metrics": {
+        "tTalk": 82567,
+        "tHandle": 87386,
+        "tAcw": 4819
+      },
+      "recording_available": false
+    },
+    {
+      "id": "c789df10",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:12:05.997Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/bc8dba0a-1574-4564-bd21-731bc789df10",
+      "grade": "9.0/20",
+      "score": 9.0,
+      "agent_tone": "À améliorer",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Raphaelle PERNOT",
+      "agent_id": "ee081999-3da6-4fd8-b25d-d02ac28a5cf3",
+      "manager": "LEILA BOUHAFS",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Appel productif",
+      "cons": "Qualité d'appel à améliorer",
+      "duration_sec": 71,
+      "metrics": {
+        "tTalk": 70751,
+        "tHandle": 364658,
+        "tAcw": 3002
+      },
+      "recording_available": false
+    },
+    {
+      "id": "020038bf",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:11:42.181Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/0e00276c-3919-4f16-b0c7-4ae5020038bf",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Joséphine AZOA NAMA",
+      "agent_id": "83c78ad8-fdcd-48f2-bb96-3d4da67be874",
+      "manager": "CÉDRIC KOUDJENOUME",
+      "service": "APV FMC/NSA/BMW",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel; Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 89,
+      "metrics": {
+        "tTalk": 88694,
+        "tHandle": 100926,
+        "tAcw": 8541
+      },
+      "recording_available": false
+    },
+    {
+      "id": "ce1c474a",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:10:19.461Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/1be76115-a29f-4477-b58d-f757ce1c474a",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "FERNANDEZ LESMES Esther",
+      "agent_id": "c1275769-c28e-4a82-bc13-53b424824f7b",
+      "manager": "CONSTANTI SANCHEZ JENIFER",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel; Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 113,
+      "metrics": {
+        "tTalk": 113410,
+        "tHandle": 169794,
+        "tAcw": 4530
+      },
+      "recording_available": false
+    },
+    {
+      "id": "8cb72256",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:09:48.837Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/3c5d2f7f-ab64-4be4-8f9a-5df28cb72256",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Lounis OUARET",
+      "agent_id": "0aab9b4f-16fa-4651-8546-cb218a9bc7df",
+      "manager": "MICKAEL ROCHEGUDE",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 138,
+      "metrics": {
+        "tTalk": 138308,
+        "tHandle": 140006,
+        "tAcw": 1698
+      },
+      "recording_available": false
+    },
+    {
+      "id": "ef6d3a51",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:09:28.431Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/b554e5fd-e881-4421-8984-c432ef6d3a51",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Raphaelle PERNOT",
+      "agent_id": "ee081999-3da6-4fd8-b25d-d02ac28a5cf3",
+      "manager": "LEILA BOUHAFS",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel; Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 68,
+      "metrics": {
+        "tTalk": 67918,
+        "tHandle": 165908,
+        "tAcw": 3651
+      },
+      "recording_available": false
+    },
+    {
+      "id": "65180647",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:09:24.028Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/86be9252-0a9d-40bc-8f25-061d65180647",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 65,
+        "Neutral": 25,
+        "Frustrated": 10
+      },
+      "agent_name": "VAZQUEZ Carolina",
+      "agent_id": "9ba3593c-26c4-4fb4-bbeb-1cb112e712d7",
+      "manager": "CONSTANTI SANCHEZ JENIFER",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 304,
+      "metrics": {
+        "tTalk": 304309,
+        "tHandle": 328555,
+        "tAcw": 24246
+      },
+      "recording_available": false
+    },
+    {
+      "id": "8f6467b0",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:09:13.293Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/60b12a45-aee0-4e07-ada2-8a038f6467b0",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Raphaelle PERNOT",
+      "agent_id": "ee081999-3da6-4fd8-b25d-d02ac28a5cf3",
+      "manager": "LEILA BOUHAFS",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 152,
+      "metrics": {
+        "tTalk": 151918,
+        "tHandle": 382614,
+        "tAcw": 5388
+      },
+      "recording_available": false
+    },
+    {
+      "id": "af184ed4",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:08:19.818Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/3b323a96-7226-4078-bddc-6f2eaf184ed4",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 65,
+        "Neutral": 25,
+        "Frustrated": 10
+      },
+      "agent_name": "CABANAS AGUILERA Sandra",
+      "agent_id": "372517e7-4815-4ded-bdfa-86d369830458",
+      "manager": "CONSTANTI SANCHEZ JENIFER",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 301,
+      "metrics": {
+        "tTalk": 300772,
+        "tHandle": 312801,
+        "tAcw": 12029
+      },
+      "recording_available": false
+    },
+    {
+      "id": "1e9d1a87",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:08:07.697Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/7d2a7e45-2051-454b-9c6b-265c1e9d1a87",
+      "grade": "15.0/20",
+      "score": 15.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 65,
+        "Neutral": 25,
+        "Frustrated": 10
+      },
+      "agent_name": "Francesca SHARINNA GUINTO",
+      "agent_id": "84902510-2b37-4879-b615-b845c414d14e",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 193,
+      "metrics": {
+        "tTalk": 193104,
+        "tHandle": 283342,
+        "tAcw": 90238
+      },
+      "recording_available": false
+    },
+    {
+      "id": "8d1fe9ba",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:07:01.123Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/6dbad2c6-a2ae-458b-b859-201a8d1fe9ba",
+      "grade": "15.0/20",
+      "score": 15.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 65,
+        "Neutral": 25,
+        "Frustrated": 10
+      },
+      "agent_name": "SESAR FERRER Judit",
+      "agent_id": "fbf16deb-c1e6-4443-a687-a9b8860427e6",
+      "manager": "CONSTANTI SANCHEZ JENIFER",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 208,
+      "metrics": {
+        "tTalk": 207810,
+        "tHandle": 252641,
+        "tAcw": 44831
+      },
+      "recording_available": false
+    },
+    {
+      "id": "27acb729",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:06:58.976Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/10c2ed45-1cc5-462d-a313-f98c27acb729",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "GARCIA Xavier",
+      "agent_id": "29655d10-63a5-476d-8f12-31079f06d337",
+      "manager": "CONSTANTI SANCHEZ JENIFER",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 180,
+      "metrics": {
+        "tTalk": 179633,
+        "tHandle": 258307,
+        "tAcw": 5605
+      },
+      "recording_available": false
+    },
+    {
+      "id": "18f6a1ad",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:06:53.548Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/ff9a90e5-e479-489e-8651-505c18f6a1ad",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Soumia TAIATI",
+      "agent_id": "daca7ca4-e1da-4baa-92fc-4bd69d7c78d6",
+      "manager": "LEILA BOUHAFS",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 156,
+      "metrics": {
+        "tTalk": 156247,
+        "tHandle": 162854,
+        "tAcw": 6607
+      },
+      "recording_available": false
+    },
+    {
+      "id": "15a8970a",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:06:39.257Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/1bf7d2cc-2fdb-446d-81a2-619015a8970a",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 65,
+        "Neutral": 25,
+        "Frustrated": 10
+      },
+      "agent_name": "Lounis OUARET",
+      "agent_id": "0aab9b4f-16fa-4651-8546-cb218a9bc7df",
+      "manager": "MICKAEL ROCHEGUDE",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 218,
+      "metrics": {
+        "tTalk": 217527,
+        "tHandle": 225440,
+        "tAcw": 1896
+      },
+      "recording_available": false
+    },
+    {
+      "id": "ddfcc3fe",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:06:10.580Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/64cb2450-05c7-4329-8341-d1e0ddfcc3fe",
+      "grade": "9.0/20",
+      "score": 9.0,
+      "agent_tone": "À améliorer",
+      "client_sentiment": {
+        "Satisfied": 30,
+        "Neutral": 40,
+        "Frustrated": 30
+      },
+      "agent_name": "Aouatef BARHOUMI",
+      "agent_id": "af4f0749-2b98-4085-9552-28d1cf131b5b",
+      "manager": "MICKAEL ROCHEGUDE",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel",
+      "cons": "Appel trop court; Qualité d'appel à améliorer",
+      "duration_sec": 55,
+      "metrics": {
+        "tTalk": 55409,
+        "tHandle": 66098,
+        "tAcw": 4749
+      },
+      "recording_available": false
+    },
+    {
+      "id": "e28313ca",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:05:45.773Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/0aff9694-2ed1-430e-8044-99dfe28313ca",
+      "grade": "9.0/20",
+      "score": 9.0,
+      "agent_tone": "À améliorer",
+      "client_sentiment": {
+        "Satisfied": 30,
+        "Neutral": 40,
+        "Frustrated": 30
+      },
+      "agent_name": "Lounis OUARET",
+      "agent_id": "0aab9b4f-16fa-4651-8546-cb218a9bc7df",
+      "manager": "MICKAEL ROCHEGUDE",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel",
+      "cons": "Appel trop court; Qualité d'appel à améliorer",
+      "duration_sec": 24,
+      "metrics": {
+        "tTalk": 23811,
+        "tHandle": 48106,
+        "tAcw": 1725
+      },
+      "recording_available": false
+    },
+    {
+      "id": "a74c33af",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:05:41.460Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/2ee19143-c0aa-407c-94a3-5f2aa74c33af",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 65,
+        "Neutral": 25,
+        "Frustrated": 10
+      },
+      "agent_name": "Paola SARDENNA",
+      "agent_id": "fc0d44e0-3cb7-47ae-8776-a4cd52ff82d0",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 187,
+      "metrics": {
+        "tTalk": 187415,
+        "tHandle": 191358,
+        "tAcw": 3943
+      },
+      "recording_available": false
+    },
+    {
+      "id": "caaf17dd",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:05:40.868Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/5465d328-9845-4f1e-9a9d-0826caaf17dd",
+      "grade": "15.0/20",
+      "score": 15.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Rubén Yagüe Barrigao",
+      "agent_id": "369aaa57-b63a-48f2-8bc3-eec3fa250156",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 154,
+      "metrics": {
+        "tTalk": 153594,
+        "tHandle": 192191,
+        "tAcw": 38597
+      },
+      "recording_available": false
+    },
+    {
+      "id": "e6fe7ada",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:04:45.775Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/a90a2a86-96dd-45d5-871b-1a3fe6fe7ada",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "CABANAS AGUILERA Sandra",
+      "agent_id": "372517e7-4815-4ded-bdfa-86d369830458",
+      "manager": "CONSTANTI SANCHEZ JENIFER",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 133,
+      "metrics": {
+        "tTalk": 133252,
+        "tHandle": 146089,
+        "tAcw": 12837
+      },
+      "recording_available": false
+    },
+    {
+      "id": "020f9012",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:02:37.035Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/d85e6cd0-833f-4e50-b9a0-fcb8020f9012",
+      "grade": "9.0/20",
+      "score": 9.0,
+      "agent_tone": "À améliorer",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Joséphine AZOA NAMA",
+      "agent_id": "83c78ad8-fdcd-48f2-bb96-3d4da67be874",
+      "manager": "CÉDRIC KOUDJENOUME",
+      "service": "APV FMC/NSA/BMW",
+      "transcript": "(transcription indisponible)",
+      "pros": "Appel productif",
+      "cons": "Qualité d'appel à améliorer; Trop de temps en traitement après appel",
+      "duration_sec": 109,
+      "metrics": {
+        "tTalk": 108544,
+        "tHandle": 532256,
+        "tAcw": 420285
+      },
+      "recording_available": false
+    },
+    {
+      "id": "cf1554ff",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:02:14.140Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/e7468188-9980-4492-a1c2-aa44cf1554ff",
+      "grade": "12.0/20",
+      "score": 12.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Husna KHAM",
+      "agent_id": "97c4b1d4-50dd-453c-b2ed-13c35135c24f",
+      "manager": "MICKAEL ROCHEGUDE",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel; Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 96,
+      "metrics": {
+        "tTalk": 95922,
+        "tHandle": 194390,
+        "tAcw": 30000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "7d762a43",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:01:56.259Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/b038ba0e-41da-4dbd-a1b9-85f07d762a43",
+      "grade": "10.0/20",
+      "score": 10.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 30,
+        "Neutral": 40,
+        "Frustrated": 30
+      },
+      "agent_name": "Francesca SHARINNA GUINTO",
+      "agent_id": "84902510-2b37-4879-b615-b845c414d14e",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel",
+      "cons": "Appel trop court",
+      "duration_sec": 47,
+      "metrics": {
+        "tTalk": 47032,
+        "tHandle": 137262,
+        "tAcw": 90230
+      },
+      "recording_available": false
+    },
+    {
+      "id": "3d42f235",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:01:44.664Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/120fccea-5e25-45ff-b2b0-e48a3d42f235",
+      "grade": "15.0/20",
+      "score": 15.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 65,
+        "Neutral": 25,
+        "Frustrated": 10
+      },
+      "agent_name": "Francesca PIVA",
+      "agent_id": "8acdad0e-bdbb-4ced-8cf2-4c37fd564381",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 194,
+      "metrics": {
+        "tTalk": 193684,
+        "tHandle": 283684,
+        "tAcw": 90000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "883ab08a",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:01:39.763Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/7d11f235-d72d-4bd2-8845-8182883ab08a",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Sofia ROUIDJALI",
+      "agent_id": "d1d44bc3-7ded-4c8c-83a1-fc0324916752",
+      "manager": "MICKAEL ROCHEGUDE",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel; Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 78,
+      "metrics": {
+        "tTalk": 78234,
+        "tHandle": 98784,
+        "tAcw": 10000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "44480daa",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T10:01:14.232Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/e4016c38-16ee-4870-9486-bb6444480daa",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 65,
+        "Neutral": 25,
+        "Frustrated": 10
+      },
+      "agent_name": "GUERRA Catalina",
+      "agent_id": "5f1258b0-56fa-4fcf-bc54-1a644a89ca36",
+      "manager": "CONSTANTI SANCHEZ JENIFER",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 191,
+      "metrics": {
+        "tTalk": 191213,
+        "tHandle": 229434,
+        "tAcw": 1992
+      },
+      "recording_available": false
+    },
+    {
+      "id": "2d773c9d",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T09:58:50.960Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/61967cb3-1ba7-4a72-9277-61912d773c9d",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 65,
+        "Neutral": 25,
+        "Frustrated": 10
+      },
+      "agent_name": "Alexandre MARIN",
+      "agent_id": "f9178fc9-ade7-4265-a26b-f94445dc845b",
+      "manager": "LUDOVIC DOREAU",
+      "service": "E-vendeurs",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 453,
+      "metrics": {
+        "tTalk": 452566,
+        "tHandle": 472566,
+        "tAcw": 20000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "1fcc358a",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T09:58:43.576Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/1e04a6f9-a68b-4aa7-acf6-89dc1fcc358a",
+      "grade": "14.0/20",
+      "score": 14.0,
+      "agent_tone": "Professionnel",
+      "client_sentiment": {
+        "Satisfied": 65,
+        "Neutral": 25,
+        "Frustrated": 10
+      },
+      "agent_name": "FERNANDEZ-DIAZ Montse",
+      "agent_id": "a2c11787-bfec-400c-a6b0-394e6e09446b",
+      "manager": "Inconnu",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Temps de conversation adapté; Bonne qualité d'échange; Traitement efficace après appel",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 390,
+      "metrics": {
+        "tTalk": 389556,
+        "tHandle": 413286,
+        "tAcw": 23730
+      },
+      "recording_available": false
+    },
+    {
+      "id": "d5925929",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T09:53:08.265Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/5e0e0141-8803-4c01-85d7-830cd5925929",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 45,
+        "Neutral": 35,
+        "Frustrated": 20
+      },
+      "agent_name": "Abdoulatuf MMADI",
+      "agent_id": "89b33eaf-9d11-4479-9614-17dd22274c64",
+      "manager": "LESLIE BOULARD",
+      "service": "APV GVA",
+      "transcript": "(transcription indisponible)",
+      "pros": "Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 511,
+      "metrics": {
+        "tTalk": 511063,
+        "tHandle": 745322,
+        "tAcw": 20000
+      },
+      "recording_available": false
+    },
+    {
+      "id": "8c912408",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T09:20:05.758Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/8ba37fb3-acca-43b1-87b5-b58c8c912408",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 50,
+        "Neutral": 30,
+        "Frustrated": 20
+      },
+      "agent_name": "Margot MILLIERET",
+      "agent_id": "3df74fc1-3567-4116-a584-9fdae1e03551",
+      "manager": "LEILA BOUHAFS",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel; Appel productif",
+      "cons": "Aucun écart significatif",
+      "duration_sec": 92,
+      "metrics": {
+        "tTalk": 92044,
+        "tHandle": 196294,
+        "tAcw": 13292
+      },
+      "recording_available": false
+    },
+    {
+      "id": "1fdd741f",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T09:14:30.459Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/45e6c6f3-1ddc-460c-b84a-40d81fdd741f",
+      "grade": "11.0/20",
+      "score": 11.0,
+      "agent_tone": "Correct",
+      "client_sentiment": {
+        "Satisfied": 30,
+        "Neutral": 40,
+        "Frustrated": 30
+      },
+      "agent_name": "Margot MILLIERET",
+      "agent_id": "3df74fc1-3567-4116-a584-9fdae1e03551",
+      "manager": "LEILA BOUHAFS",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": "Traitement efficace après appel",
+      "cons": "Appel trop court",
+      "duration_sec": 21,
+      "metrics": {
+        "tTalk": 20867,
+        "tHandle": 60338,
+        "tAcw": 15714
+      },
+      "recording_available": false
+    }
+  ]
+}
