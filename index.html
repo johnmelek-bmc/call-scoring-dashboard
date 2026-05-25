@@ -811,7 +811,9 @@ function esc(s) { return typeof s==='string' ? s.replace(/&/g,'&amp;').replace(/
 //   {"user@bymycar.fr": "motdepasse", "autre@bymycar.fr": "secret"}
 // Injected by pipeline at build time. Session in localStorage (2h).
 
-const USER_PASSWORDS = "{"john.melek@bymycar.fr":"bymycar2026"}";
+const USER_PASSWORDS = "{
+    "john.melek@bymycar.fr":  "bymycar2026"
+}";
 const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis'];
 const SESSION_DURATION_MS = 2 * 60 * 60 * 1000; // 2 heures
 
