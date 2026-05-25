@@ -1,6 +1,4212 @@
 {
   "2026-05-22": [
     {
+      "id": "ad3f23a1",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:43:10.512Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/7680cba7-52ad-471d-b08e-37ecad3f23a1",
+      "grade": "96.1%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 96.1,
+      "score_20": 19.2,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Rachelle GABIOU",
+      "agent_id": "abec812c-53c1-4a0d-adbe-5694c9f6ee69",
+      "manager": "Cédric Koudjenoume",
+      "service": "APV FMC/NSA/BMW",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Prise en charge et accompagnement du contact",
+        "Pertinence de la réponse",
+        "Expérience client de l'intéraction",
+        "Accueil du client",
+        "Découverte des attentes du client  - Questionnement besoins du client"
+      ],
+      "cons": [
+        "Prise de congé"
+      ],
+      "a_ameliorer": [],
+      "duration_sec": 127,
+      "metrics": {
+        "tTalk": 126.9,
+        "tHandle": 188.7,
+        "tAcw": 20.3,
+        "talk_min": 2.1,
+        "handle_min": 3.1
+      },
+      "evaluation": {
+        "overall_pct": 96.1,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 76.0,
+            "possible": 82.0,
+            "pct": 92.7
+          },
+          "Fond": {
+            "earned": 72.0,
+            "possible": 72.0,
+            "pct": 100.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "experience_client_de_linteraction",
+            "label": "Expérience client de l'intéraction",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "respect_procedures",
+            "label": "Respect procédures",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "Conforme",
+            "points": 10,
+            "max_points": 10,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "qualification_historisation",
+            "label": "Qualification - Historisation",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "ac39dfe3",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:43:00.291Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/9d356f32-45c4-4cf3-9cc4-9f30ac39dfe3",
+      "grade": "80.0%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 80.0,
+      "score_20": 16.0,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "Imene BENREDJEM",
+      "agent_id": "b914c8db-8a38-461d-9e93-b4df3ffa9c82",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+        "Pose des questions et conseille",
+        "Courtoisie et politesse de bout en bout, ton professionnel",
+        "Recadre un échange trop long",
+        "En direct pendant un transfert d'appel"
+      ],
+      "cons": [],
+      "a_ameliorer": [
+        "ByMyCar + nom concession + prénom",
+        "Oriente aux bons interlocuteurs en concessions",
+        "Désamorce, rassure, fais preuve de compréhension",
+        "Solutions proposées aux objections du client"
+      ],
+      "duration_sec": 64,
+      "metrics": {
+        "tTalk": 63.7,
+        "tHandle": 101.1,
+        "tAcw": 7.3,
+        "talk_min": 1.1,
+        "handle_min": 1.7
+      },
+      "evaluation": {
+        "overall_pct": 80.0,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 20.0,
+            "possible": 24.0,
+            "pct": 83.3
+          },
+          "Fond": {
+            "earned": 12.0,
+            "possible": 16.0,
+            "pct": 75.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "bymycar_nom_concession_prenom",
+            "label": "ByMyCar + nom concession + prénom",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "formule_daccueil_quelle_est_votre_demande_comment_puisje_vous_aider",
+            "label": "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prends_le_temps_decouter_sans_interruption_du_client",
+            "label": "Prends le temps d'écouter sans interruption du client",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "pose_des_questions_et_conseille",
+            "label": "Pose des questions et conseille",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "oriente_aux_bons_interlocuteurs_en_concessions",
+            "label": "Oriente aux bons interlocuteurs en concessions",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "desamorce_rassure_fais_preuve_de_comprehension",
+            "label": "Désamorce, rassure, fais preuve de compréhension",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "solutions_proposees_aux_objections_du_client",
+            "label": "Solutions proposées aux objections du client",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "courtoisie_et_politesse_de_bout_en_bout_ton_professionnel",
+            "label": "Courtoisie et politesse de bout en bout, ton professionnel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "recadre_un_echange_trop_long",
+            "label": "Recadre un échange trop long",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "utilise_la_mise_en_attente_efficacement_temps_dattente_acceptable",
+            "label": "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "en_direct_pendant_un_transfert_dappel",
+            "label": "En direct pendant un transfert d'appel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "redaction_du_mail_avec_tous_les_elements_indispensable_nom_clientimmatriculationmodele_vehicule",
+            "label": "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge_courtoise",
+            "label": "Prise de congé courtoise",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "352dfe74",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:42:59.976Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/3d36d02d-d053-4b04-98b9-41d5352dfe74",
+      "grade": "45.0%",
+      "grade_label": "Non conforme",
+      "grade_letter": "C",
+      "score": 45.0,
+      "score_20": 9.0,
+      "agent_tone": "À améliorer — doit être accompagné",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "Virginie Dijoux",
+      "agent_id": "1ffbd61d-510e-4641-87ef-5c8e65781335",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "ByMyCar + nom concession + prénom",
+        "Courtoisie et politesse de bout en bout, ton professionnel"
+      ],
+      "cons": [
+        "Pose des questions et conseille",
+        "Désamorce, rassure, fais preuve de compréhension",
+        "Solutions proposées aux objections du client"
+      ],
+      "a_ameliorer": [
+        "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+        "Oriente aux bons interlocuteurs en concessions",
+        "Recadre un échange trop long",
+        "En direct pendant un transfert d'appel",
+        "Prise de congé courtoise"
+      ],
+      "duration_sec": 65,
+      "metrics": {
+        "tTalk": 65.4,
+        "tHandle": 69.6,
+        "tAcw": 4.3,
+        "talk_min": 1.1,
+        "handle_min": 1.2
+      },
+      "evaluation": {
+        "overall_pct": 45.0,
+        "grade": "Non conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 14.0,
+            "possible": 24.0,
+            "pct": 58.3
+          },
+          "Fond": {
+            "earned": 4.0,
+            "possible": 16.0,
+            "pct": 25.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "bymycar_nom_concession_prenom",
+            "label": "ByMyCar + nom concession + prénom",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "formule_daccueil_quelle_est_votre_demande_comment_puisje_vous_aider",
+            "label": "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prends_le_temps_decouter_sans_interruption_du_client",
+            "label": "Prends le temps d'écouter sans interruption du client",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "pose_des_questions_et_conseille",
+            "label": "Pose des questions et conseille",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "oriente_aux_bons_interlocuteurs_en_concessions",
+            "label": "Oriente aux bons interlocuteurs en concessions",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "desamorce_rassure_fais_preuve_de_comprehension",
+            "label": "Désamorce, rassure, fais preuve de compréhension",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "solutions_proposees_aux_objections_du_client",
+            "label": "Solutions proposées aux objections du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "courtoisie_et_politesse_de_bout_en_bout_ton_professionnel",
+            "label": "Courtoisie et politesse de bout en bout, ton professionnel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "recadre_un_echange_trop_long",
+            "label": "Recadre un échange trop long",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "utilise_la_mise_en_attente_efficacement_temps_dattente_acceptable",
+            "label": "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "en_direct_pendant_un_transfert_dappel",
+            "label": "En direct pendant un transfert d'appel",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "redaction_du_mail_avec_tous_les_elements_indispensable_nom_clientimmatriculationmodele_vehicule",
+            "label": "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge_courtoise",
+            "label": "Prise de congé courtoise",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "f8532543",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:42:54.725Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/0ddf63cb-b1c4-4bb4-bc0e-2ecef8532543",
+      "grade": "90.9%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 90.9,
+      "score_20": 18.2,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Margot MILLIERET",
+      "agent_id": "3df74fc1-3567-4116-a584-9fdae1e03551",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "ByMyCar + nom concession + prénom",
+        "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+        "Pose des questions et conseille",
+        "Oriente aux bons interlocuteurs en concessions",
+        "Solutions proposées aux objections du client"
+      ],
+      "cons": [],
+      "a_ameliorer": [
+        "Désamorce, rassure, fais preuve de compréhension",
+        "Prise de congé courtoise"
+      ],
+      "duration_sec": 172,
+      "metrics": {
+        "tTalk": 172.2,
+        "tHandle": 484.3,
+        "tAcw": 7.4,
+        "talk_min": 2.9,
+        "handle_min": 8.1
+      },
+      "evaluation": {
+        "overall_pct": 90.9,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 20.0,
+            "possible": 24.0,
+            "pct": 83.3
+          },
+          "Fond": {
+            "earned": 20.0,
+            "possible": 20.0,
+            "pct": 100.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "bymycar_nom_concession_prenom",
+            "label": "ByMyCar + nom concession + prénom",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "formule_daccueil_quelle_est_votre_demande_comment_puisje_vous_aider",
+            "label": "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prends_le_temps_decouter_sans_interruption_du_client",
+            "label": "Prends le temps d'écouter sans interruption du client",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "pose_des_questions_et_conseille",
+            "label": "Pose des questions et conseille",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "oriente_aux_bons_interlocuteurs_en_concessions",
+            "label": "Oriente aux bons interlocuteurs en concessions",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "desamorce_rassure_fais_preuve_de_comprehension",
+            "label": "Désamorce, rassure, fais preuve de compréhension",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "solutions_proposees_aux_objections_du_client",
+            "label": "Solutions proposées aux objections du client",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "courtoisie_et_politesse_de_bout_en_bout_ton_professionnel",
+            "label": "Courtoisie et politesse de bout en bout, ton professionnel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "recadre_un_echange_trop_long",
+            "label": "Recadre un échange trop long",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "utilise_la_mise_en_attente_efficacement_temps_dattente_acceptable",
+            "label": "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "en_direct_pendant_un_transfert_dappel",
+            "label": "En direct pendant un transfert d'appel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "redaction_du_mail_avec_tous_les_elements_indispensable_nom_clientimmatriculationmodele_vehicule",
+            "label": "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge_courtoise",
+            "label": "Prise de congé courtoise",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "75988763",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:42:47.851Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/75d859ef-046f-4fa4-a0d0-61b075988763",
+      "grade": "75.0%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 75.0,
+      "score_20": 15.0,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "Raphaelle PERNOT",
+      "agent_id": "ee081999-3da6-4fd8-b25d-d02ac28a5cf3",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Pose des questions et conseille",
+        "Oriente aux bons interlocuteurs en concessions",
+        "Désamorce, rassure, fais preuve de compréhension",
+        "Recadre un échange trop long",
+        "En direct pendant un transfert d'appel"
+      ],
+      "cons": [
+        "ByMyCar + nom concession + prénom"
+      ],
+      "a_ameliorer": [
+        "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+        "Solutions proposées aux objections du client",
+        "Courtoisie et politesse de bout en bout, ton professionnel"
+      ],
+      "duration_sec": 86,
+      "metrics": {
+        "tTalk": 85.6,
+        "tHandle": 271.9,
+        "tAcw": 4.4,
+        "talk_min": 1.4,
+        "handle_min": 4.5
+      },
+      "evaluation": {
+        "overall_pct": 75.0,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 18.0,
+            "possible": 24.0,
+            "pct": 75.0
+          },
+          "Fond": {
+            "earned": 12.0,
+            "possible": 16.0,
+            "pct": 75.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "bymycar_nom_concession_prenom",
+            "label": "ByMyCar + nom concession + prénom",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "formule_daccueil_quelle_est_votre_demande_comment_puisje_vous_aider",
+            "label": "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prends_le_temps_decouter_sans_interruption_du_client",
+            "label": "Prends le temps d'écouter sans interruption du client",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "pose_des_questions_et_conseille",
+            "label": "Pose des questions et conseille",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "oriente_aux_bons_interlocuteurs_en_concessions",
+            "label": "Oriente aux bons interlocuteurs en concessions",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "desamorce_rassure_fais_preuve_de_comprehension",
+            "label": "Désamorce, rassure, fais preuve de compréhension",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "solutions_proposees_aux_objections_du_client",
+            "label": "Solutions proposées aux objections du client",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "courtoisie_et_politesse_de_bout_en_bout_ton_professionnel",
+            "label": "Courtoisie et politesse de bout en bout, ton professionnel",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "recadre_un_echange_trop_long",
+            "label": "Recadre un échange trop long",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "utilise_la_mise_en_attente_efficacement_temps_dattente_acceptable",
+            "label": "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "en_direct_pendant_un_transfert_dappel",
+            "label": "En direct pendant un transfert d'appel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "redaction_du_mail_avec_tous_les_elements_indispensable_nom_clientimmatriculationmodele_vehicule",
+            "label": "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge_courtoise",
+            "label": "Prise de congé courtoise",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "37b0d941",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:42:47.038Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/5bf7825c-9d94-4b75-a332-df1a37b0d941",
+      "grade": "77.3%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 77.3,
+      "score_20": 15.5,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Ana Rita RIBEIRO DA COSTA",
+      "agent_id": "372a0522-8120-4d7f-8a02-3af0e069e573",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Pose des questions et conseille",
+        "Oriente aux bons interlocuteurs en concessions",
+        "Désamorce, rassure, fais preuve de compréhension",
+        "Courtoisie et politesse de bout en bout, ton professionnel",
+        "Recadre un échange trop long"
+      ],
+      "cons": [
+        "Solutions proposées aux objections du client"
+      ],
+      "a_ameliorer": [
+        "ByMyCar + nom concession + prénom",
+        "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+        "Prise de congé courtoise"
+      ],
+      "duration_sec": 99,
+      "metrics": {
+        "tTalk": 99.5,
+        "tHandle": 196.5,
+        "tAcw": 5.2,
+        "talk_min": 1.7,
+        "handle_min": 3.3
+      },
+      "evaluation": {
+        "overall_pct": 77.3,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 20.0,
+            "possible": 24.0,
+            "pct": 83.3
+          },
+          "Fond": {
+            "earned": 14.0,
+            "possible": 20.0,
+            "pct": 70.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "bymycar_nom_concession_prenom",
+            "label": "ByMyCar + nom concession + prénom",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "formule_daccueil_quelle_est_votre_demande_comment_puisje_vous_aider",
+            "label": "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prends_le_temps_decouter_sans_interruption_du_client",
+            "label": "Prends le temps d'écouter sans interruption du client",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "pose_des_questions_et_conseille",
+            "label": "Pose des questions et conseille",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "oriente_aux_bons_interlocuteurs_en_concessions",
+            "label": "Oriente aux bons interlocuteurs en concessions",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "desamorce_rassure_fais_preuve_de_comprehension",
+            "label": "Désamorce, rassure, fais preuve de compréhension",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "solutions_proposees_aux_objections_du_client",
+            "label": "Solutions proposées aux objections du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "courtoisie_et_politesse_de_bout_en_bout_ton_professionnel",
+            "label": "Courtoisie et politesse de bout en bout, ton professionnel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "recadre_un_echange_trop_long",
+            "label": "Recadre un échange trop long",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "utilise_la_mise_en_attente_efficacement_temps_dattente_acceptable",
+            "label": "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "en_direct_pendant_un_transfert_dappel",
+            "label": "En direct pendant un transfert d'appel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "redaction_du_mail_avec_tous_les_elements_indispensable_nom_clientimmatriculationmodele_vehicule",
+            "label": "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge_courtoise",
+            "label": "Prise de congé courtoise",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "4d9894e5",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:42:30.542Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/cfb63d6d-7fdd-4434-8be2-219c4d9894e5",
+      "grade": "83.6%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 83.6,
+      "score_20": 16.7,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "Simon ALZRAA",
+      "agent_id": "c7e68e06-a89a-49c5-a40e-64b5d3728c9f",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Prise en charge et accompagnement du contact",
+        "Pertinence de la réponse",
+        "Attitude et climat d'échange",
+        "Respect des process e-Vente / Qualif",
+        "Conclusion du contact"
+      ],
+      "cons": [
+        "Accueil du client",
+        "Traitement des objections"
+      ],
+      "a_ameliorer": [
+        "Découverte des attentes du client  - Questionnement besoins du client"
+      ],
+      "duration_sec": 76,
+      "metrics": {
+        "tTalk": 75.9,
+        "tHandle": 133.3,
+        "tAcw": 20.0,
+        "talk_min": 1.3,
+        "handle_min": 2.2
+      },
+      "evaluation": {
+        "overall_pct": 83.6,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 56.0,
+            "possible": 62.0,
+            "pct": 90.3
+          },
+          "Fond": {
+            "earned": 56.0,
+            "possible": 72.0,
+            "pct": 77.8
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "respect_des_process_evente_qualif",
+            "label": "Respect des process e-Vente / Qualif",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "Conforme",
+            "points": 10,
+            "max_points": 10,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "qualification_historisation_sf_genesys",
+            "label": "Qualification - Historisation (SF - Genesys)",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "fd7b98e1",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:42:13.368Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/4875a922-b346-4810-a766-b24ffd7b98e1",
+      "grade": "75.0%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 75.0,
+      "score_20": 15.0,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Cindy SABOT",
+      "agent_id": "34b90784-4d0e-428e-b526-f1ccb95f6bcc",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Pose des questions et conseille",
+        "Désamorce, rassure, fais preuve de compréhension",
+        "Solutions proposées aux objections du client",
+        "En direct pendant un transfert d'appel",
+        "Prise de congé courtoise"
+      ],
+      "cons": [],
+      "a_ameliorer": [
+        "ByMyCar + nom concession + prénom",
+        "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+        "Oriente aux bons interlocuteurs en concessions",
+        "Courtoisie et politesse de bout en bout, ton professionnel",
+        "Recadre un échange trop long"
+      ],
+      "duration_sec": 112,
+      "metrics": {
+        "tTalk": 112.1,
+        "tHandle": 204.3,
+        "tAcw": 4.9,
+        "talk_min": 1.9,
+        "handle_min": 3.4
+      },
+      "evaluation": {
+        "overall_pct": 75.0,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 18.0,
+            "possible": 24.0,
+            "pct": 75.0
+          },
+          "Fond": {
+            "earned": 12.0,
+            "possible": 16.0,
+            "pct": 75.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "bymycar_nom_concession_prenom",
+            "label": "ByMyCar + nom concession + prénom",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "formule_daccueil_quelle_est_votre_demande_comment_puisje_vous_aider",
+            "label": "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prends_le_temps_decouter_sans_interruption_du_client",
+            "label": "Prends le temps d'écouter sans interruption du client",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "pose_des_questions_et_conseille",
+            "label": "Pose des questions et conseille",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "oriente_aux_bons_interlocuteurs_en_concessions",
+            "label": "Oriente aux bons interlocuteurs en concessions",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "desamorce_rassure_fais_preuve_de_comprehension",
+            "label": "Désamorce, rassure, fais preuve de compréhension",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "solutions_proposees_aux_objections_du_client",
+            "label": "Solutions proposées aux objections du client",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "courtoisie_et_politesse_de_bout_en_bout_ton_professionnel",
+            "label": "Courtoisie et politesse de bout en bout, ton professionnel",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "recadre_un_echange_trop_long",
+            "label": "Recadre un échange trop long",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "utilise_la_mise_en_attente_efficacement_temps_dattente_acceptable",
+            "label": "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "en_direct_pendant_un_transfert_dappel",
+            "label": "En direct pendant un transfert d'appel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "redaction_du_mail_avec_tous_les_elements_indispensable_nom_clientimmatriculationmodele_vehicule",
+            "label": "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge_courtoise",
+            "label": "Prise de congé courtoise",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "9121cc14",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:42:08.013Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/1cf462be-85cc-4f95-8bba-58929121cc14",
+      "grade": "79.9%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 79.9,
+      "score_20": 16.0,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Imen ABIDI",
+      "agent_id": "36fe3ca0-ac39-4577-a38e-0aafe7386490",
+      "manager": "Cédric Koudjenoume",
+      "service": "APV FMC/NSA/BMW",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Prise en charge et accompagnement du contact",
+        "Expérience client de l'intéraction",
+        "Accueil du client",
+        "Traitement des objections",
+        "Respect procédures"
+      ],
+      "cons": [
+        "Qualification - Historisation"
+      ],
+      "a_ameliorer": [
+        "Pertinence de la réponse",
+        "Découverte des attentes du client  - Questionnement besoins du client",
+        "Conclusion du contact"
+      ],
+      "duration_sec": 109,
+      "metrics": {
+        "tTalk": 109.0,
+        "tHandle": 153.7,
+        "tAcw": 3.0,
+        "talk_min": 1.8,
+        "handle_min": 2.6
+      },
+      "evaluation": {
+        "overall_pct": 79.9,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 77.0,
+            "possible": 82.0,
+            "pct": 93.9
+          },
+          "Fond": {
+            "earned": 46.0,
+            "possible": 72.0,
+            "pct": 63.9
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "experience_client_de_linteraction",
+            "label": "Expérience client de l'intéraction",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "respect_procedures",
+            "label": "Respect procédures",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "A ameliorer",
+            "points": 5,
+            "max_points": 10,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "qualification_historisation",
+            "label": "Qualification - Historisation",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "9b541a72",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:42:03.370Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/427e1ae7-d0cb-42f7-8fc6-f7439b541a72",
+      "grade": "66.7%",
+      "grade_label": "A ameliorer",
+      "grade_letter": "B",
+      "score": 66.7,
+      "score_20": 13.3,
+      "agent_tone": "Satisfaisant — correct, quelques axes d'amélioration",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Shariane DIAMESSO-MALKAUD",
+      "agent_id": "91c3dfda-5c9c-4c95-a464-cdefb615b766",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "ByMyCar + nom concession + prénom",
+        "Prends le temps d'écouter sans interruption du client",
+        "Oriente aux bons interlocuteurs en concessions",
+        "Recadre un échange trop long",
+        "Utilise la mise en attente efficacement (temps d'attente acceptable)"
+      ],
+      "cons": [
+        "Désamorce, rassure, fais preuve de compréhension",
+        "En direct pendant un transfert d'appel"
+      ],
+      "a_ameliorer": [
+        "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+        "Pose des questions et conseille",
+        "Solutions proposées aux objections du client",
+        "Courtoisie et politesse de bout en bout, ton professionnel"
+      ],
+      "duration_sec": 112,
+      "metrics": {
+        "tTalk": 112.2,
+        "tHandle": 127.1,
+        "tAcw": 14.9,
+        "talk_min": 1.9,
+        "handle_min": 2.1
+      },
+      "evaluation": {
+        "overall_pct": 66.7,
+        "grade": "A ameliorer",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 14.0,
+            "possible": 24.0,
+            "pct": 58.3
+          },
+          "Fond": {
+            "earned": 18.0,
+            "possible": 24.0,
+            "pct": 75.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "bymycar_nom_concession_prenom",
+            "label": "ByMyCar + nom concession + prénom",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "formule_daccueil_quelle_est_votre_demande_comment_puisje_vous_aider",
+            "label": "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prends_le_temps_decouter_sans_interruption_du_client",
+            "label": "Prends le temps d'écouter sans interruption du client",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "pose_des_questions_et_conseille",
+            "label": "Pose des questions et conseille",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "oriente_aux_bons_interlocuteurs_en_concessions",
+            "label": "Oriente aux bons interlocuteurs en concessions",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "desamorce_rassure_fais_preuve_de_comprehension",
+            "label": "Désamorce, rassure, fais preuve de compréhension",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "solutions_proposees_aux_objections_du_client",
+            "label": "Solutions proposées aux objections du client",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "courtoisie_et_politesse_de_bout_en_bout_ton_professionnel",
+            "label": "Courtoisie et politesse de bout en bout, ton professionnel",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "recadre_un_echange_trop_long",
+            "label": "Recadre un échange trop long",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "utilise_la_mise_en_attente_efficacement_temps_dattente_acceptable",
+            "label": "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "en_direct_pendant_un_transfert_dappel",
+            "label": "En direct pendant un transfert d'appel",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "redaction_du_mail_avec_tous_les_elements_indispensable_nom_clientimmatriculationmodele_vehicule",
+            "label": "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge_courtoise",
+            "label": "Prise de congé courtoise",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "86aa479d",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:41:49.358Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/c7a2a3b0-7739-4b02-98f8-6a5286aa479d",
+      "grade": "83.8%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 83.8,
+      "score_20": 16.8,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Roukia ALI",
+      "agent_id": "1a6478ff-32db-4b15-b123-5f5be33c6d82",
+      "manager": "Cédric Koudjenoume",
+      "service": "APV FMC/NSA/BMW",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Pertinence de la réponse",
+        "Expérience client de l'intéraction",
+        "Accueil du client",
+        "Temps d'attente",
+        "Respect procédures"
+      ],
+      "cons": [
+        "Traitement des objections"
+      ],
+      "a_ameliorer": [
+        "Prise en charge et accompagnement du contact",
+        "Découverte des attentes du client  - Questionnement besoins du client"
+      ],
+      "duration_sec": 171,
+      "metrics": {
+        "tTalk": 170.9,
+        "tHandle": 191.2,
+        "tAcw": 20.3,
+        "talk_min": 2.8,
+        "handle_min": 3.2
+      },
+      "evaluation": {
+        "overall_pct": 83.8,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 78.0,
+            "possible": 88.0,
+            "pct": 88.6
+          },
+          "Fond": {
+            "earned": 56.0,
+            "possible": 72.0,
+            "pct": 77.8
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "experience_client_de_linteraction",
+            "label": "Expérience client de l'intéraction",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "respect_procedures",
+            "label": "Respect procédures",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "Conforme",
+            "points": 10,
+            "max_points": 10,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "qualification_historisation",
+            "label": "Qualification - Historisation",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "906e4432",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:41:15.829Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/2b9ea4e0-e9e3-4b36-986f-1d76906e4432",
+      "grade": "45.5%",
+      "grade_label": "Non conforme",
+      "grade_letter": "C",
+      "score": 45.5,
+      "score_20": 9.1,
+      "agent_tone": "À améliorer — doit être accompagné",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Laëtitia BÉJEANNIN",
+      "agent_id": "9e2e0d98-a22e-4371-8b7f-1f52d90ade59",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "ByMyCar + nom concession + prénom",
+        "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+        "Recadre un échange trop long",
+        "En direct pendant un transfert d'appel"
+      ],
+      "cons": [
+        "Pose des questions et conseille",
+        "Oriente aux bons interlocuteurs en concessions",
+        "Désamorce, rassure, fais preuve de compréhension"
+      ],
+      "a_ameliorer": [
+        "Courtoisie et politesse de bout en bout, ton professionnel",
+        "Prise de congé courtoise"
+      ],
+      "duration_sec": 92,
+      "metrics": {
+        "tTalk": 91.8,
+        "tHandle": 649.3,
+        "tAcw": 3.4,
+        "talk_min": 1.5,
+        "handle_min": 10.8
+      },
+      "evaluation": {
+        "overall_pct": 45.5,
+        "grade": "Non conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 16.0,
+            "possible": 24.0,
+            "pct": 66.7
+          },
+          "Fond": {
+            "earned": 4.0,
+            "possible": 20.0,
+            "pct": 20.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "bymycar_nom_concession_prenom",
+            "label": "ByMyCar + nom concession + prénom",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "formule_daccueil_quelle_est_votre_demande_comment_puisje_vous_aider",
+            "label": "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prends_le_temps_decouter_sans_interruption_du_client",
+            "label": "Prends le temps d'écouter sans interruption du client",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "pose_des_questions_et_conseille",
+            "label": "Pose des questions et conseille",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "oriente_aux_bons_interlocuteurs_en_concessions",
+            "label": "Oriente aux bons interlocuteurs en concessions",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "desamorce_rassure_fais_preuve_de_comprehension",
+            "label": "Désamorce, rassure, fais preuve de compréhension",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "solutions_proposees_aux_objections_du_client",
+            "label": "Solutions proposées aux objections du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "courtoisie_et_politesse_de_bout_en_bout_ton_professionnel",
+            "label": "Courtoisie et politesse de bout en bout, ton professionnel",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "recadre_un_echange_trop_long",
+            "label": "Recadre un échange trop long",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "utilise_la_mise_en_attente_efficacement_temps_dattente_acceptable",
+            "label": "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "en_direct_pendant_un_transfert_dappel",
+            "label": "En direct pendant un transfert d'appel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "redaction_du_mail_avec_tous_les_elements_indispensable_nom_clientimmatriculationmodele_vehicule",
+            "label": "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge_courtoise",
+            "label": "Prise de congé courtoise",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "36de6d35",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:41:11.818Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/8a79372f-d484-48a8-82b3-078d36de6d35",
+      "grade": "71.6%",
+      "grade_label": "A ameliorer",
+      "grade_letter": "B",
+      "score": 71.6,
+      "score_20": 14.3,
+      "agent_tone": "Satisfaisant — correct, quelques axes d'amélioration",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Sofia ROUIDJALI",
+      "agent_id": "d1d44bc3-7ded-4c8c-83a1-fc0324916752",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Prise en charge et accompagnement du contact",
+        "Pertinence de la réponse",
+        "Attitude et climat d'échange",
+        "Conclusion du contact",
+        "Prise de congé"
+      ],
+      "cons": [
+        "Accueil du client",
+        "Traitement des objections",
+        "Qualification - Historisation (SF - Genesys)"
+      ],
+      "a_ameliorer": [
+        "Découverte des attentes du client  - Questionnement besoins du client",
+        "Respect des process e-Vente / Qualif"
+      ],
+      "duration_sec": 106,
+      "metrics": {
+        "tTalk": 105.5,
+        "tHandle": 208.3,
+        "tAcw": 20.0,
+        "talk_min": 1.8,
+        "handle_min": 3.5
+      },
+      "evaluation": {
+        "overall_pct": 71.6,
+        "grade": "A ameliorer",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 56.0,
+            "possible": 62.0,
+            "pct": 90.3
+          },
+          "Fond": {
+            "earned": 40.0,
+            "possible": 72.0,
+            "pct": 55.6
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "respect_des_process_evente_qualif",
+            "label": "Respect des process e-Vente / Qualif",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "Conforme",
+            "points": 10,
+            "max_points": 10,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "qualification_historisation_sf_genesys",
+            "label": "Qualification - Historisation (SF - Genesys)",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": true
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "64a20dba",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:40:57.821Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/7463e3c8-d092-4036-a300-ee2a64a20dba",
+      "grade": "81.2%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 81.2,
+      "score_20": 16.2,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Abdoulatuf MMADI",
+      "agent_id": "89b33eaf-9d11-4479-9614-17dd22274c64",
+      "manager": "Leslie Boulard",
+      "service": "APV GVA",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Prise en charge et accompagnement du contact",
+        "Pertinence de la réponse",
+        "Expérience client de l'intéraction",
+        "Accueil du client",
+        "Découverte des attentes du client  - Questionnement besoins du client"
+      ],
+      "cons": [
+        "Prise de congé"
+      ],
+      "a_ameliorer": [
+        "Traitement des objections",
+        "Respect procédures",
+        "Attitude et climat d'échange"
+      ],
+      "duration_sec": 147,
+      "metrics": {
+        "tTalk": 146.7,
+        "tHandle": 166.0,
+        "tAcw": 10.2,
+        "talk_min": 2.4,
+        "handle_min": 2.8
+      },
+      "evaluation": {
+        "overall_pct": 81.2,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 66.0,
+            "possible": 82.0,
+            "pct": 80.5
+          },
+          "Fond": {
+            "earned": 59.0,
+            "possible": 72.0,
+            "pct": 81.9
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "experience_client_de_linteraction",
+            "label": "Expérience client de l'intéraction",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "A ameliorer",
+            "points": 3,
+            "max_points": 6,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "respect_procedures",
+            "label": "Respect procédures",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "Conforme",
+            "points": 10,
+            "max_points": 10,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "qualification_historisation",
+            "label": "Qualification - Historisation",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "9187e218",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:40:47.867Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/2bef890e-3c1c-4923-8a8e-15969187e218",
+      "grade": "80.0%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 80.0,
+      "score_20": 16.0,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "Margot MILLIERET",
+      "agent_id": "3df74fc1-3567-4116-a584-9fdae1e03551",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "ByMyCar + nom concession + prénom",
+        "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+        "Pose des questions et conseille",
+        "Désamorce, rassure, fais preuve de compréhension",
+        "En direct pendant un transfert d'appel"
+      ],
+      "cons": [],
+      "a_ameliorer": [
+        "Oriente aux bons interlocuteurs en concessions",
+        "Solutions proposées aux objections du client",
+        "Courtoisie et politesse de bout en bout, ton professionnel",
+        "Recadre un échange trop long"
+      ],
+      "duration_sec": 76,
+      "metrics": {
+        "tTalk": 76.2,
+        "tHandle": 190.3,
+        "tAcw": 9.7,
+        "talk_min": 1.3,
+        "handle_min": 3.2
+      },
+      "evaluation": {
+        "overall_pct": 80.0,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 20.0,
+            "possible": 24.0,
+            "pct": 83.3
+          },
+          "Fond": {
+            "earned": 12.0,
+            "possible": 16.0,
+            "pct": 75.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "bymycar_nom_concession_prenom",
+            "label": "ByMyCar + nom concession + prénom",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "formule_daccueil_quelle_est_votre_demande_comment_puisje_vous_aider",
+            "label": "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prends_le_temps_decouter_sans_interruption_du_client",
+            "label": "Prends le temps d'écouter sans interruption du client",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "pose_des_questions_et_conseille",
+            "label": "Pose des questions et conseille",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "oriente_aux_bons_interlocuteurs_en_concessions",
+            "label": "Oriente aux bons interlocuteurs en concessions",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "desamorce_rassure_fais_preuve_de_comprehension",
+            "label": "Désamorce, rassure, fais preuve de compréhension",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "solutions_proposees_aux_objections_du_client",
+            "label": "Solutions proposées aux objections du client",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "courtoisie_et_politesse_de_bout_en_bout_ton_professionnel",
+            "label": "Courtoisie et politesse de bout en bout, ton professionnel",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "recadre_un_echange_trop_long",
+            "label": "Recadre un échange trop long",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "utilise_la_mise_en_attente_efficacement_temps_dattente_acceptable",
+            "label": "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "en_direct_pendant_un_transfert_dappel",
+            "label": "En direct pendant un transfert d'appel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "redaction_du_mail_avec_tous_les_elements_indispensable_nom_clientimmatriculationmodele_vehicule",
+            "label": "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge_courtoise",
+            "label": "Prise de congé courtoise",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "1e3e01e3",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:40:39.451Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/2d465385-e98a-45ac-818b-b11c1e3e01e3",
+      "grade": "65.0%",
+      "grade_label": "A ameliorer",
+      "grade_letter": "B",
+      "score": 65.0,
+      "score_20": 13.0,
+      "agent_tone": "Satisfaisant — correct, quelques axes d'amélioration",
+      "client_sentiment": {
+        "Satisfied": 40,
+        "Neutral": 35,
+        "Frustrated": 25
+      },
+      "agent_name": "Marine PIERRE",
+      "agent_id": "3a346400-169d-4794-b291-66cd7e2eac5d",
+      "manager": "Leslie Boulard",
+      "service": "APV GVA",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Pertinence de la réponse",
+        "Traitement des objections",
+        "Mise en attente",
+        "Attitude et climat d'échange",
+        "Conclusion du contact"
+      ],
+      "cons": [
+        "Accueil du client",
+        "Respect procédures"
+      ],
+      "a_ameliorer": [
+        "Prise en charge et accompagnement du contact",
+        "Expérience client de l'intéraction",
+        "Découverte des attentes du client  - Questionnement besoins du client"
+      ],
+      "duration_sec": 74,
+      "metrics": {
+        "tTalk": 73.7,
+        "tHandle": 101.9,
+        "tAcw": 20.0,
+        "talk_min": 1.2,
+        "handle_min": 1.7
+      },
+      "evaluation": {
+        "overall_pct": 65.0,
+        "grade": "A ameliorer",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 62.0,
+            "possible": 88.0,
+            "pct": 70.5
+          },
+          "Fond": {
+            "earned": 42.0,
+            "possible": 72.0,
+            "pct": 58.3
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "experience_client_de_linteraction",
+            "label": "Expérience client de l'intéraction",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "respect_procedures",
+            "label": "Respect procédures",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 20,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "Conforme",
+            "points": 10,
+            "max_points": 10,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "qualification_historisation",
+            "label": "Qualification - Historisation",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "a0a56870",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:40:31.653Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/5fddee4b-c4df-46e0-b0cc-2065a0a56870",
+      "grade": "73.6%",
+      "grade_label": "A ameliorer",
+      "grade_letter": "B",
+      "score": 73.6,
+      "score_20": 14.7,
+      "agent_tone": "Satisfaisant — correct, quelques axes d'amélioration",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Aouatef BARHOUMI",
+      "agent_id": "af4f0749-2b98-4085-9552-28d1cf131b5b",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Prise en charge et accompagnement du contact",
+        "Pertinence de la réponse",
+        "Attitude et climat d'échange",
+        "Traitement des objections",
+        "Respect des process e-Vente / Qualif"
+      ],
+      "cons": [
+        "Accueil du client",
+        "Découverte des attentes du client  - Questionnement besoins du client",
+        "Temps d'attente"
+      ],
+      "a_ameliorer": [
+        "Conclusion du contact"
+      ],
+      "duration_sec": 104,
+      "metrics": {
+        "tTalk": 104.0,
+        "tHandle": 154.0,
+        "tAcw": 20.0,
+        "talk_min": 1.7,
+        "handle_min": 2.6
+      },
+      "evaluation": {
+        "overall_pct": 73.6,
+        "grade": "A ameliorer",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 51.0,
+            "possible": 68.0,
+            "pct": 75.0
+          },
+          "Fond": {
+            "earned": 52.0,
+            "possible": 72.0,
+            "pct": 72.2
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 20,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "respect_des_process_evente_qualif",
+            "label": "Respect des process e-Vente / Qualif",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "A ameliorer",
+            "points": 5,
+            "max_points": 10,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "qualification_historisation_sf_genesys",
+            "label": "Qualification - Historisation (SF - Genesys)",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "b977076b",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:40:08.769Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/b6a3a379-d3de-479b-a007-b505b977076b",
+      "grade": "86.4%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 86.4,
+      "score_20": 17.3,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Ahlem SAUNIER",
+      "agent_id": "50d83696-eb6a-4512-b339-42b62f1171fe",
+      "manager": "Leila Bouhafs",
+      "service": "Standard",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "ByMyCar + nom concession + prénom",
+        "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+        "Pose des questions et conseille",
+        "Oriente aux bons interlocuteurs en concessions",
+        "Désamorce, rassure, fais preuve de compréhension"
+      ],
+      "cons": [
+        "Solutions proposées aux objections du client"
+      ],
+      "a_ameliorer": [
+        "Recadre un échange trop long"
+      ],
+      "duration_sec": 132,
+      "metrics": {
+        "tTalk": 132.0,
+        "tHandle": 178.9,
+        "tAcw": 4.9,
+        "talk_min": 2.2,
+        "handle_min": 3.0
+      },
+      "evaluation": {
+        "overall_pct": 86.4,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 22.0,
+            "possible": 24.0,
+            "pct": 91.7
+          },
+          "Fond": {
+            "earned": 16.0,
+            "possible": 20.0,
+            "pct": 80.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "bymycar_nom_concession_prenom",
+            "label": "ByMyCar + nom concession + prénom",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "formule_daccueil_quelle_est_votre_demande_comment_puisje_vous_aider",
+            "label": "Formule d'accueil (Quelle est votre demande, comment puis-je vous aider?…)",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prends_le_temps_decouter_sans_interruption_du_client",
+            "label": "Prends le temps d'écouter sans interruption du client",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "pose_des_questions_et_conseille",
+            "label": "Pose des questions et conseille",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "oriente_aux_bons_interlocuteurs_en_concessions",
+            "label": "Oriente aux bons interlocuteurs en concessions",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "desamorce_rassure_fais_preuve_de_comprehension",
+            "label": "Désamorce, rassure, fais preuve de compréhension",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "solutions_proposees_aux_objections_du_client",
+            "label": "Solutions proposées aux objections du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 4,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "courtoisie_et_politesse_de_bout_en_bout_ton_professionnel",
+            "label": "Courtoisie et politesse de bout en bout, ton professionnel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "recadre_un_echange_trop_long",
+            "label": "Recadre un échange trop long",
+            "level": "A ameliorer",
+            "points": 2,
+            "max_points": 4,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "utilise_la_mise_en_attente_efficacement_temps_dattente_acceptable",
+            "label": "Utilise la mise en attente efficacement (temps d'attente acceptable)",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 4,
+            "pct": null,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "en_direct_pendant_un_transfert_dappel",
+            "label": "En direct pendant un transfert d'appel",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "redaction_du_mail_avec_tous_les_elements_indispensable_nom_clientimmatriculationmodele_vehicule",
+            "label": "Rédaction du mail avec tous les éléments indispensable (Nom client/immatriculation/Modèle véhicule",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge_courtoise",
+            "label": "Prise de congé courtoise",
+            "level": "Conforme",
+            "points": 4,
+            "max_points": 4,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "f38ead3a",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:39:46.187Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/462c67c8-c671-4f34-ad3d-0970f38ead3a",
+      "grade": "83.8%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 83.8,
+      "score_20": 16.8,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 70,
+        "Neutral": 20,
+        "Frustrated": 10
+      },
+      "agent_name": "Diellza Sylisufaj",
+      "agent_id": "132e6257-5af1-4690-8db5-3f3279b3b91b",
+      "manager": "Leslie Boulard",
+      "service": "APV GVA",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Pertinence de la réponse",
+        "Expérience client de l'intéraction",
+        "Accueil du client",
+        "Traitement des objections",
+        "Mise en attente"
+      ],
+      "cons": [
+        "Qualification - Historisation"
+      ],
+      "a_ameliorer": [
+        "Prise en charge et accompagnement du contact",
+        "Découverte des attentes du client  - Questionnement besoins du client"
+      ],
+      "duration_sec": 418,
+      "metrics": {
+        "tTalk": 417.7,
+        "tHandle": 438.0,
+        "tAcw": 20.3,
+        "talk_min": 7.0,
+        "handle_min": 7.3
+      },
+      "evaluation": {
+        "overall_pct": 83.8,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 78.0,
+            "possible": 88.0,
+            "pct": 88.6
+          },
+          "Fond": {
+            "earned": 56.0,
+            "possible": 72.0,
+            "pct": 77.8
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "experience_client_de_linteraction",
+            "label": "Expérience client de l'intéraction",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "respect_procedures",
+            "label": "Respect procédures",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "Conforme",
+            "points": 10,
+            "max_points": 10,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "qualification_historisation",
+            "label": "Qualification - Historisation",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "3789495e",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:39:39.110Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/ebe95b68-0c22-4efd-9e3a-ed5c3789495e",
+      "grade": "70.1%",
+      "grade_label": "A ameliorer",
+      "grade_letter": "B",
+      "score": 70.1,
+      "score_20": 14.0,
+      "agent_tone": "Satisfaisant — correct, quelques axes d'amélioration",
+      "client_sentiment": {
+        "Satisfied": 70,
+        "Neutral": 20,
+        "Frustrated": 10
+      },
+      "agent_name": "Ikbal JOUDAR",
+      "agent_id": "e593413f-168f-44f2-b770-c8ab926bdc24",
+      "manager": "Leslie Boulard",
+      "service": "APV GVA",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Prise en charge et accompagnement du contact",
+        "Expérience client de l'intéraction",
+        "Accueil du client",
+        "Respect procédures",
+        "Attitude et climat d'échange"
+      ],
+      "cons": [
+        "Découverte des attentes du client  - Questionnement besoins du client",
+        "Traitement des objections",
+        "Conclusion du contact"
+      ],
+      "a_ameliorer": [
+        "Pertinence de la réponse"
+      ],
+      "duration_sec": 202,
+      "metrics": {
+        "tTalk": 201.9,
+        "tHandle": 222.2,
+        "tAcw": 20.3,
+        "talk_min": 3.4,
+        "handle_min": 3.7
+      },
+      "evaluation": {
+        "overall_pct": 70.1,
+        "grade": "A ameliorer",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 72.0,
+            "possible": 82.0,
+            "pct": 87.8
+          },
+          "Fond": {
+            "earned": 36.0,
+            "possible": 72.0,
+            "pct": 50.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "experience_client_de_linteraction",
+            "label": "Expérience client de l'intéraction",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 20,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "respect_procedures",
+            "label": "Respect procédures",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 10,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "qualification_historisation",
+            "label": "Qualification - Historisation",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "a222a29d",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:38:53.338Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/c0e579ae-b10d-4305-8b29-fe9da222a29d",
+      "grade": "38.8%",
+      "grade_label": "Non conforme",
+      "grade_letter": "C",
+      "score": 38.8,
+      "score_20": 7.8,
+      "agent_tone": "À améliorer — doit être accompagné",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Lounis OUARET",
+      "agent_id": "0aab9b4f-16fa-4651-8546-cb218a9bc7df",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Traitement des objections",
+        "Respect des process e-Vente / Qualif",
+        "Conclusion du contact",
+        "Prise de congé"
+      ],
+      "cons": [
+        "Prise en charge et accompagnement du contact",
+        "Attitude et climat d'échange",
+        "Accueil du client"
+      ],
+      "a_ameliorer": [
+        "Pertinence de la réponse"
+      ],
+      "duration_sec": 115,
+      "metrics": {
+        "tTalk": 115.5,
+        "tHandle": 202.2,
+        "tAcw": 2.7,
+        "talk_min": 1.9,
+        "handle_min": 3.4
+      },
+      "evaluation": {
+        "overall_pct": 38.8,
+        "grade": "Non conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 16.0,
+            "possible": 62.0,
+            "pct": 25.8
+          },
+          "Fond": {
+            "earned": 36.0,
+            "possible": 72.0,
+            "pct": 50.0
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 20,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 20,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 20,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "respect_des_process_evente_qualif",
+            "label": "Respect des process e-Vente / Qualif",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "Conforme",
+            "points": 10,
+            "max_points": 10,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "qualification_historisation_sf_genesys",
+            "label": "Qualification - Historisation (SF - Genesys)",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 6,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": true
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
+      "id": "39eeef2f",
+      "date": "2026-05-22",
+      "datetime": "2026-05-22T12:38:27.582Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/b26ff573-6e32-4d66-94f1-cc6539eeef2f",
+      "grade": "87.1%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 87.1,
+      "score_20": 17.4,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 55,
+        "Neutral": 30,
+        "Frustrated": 15
+      },
+      "agent_name": "Camille DURAND",
+      "agent_id": "d7b60f32-0b68-449d-b98b-5cced060aafd",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Prise en charge et accompagnement du contact",
+        "Attitude et climat d'échange",
+        "Accueil du client",
+        "Découverte des attentes du client  - Questionnement besoins du client",
+        "Respect des process e-Vente / Qualif"
+      ],
+      "cons": [],
+      "a_ameliorer": [
+        "Pertinence de la réponse",
+        "Traitement des objections",
+        "Conclusion du contact"
+      ],
+      "duration_sec": 93,
+      "metrics": {
+        "tTalk": 93.1,
+        "tHandle": 259.3,
+        "tAcw": 20.0,
+        "talk_min": 1.6,
+        "handle_min": 4.3
+      },
+      "evaluation": {
+        "overall_pct": 87.1,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 63.0,
+            "possible": 68.0,
+            "pct": 92.6
+          },
+          "Fond": {
+            "earned": 59.0,
+            "possible": 72.0,
+            "pct": 81.9
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "A ameliorer",
+            "points": 3,
+            "max_points": 6,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "respect_des_process_evente_qualif",
+            "label": "Respect des process e-Vente / Qualif",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "A ameliorer",
+            "points": 5,
+            "max_points": 10,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "qualification_historisation_sf_genesys",
+            "label": "Qualification - Historisation (SF - Genesys)",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          }
+        ]
+      },
+      "recording_available": false
+    },
+    {
       "id": "b0cbd2a5",
       "date": "2026-05-22",
       "datetime": "2026-05-22T12:38:21.983Z",
