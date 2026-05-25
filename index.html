@@ -811,15 +811,23 @@ function esc(s) { return typeof s==='string' ? s.replace(/&/g,'&amp;').replace(/
 //   {"user@bymycar.fr": "motdepasse", "autre@bymycar.fr": "secret"}
 // Injected by pipeline at build time. Session in localStorage (2h).
 
-// The pipeline replaces {"john.melek@bymycar.fr":"bymycar2026"} with a raw JSON object:
+// The pipeline replaces {
+    "john.melek@bymycar.fr":  "bymycar2026"
+} with a raw JSON object:
 // {"user@bymycar.fr":"password"}
 // We use typeof-trick so it works even if placeholder wasn't replaced.
 const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis'];
 const SESSION_DURATION_MS = 2 * 60 * 60 * 1000; // 2 heures
 
 // This gets replaced at build time by the pipeline.
-// DO NOT put quotes around {"john.melek@bymycar.fr":"bymycar2026"} — it's replaced with a raw JSON object literal.
-const RAW_USERS = (typeof {"john.melek@bymycar.fr":"bymycar2026"} !== 'undefined') ? {"john.melek@bymycar.fr":"bymycar2026"} : null;
+// DO NOT put quotes around {
+    "john.melek@bymycar.fr":  "bymycar2026"
+} — it's replaced with a raw JSON object literal.
+const RAW_USERS = (typeof {
+    "john.melek@bymycar.fr":  "bymycar2026"
+} !== 'undefined') ? {
+    "john.melek@bymycar.fr":  "bymycar2026"
+} : null;
 
 let _users = null;
 function getUsers() {
@@ -863,7 +871,9 @@ function handleLogin() {
 
   // Vérifier la configuration
   if (!users || typeof users !== 'object') {
-    if (typeof USER_PASSWORDS === 'string' && USER_PASSWORDS.startsWith('__')) {
+    if (RAW_USERS === null && typeof {
+    "john.melek@bymycar.fr":  "bymycar2026"
+} === 'undefined') {
       errorEl.textContent = 'Erreur de configuration : contactez l\'administrateur.';
     } else {
       errorEl.textContent = 'Erreur de configuration : format de passphrase invalide.';
