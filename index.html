@@ -805,17 +805,26 @@ function closeModal() { document.getElementById('modal').classList.remove('activ
 function esc(s) { return typeof s==='string' ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : (s||''); }
 
 // ============================================================
-// AUTHENTICATION SYSTEM — Passphrase d'équipe (aucun email requis)
+// AUTHENTICATION SYSTEM — Per-user passphrases (no email needed)
 // ============================================================
-// La passphrase est injectée par le pipeline CI/CD depuis la
-// variable GitHub LOGIN_PASSPHRASE. Pas d'envoi d'email.
-// Session stockée en localStorage, valide 2 heures.
-// Le rafraîchissement de page conserve la session (jusqu'à expiration).
+// GitHub variable LOGIN_PASSPHRASE is a JSON map:
+//   {"user@bymycar.fr": "motdepasse", "autre@bymycar.fr": "secret"}
+// Injected by pipeline at build time. Session in localStorage (2h).
 
-// Placeholder remplacé par le pipeline via vars.LOGIN_PASSPHRASE
-const LOGIN_PASSPHRASE = "Bymycar2026!";
+const USER_PASSWORDS = "{"john.melek@bymycar.fr":"bymycar2026"}";
 const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis'];
 const SESSION_DURATION_MS = 2 * 60 * 60 * 1000; // 2 heures
+
+let _users = null;
+function getUsers() {
+  if (_users) return _users;
+  try {
+    _users = JSON.parse(USER_PASSWORDS);
+  } catch(e) {
+    _users = null;
+  }
+  return _users;
+}
 
 function togglePassphraseVisibility() {
   const input = document.getElementById('loginPassphrase');
@@ -832,6 +841,8 @@ function togglePassphraseVisibility() {
 function showLogin() {
   document.getElementById('loginScreen').classList.remove('hidden');
   document.getElementById('loginEmail').focus();
+  document.getElementById('loginPassphrase').value = '';
+  document.getElementById('loginError').textContent = '';
 }
 
 function hideLogin() {
@@ -839,15 +850,20 @@ function hideLogin() {
 }
 
 function handleLogin() {
-  const email = document.getElementById('loginEmail').value.trim();
+  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
   const passphrase = document.getElementById('loginPassphrase').value;
-  const btn = document.getElementById('loginBtn');
   const errorEl = document.getElementById('loginError');
   errorEl.textContent = '';
 
-  // Vérifier que la passphrase est configurée
-  if (LOGIN_PASSPHRASE.startsWith('__')) {
-    errorEl.textContent = 'Erreur de configuration : la passphrase n\'a pas été injectée. Contactez l\'administrateur.';
+  const users = getUsers();
+
+  // Vérifier la configuration
+  if (!users || typeof users !== 'object') {
+    if (typeof USER_PASSWORDS === 'string' && USER_PASSWORDS.startsWith('__')) {
+      errorEl.textContent = 'Erreur de configuration : contactez l\'administrateur.';
+    } else {
+      errorEl.textContent = 'Erreur de configuration : format de passphrase invalide.';
+    }
     return;
   }
 
@@ -865,14 +881,20 @@ function handleLogin() {
     return;
   }
 
-  // Valider passphrase
-  if (!passphrase) {
-    errorEl.textContent = 'Veuillez saisir la passphrase d\'équipe.';
+  // Vérifier si l'email a un compte
+  if (!(email in users)) {
+    errorEl.textContent = 'Accès non autorisé. Cet email n\'a pas de compte.';
     return;
   }
 
-  if (passphrase !== LOGIN_PASSPHRASE) {
-    errorEl.textContent = 'Passphrase incorrecte. Veuillez réessayer.';
+  // Valider mot de passe
+  if (!passphrase) {
+    errorEl.textContent = 'Veuillez saisir votre mot de passe.';
+    return;
+  }
+
+  if (passphrase !== users[email]) {
+    errorEl.textContent = 'Mot de passe incorrect. Veuillez réessayer.';
     document.getElementById('loginPassphrase').value = '';
     document.getElementById('loginPassphrase').focus();
     return;
@@ -909,7 +931,7 @@ function checkSession() {
       localStorage.removeItem('bdc_session');
       return false;
     }
-    // Session valide
+    // Session valide — afficher le badge
     document.getElementById('userBadge').innerHTML = session.email + ' · <span style="cursor:pointer;color:var(--red-dim)" onclick="logout()">Déconnexion</span>';
     return true;
   } catch (e) {
@@ -921,12 +943,10 @@ function checkSession() {
 function logout() {
   localStorage.removeItem('bdc_session');
   document.getElementById('userBadge').textContent = 'Non connecté';
-  document.getElementById('loginPassphrase').value = '';
-  document.getElementById('loginError').textContent = '';
   showLogin();
 }
 
-// Intercepter Entrée dans les champs
+// Intercepter Entrée
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('loginBtn').onclick = handleLogin;
   document.getElementById('loginPassphrase').addEventListener('keydown', function(e) {
