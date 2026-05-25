@@ -281,6 +281,7 @@ tbody tr:hover { background: var(--surface-secondary); }
         </div>
         <select class="filter-select" id="monthSel"></select>
         <select class="filter-select" id="yearSel"></select>
+        <button class="filter-select" onclick="exportPDF()" style="background:var(--blue);color:#fff;border-color:var(--blue);cursor:pointer;">Exporter PDF</button>
       </div>
     </div>
 
@@ -373,7 +374,7 @@ async function load() {
   try {
     const r = await fetch('data.json?' + Date.now());
     if (!r.ok) throw new Error(String(r.status));
-    DATA = await r.json();
+    DATA = normalizeAllData(await r.json());
     const dates = Object.keys(DATA).sort();
     const total = dates.reduce((s,d) => s + DATA[d].length, 0);
     const last = dates[dates.length-1] || '—';
@@ -384,6 +385,50 @@ async function load() {
     document.getElementById('dataBadge').textContent = 'Donnees indisponibles';
   }
   render();
+}
+
+// ============================================================
+// NORMALIZE & DATA HELPERS
+// ============================================================
+function normalizeCall(c) {
+  // Ensure pros/cons are arrays (old format had strings)
+  if (c.pros && typeof c.pros === 'string') c.pros = c.pros.split(';').map(s => s.trim()).filter(Boolean);
+  if (c.cons && typeof c.cons === 'string') c.cons = c.cons.split(';').map(s => s.trim()).filter(Boolean);
+  if (c.a_ameliorer && typeof c.a_ameliorer === 'string') c.a_ameliorer = c.a_ameliorer.split(';').map(s => s.trim()).filter(Boolean);
+  if (!Array.isArray(c.pros)) c.pros = [];
+  if (!Array.isArray(c.cons)) c.cons = [];
+  if (!Array.isArray(c.a_ameliorer)) c.a_ameliorer = [];
+  return c;
+}
+
+function normalizeAllData(data) {
+  Object.keys(data).forEach(dk => {
+    data[dk] = data[dk].map(normalizeCall);
+  });
+  return data;
+}
+
+// ============================================================
+// PDF EXPORT
+// ============================================================
+function exportPDF() {
+  if (!window.print) return;
+  // Inject print-specific styles
+  const style = document.createElement('style');
+  style.textContent = `
+    @media print {
+      .sidebar, .topbar, .topbar-right button:last-child { display: none !important; }
+      .content { padding: 0 !important; max-width: 100% !important; }
+      .kpi-card { break-inside: avoid; }
+      .chart-card { break-inside: avoid; page-break-inside: avoid; }
+      .table-scroll { overflow: visible !important; }
+      table { font-size: 10px; }
+      .modal-overlay { display: none !important; }
+      .login-overlay { display: none !important; }
+    }`;
+  document.head.appendChild(style);
+  window.print();
+  document.head.removeChild(style);
 }
 
 // ============================================================
@@ -452,6 +497,7 @@ function buildKPI(calls) {
 function buildCharts(calls) {
   if (!calls.length) return '';
   return `<div class="charts-grid">
+    <div class="chart-card" style="grid-column:1/-1"><h3>Evolution des notes</h3><div class="chart-wrap"><canvas id="chEvo" height="120"></canvas></div></div>
     <div class="chart-card"><h3>Distribution des notes</h3><div class="chart-wrap"><canvas id="chDist" height="160"></canvas></div></div>
     <div class="chart-card"><h3>Top 5 agents · Note moyenne</h3><div class="chart-wrap"><canvas id="chTop" height="160"></canvas></div></div>
     <div class="chart-card"><h3>Répartition par grade</h3><div class="chart-wrap"><canvas id="chGrade" height="160"></canvas></div></div>
@@ -463,15 +509,49 @@ function initCharts(calls) {
   CHARTS = {};
   if (!calls.length) return;
 
+  // Evolution line chart (scores over time)
+  const sorted = [...calls].sort((a,b) => (a.datetime||a.date||'').localeCompare(b.datetime||b.date||''));
+  const evoData = sorted.map(c => ({ x: (c.datetime||c.date||'').slice(0,10), y: c.score || 0 }));
+  // Group by day for cleaner chart
+  const dayMap = {};
+  evoData.forEach(d => { if (!dayMap[d.x]) dayMap[d.x] = []; dayMap[d.x].push(d.y); });
+  const evoDays = Object.entries(dayMap).sort((a,b) => a[0].localeCompare(b[0]));
+  const evoLabels = evoDays.map(([d]) => d.slice(5)); // MM-DD
+  const evoAvgs = evoDays.map(([,vals]) => Math.round(vals.reduce((a,b)=>a+b,0)/vals.length));
+  const evoCounts = evoDays.map(([,vals]) => vals.length);
+  const c0 = document.getElementById('chEvo');
+  if (c0) CHARTS.evo = new Chart(c0, {
+    type: 'line',
+    data: {
+      labels: evoLabels,
+      datasets: [
+        { label: 'Note moyenne', data: evoAvgs, borderColor: '#0071e3', backgroundColor: 'rgba(0,113,227,0.08)', fill: true, tension: 0.4, pointRadius: 3, pointBackgroundColor: '#0071e3', borderWidth: 2 },
+        { label: 'Appels', data: evoCounts, borderColor: '#86868b', backgroundColor: 'rgba(134,134,139,0.05)', borderDash: [4,3], tension: 0.3, pointRadius: 2, yAxisID: 'y1', borderWidth: 1 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true, aspectRatio: 4,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size: 10, family: 'Inter' }, color: '#6e6e73', boxWidth: 12, padding: 8 } },
+        tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + (ctx.dataset.label === 'Appels' ? ctx.parsed.y : ctx.parsed.y + '%') } }
+      },
+      scales: {
+        y: { min: 0, max: 100, ticks: { font: { size: 9, family: 'Inter' }, color: '#86868b', callback: v => v + '%' }, grid: { color: 'rgba(0,0,0,0.04)' }, title: { display: true, text: 'Note %', font: { size: 9, family: 'Inter' }, color: '#86868b' } },
+        y1: { position: 'right', min: 0, ticks: { font: { size: 9, family: 'Inter' }, color: '#86868b' }, grid: { display: false }, title: { display: true, text: 'Volume', font: { size: 9, family: 'Inter' }, color: '#86868b' } },
+        x: { ticks: { font: { size: 9, family: 'Inter' }, color: '#86868b', maxTicksLimit: 12 }, grid: { display: false } }
+      }
+    }
+  });
+
   // Distribution histogram (buckets: 0-30%, 30-55%, 55-75%, 75-90%, 90-100%)
-  const bins = {'0–30%':0,'30–55%':0,'55–75%':0,'75–90%':0,'90–100%':0};
+  const bins = {'0-30%':0,'30-55%':0,'55-75%':0,'75-90%':0,'90-100%':0};
   calls.forEach(c => {
     const s = c.score || 0;
-    if (s < 30) bins['0–30%']++;
-    else if (s < 55) bins['30–55%']++;
-    else if (s < 75) bins['55–75%']++;
-    else if (s < 90) bins['75–90%']++;
-    else bins['90–100%']++;
+    if (s < 30) bins['0-30%']++;
+    else if (s < 55) bins['30-55%']++;
+    else if (s < 75) bins['55-75%']++;
+    else if (s < 90) bins['75-90%']++;
+    else bins['90-100%']++;
   });
   const c1 = document.getElementById('chDist');
   if (c1) CHARTS.dist = new Chart(c1, {
@@ -516,14 +596,14 @@ function initCharts(calls) {
   calls.forEach(c => {
     const gl = c.grade_label || '';
     if (gl === 'Conforme') gA++;
-    else if (gl === 'À améliorer' || gl === 'A ameliorer') gB++;
+    else if (gl === 'A ameliorer' || gl === 'A ameliorer') gB++;
     else gC++;
   });
   const c3 = document.getElementById('chGrade');
   if (c3 && (gA+gB+gC) > 0) CHARTS.grade = new Chart(c3, {
     type: 'doughnut',
     data: {
-      labels: ['Conforme', 'À améliorer', 'Non conforme'],
+      labels: ['Conforme', 'A ameliorer', 'Non conforme'],
       datasets: [{ data: [gA, gB, gC], backgroundColor: ['#30d158', '#ff9f0a', '#ff453a'], borderWidth: 2, borderColor: '#fff' }]
     },
     options: {
