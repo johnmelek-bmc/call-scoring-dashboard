@@ -304,14 +304,16 @@ tbody tr:hover { background: var(--surface-secondary); }
   <div class="login-card">
     <h1>CallScoring</h1>
     <p class="sub">Accès réservé au personnel BDC</p>
-    <div class="form-group">
-      <label for="loginEmail">Email professionnel</label>
-      <input type="email" id="loginEmail" placeholder="prenom.nom@bymycar.fr" autocomplete="email" autofocus>
-      <div class="domain-hint">Domaines autorisés : @bymycar.*, @cosmobilis.*, @cosmobilis.eu</div>
+    <div class="login-form">
+      <div class="form-group">
+        <label for="loginEmail">Email professionnel</label>
+        <input type="email" id="loginEmail" placeholder="prenom.nom@bymycar.fr" autocomplete="email" autofocus>
+        <div class="domain-hint">Domaines autorisés : @bymycar.*, @cosmobilis.*, @cosmobilis.eu</div>
+      </div>
+      <button class="btn-primary" id="loginBtn">Envoyer le code</button>
+      <div class="error-msg" id="loginError"></div>
+      <div class="info-msg">Un code de vérification vous sera envoyé par email.<br>Session active 2 heures.</div>
     </div>
-    <button class="btn-primary" id="loginBtn">Se connecter</button>
-    <div class="error-msg" id="loginError"></div>
-    <div class="info-msg">Connectez-vous avec votre email professionnel.<br>Session active 2 heures.</div>
   </div>
 </div>
 
@@ -798,59 +800,114 @@ function closeModal() { document.getElementById('modal').classList.remove('activ
 function esc(s) { return typeof s==='string' ? s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : (s||''); }
 
 // ============================================================
-// AUTHENTICATION SYSTEM — Email domain only (aucun mot de passe)
+// AUTHENTICATION SYSTEM — Email + code à usage unique
 // ============================================================
-// Tout email @bymycar.* ou @cosmobilis.* est accepté.
-// Session stockée en localStorage, valide 2 heures.
-// Rafraîchissement de page conserve la session.
+// 1. Email → validation domaine @bymycar.* / @cosmobilis.*
+// 2. Code généré localement, affiché à l'écran
+// 3. L'utilisateur entre le code → connecté
+// 4. Session localStorage 2h (rafraîchissement conservé)
 
 const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis'];
-const SESSION_DURATION_MS = 2 * 60 * 60 * 1000; // 2 heures
+const SESSION_DURATION_MS = 2 * 60 * 60 * 1000;
+let _pendingCode = null;
+let _pendingEmail = null;
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
 
 function showLogin() {
   document.getElementById('loginScreen').classList.remove('hidden');
   document.getElementById('loginEmail').focus();
   document.getElementById('loginError').textContent = '';
+  document.getElementById('loginBtn').textContent = 'Envoyer le code';
+  document.getElementById('loginBtn').onclick = requestCode;
+  document.getElementById('loginBtn').disabled = false;
+  document.querySelector('.login-form').style.display = 'block';
+  const vs = document.getElementById('codeVerifySection');
+  if (vs) vs.style.display = 'none';
 }
 
-function hideLogin() {
-  document.getElementById('loginScreen').classList.add('hidden');
-}
-
-function handleLogin() {
+function requestCode() {
   const email = document.getElementById('loginEmail').value.trim().toLowerCase();
   const errorEl = document.getElementById('loginError');
+  const btn = document.getElementById('loginBtn');
   errorEl.textContent = '';
 
-  // Valider email
   if (!email || !email.includes('@')) {
     errorEl.textContent = 'Veuillez entrer une adresse email valide.';
     return;
   }
-
   const domain = email.split('@')[1] || '';
   const domainName = domain.split('.')[0].toLowerCase();
   const allowed = ALLOWED_DOMAINS.some(d => domainName === d || domainName.endsWith('.' + d));
   if (!allowed) {
-    errorEl.textContent = 'Seuls les emails @bymycar.* et @cosmobilis.* sont autorisés.';
+    errorEl.textContent = 'Seuls les emails @bymycar.* et @cosmobilis.* sont autoris\u00e9s.';
     return;
   }
 
-  // Succès — tout email du domaine autorisé est accepté
-  completeLogin(email);
+  _pendingEmail = email;
+  _pendingCode = String(Math.floor(100000 + Math.random() * 900000));
+
+  // Hide the form, show the code
+  document.querySelector('.login-form').style.display = 'none';
+  let vs = document.getElementById('codeVerifySection');
+  if (!vs) {
+    vs = document.createElement('div');
+    vs.id = 'codeVerifySection';
+    document.querySelector('.login-card').appendChild(vs);
+  }
+  vs.style.display = 'block';
+  vs.innerHTML = `
+    <p style="font-size:12px;color:var(--text-tertiary);margin-bottom:4px;">Code de v\u00e9rification pour</p>
+    <p style="font-size:13px;font-weight:600;margin-bottom:12px;">${esc(email)}</p>
+    <div style="background:var(--surface-secondary);border-radius:var(--radius);padding:16px;margin-bottom:12px;border:1px solid var(--border);">
+      <div style="font-size:11px;color:var(--text-tertiary);margin-bottom:4px;">Votre code</div>
+      <div style="font-size:36px;font-weight:800;letter-spacing:10px;color:var(--blue);font-family:var(--font-mono);user-select:all;text-align:center;">${_pendingCode}</div>
+      <div style="font-size:10px;color:var(--text-tertiary);margin-top:4px;text-align:center;">Cliquez sur le code pour le copier · Valable 15 minutes</div>
+    </div>
+    <input type="text" id="codeInput" placeholder="Entrer le code" maxlength="6" autocomplete="off" style="width:100%;padding:10px 14px;border-radius:var(--radius);border:1px solid var(--border);font-size:18px;font-family:var(--font-mono);text-align:center;letter-spacing:6px;outline:none;background:var(--surface-secondary);">
+    <div style="display:flex;gap:8px;margin-top:10px;">
+      <button class="btn-primary" id="verifyBtn" style="flex:1;">Se connecter</button>
+      <button style="flex:1;padding:10px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--text-secondary);font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font);" onclick="showLogin()">Annuler</button>
+    </div>
+    <div class="error-msg" id="verifyError"></div>
+  `;
+
+  document.getElementById('codeInput').focus();
+  document.getElementById('verifyBtn').onclick = verifyCode;
+  document.getElementById('codeInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') verifyCode();
+  });
+  document.getElementById('verifyError').textContent = '';
+
+  // Make code clickable to copy
+  vs.querySelector('div[style*="font-size:36px"]').onclick = function() {
+    navigator.clipboard.writeText(_pendingCode);
+  };
+}
+
+function verifyCode() {
+  const input = document.getElementById('codeInput');
+  const entered = input.value.trim();
+  const errorEl = document.getElementById('verifyError');
+  errorEl.textContent = '';
+
+  if (entered === _pendingCode && _pendingEmail) {
+    completeLogin(_pendingEmail);
+  } else {
+    errorEl.textContent = 'Code incorrect. V\u00e9rifiez et r\u00e9essayez.';
+    input.value = '';
+    input.focus();
+  }
 }
 
 function completeLogin(email) {
-  const session = {
-    email: email,
-    loginTime: Date.now(),
-    expiryTime: Date.now() + SESSION_DURATION_MS
-  };
+  const session = { email, loginTime: Date.now(), expiryTime: Date.now() + SESSION_DURATION_MS };
   localStorage.setItem('bdc_session', JSON.stringify(session));
 
-  document.getElementById('userBadge').innerHTML = email + ' · <span style="cursor:pointer;color:var(--red-dim)" onclick="logout()">Déconnexion</span>';
-  document.getElementById('loginError').innerHTML = '<span style="color:var(--green-dim)">Connecté en tant que ' + email + '</span>';
-  
+  document.getElementById('userBadge').innerHTML = email + ' \u00b7 <span style="cursor:pointer;color:var(--red-dim)" onclick="logout()">D\u00e9connexion</span>';
+  document.getElementById('loginError').innerHTML = '<span style="color:var(--green-dim)">Connect\u00e9 en tant que ' + esc(email) + '</span>';
   setTimeout(() => hideLogin(), 500);
 }
 
@@ -858,18 +915,14 @@ function checkSession() {
   try {
     const raw = localStorage.getItem('bdc_session');
     if (!raw) return false;
-    const session = JSON.parse(raw);
-    if (!session || !session.email || !session.expiryTime) {
+    const s = JSON.parse(raw);
+    if (!s || !s.email || !s.expiryTime || Date.now() > s.expiryTime) {
       localStorage.removeItem('bdc_session');
       return false;
     }
-    if (Date.now() > session.expiryTime) {
-      localStorage.removeItem('bdc_session');
-      return false;
-    }
-    document.getElementById('userBadge').innerHTML = session.email + ' · <span style="cursor:pointer;color:var(--red-dim)" onclick="logout()">Déconnexion</span>';
+    document.getElementById('userBadge').innerHTML = s.email + ' \u00b7 <span style="cursor:pointer;color:var(--red-dim)" onclick="logout()">D\u00e9connexion</span>';
     return true;
-  } catch (e) {
+  } catch(e) {
     localStorage.removeItem('bdc_session');
     return false;
   }
@@ -877,22 +930,16 @@ function checkSession() {
 
 function logout() {
   localStorage.removeItem('bdc_session');
-  document.getElementById('userBadge').textContent = 'Non connecté';
+  document.getElementById('userBadge').textContent = 'Non connect\u00e9';
   showLogin();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('loginBtn').onclick = handleLogin;
+  document.getElementById('loginBtn').onclick = requestCode;
   document.getElementById('loginEmail').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') handleLogin();
+    if (e.key === 'Enter') requestCode();
   });
-
-  const hasSession = checkSession();
-  if (!hasSession) {
-    showLogin();
-  } else {
-    hideLogin();
-  }
+  if (!checkSession()) showLogin(); else hideLogin();
 });
 </script>
 </body>
