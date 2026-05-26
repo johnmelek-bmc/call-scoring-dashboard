@@ -73,6 +73,38 @@ const FROM_EMAIL = 'onboarding@resend.dev';
 
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000').split(',').map(s => s.trim());
 
+
+// Pending email queue — used by the local SMTP relay
+const PENDING_EMAILS_FILE = path.join(DATA_DIR, 'pending-emails.json');
+
+let pendingEmails = [];
+
+function loadPendingEmails() {
+  try {
+    if (fs.existsSync(PENDING_EMAILS_FILE)) {
+      pendingEmails = JSON.parse(fs.readFileSync(PENDING_EMAILS_FILE, 'utf-8'));
+    }
+  } catch (err) { console.error('Error loading pending emails:', err.message); }
+}
+
+function savePendingEmails() {
+  try {
+    fs.writeFileSync(PENDING_EMAILS_FILE, JSON.stringify(pendingEmails, null, 2), 'utf-8');
+  } catch (err) { console.error('Error saving pending emails:', err.message); }
+}
+
+function addPendingEmail(to, code) {
+  pendingEmails.push({
+    id: crypto.randomBytes(8).toString('hex'),
+    to,
+    code,
+    created_at: new Date().toISOString(),
+    sent: false
+  });
+  savePendingEmails();
+}
+
+
 // ============================================================
 // PERSISTENCE
 // ============================================================
@@ -533,6 +565,44 @@ app.post('/api/data/update', apiKeyMiddleware, (req, res) => {
 });
 
 // ============================================================
+
+
+// ============================================================
+// PENDING EMAIL RELAY API
+// ============================================================
+
+// POST /api/auth/pending-emails/sync — relay calls this to claim and send emails
+app.post('/api/auth/pending-emails/sync', apiKeyMiddleware, (req, res) => {
+  try {
+    const { results } = req.body;
+    if (!Array.isArray(results)) return res.status(400).json({ error: 'results array required' });
+    for (const r of results) {
+      if (r.sent) {
+        const idx = pendingEmails.findIndex(e => e.id === r.id);
+        if (idx >= 0) {
+          pendingEmails[idx].sent = true;
+          pendingEmails[idx].sent_at = new Date().toISOString();
+        }
+      }
+    }
+    savePendingEmails();
+    const unsent = pendingEmails.filter(e => !e.sent);
+    res.json({ pending: unsent });
+  } catch (err) {
+    console.error('Pending emails sync error:', err);
+    res.status(500).json({ error: 'Erreur interne.' });
+  }
+});
+
+// GET /api/auth/pending-emails — relay polls this
+app.get('/api/auth/pending-emails', apiKeyMiddleware, (req, res) => {
+  const unsent = pendingEmails.filter(e => !e.sent);
+  res.json({ pending: unsent });
+});
+
+// Also load pending emails at startup
+// (add this to the existing loadDashboardData call)
+
 // FICHIERS STATIQUES
 // ============================================================
 
@@ -563,6 +633,7 @@ app.get('*', (req, res, next) => {
 
 loadUsers();
 loadDashboardData();
+loadPendingEmails();
 
 app.listen(PORT, () => {
   console.log(`\n  🚀 Call Scoring — Backend unique`);
