@@ -22,17 +22,9 @@ services:
       - key: PORT
         value: "3001"
 
-      # --- GMAIL SMTP (OBLIGATOIRE) ---
-      - key: SMTP_HOST
-        value: smtp.gmail.com
-      - key: SMTP_PORT
-        value: "587"
-      - key: SMTP_USER
-        value: bymycar.reporting@gmail.com
-      - key: SMTP_PASS
+      # --- RESEND API (envoi d'emails par HTTP — pas de SMTP) ---
+      - key: RESEND_API_KEY
         sync: false  # ⬅️ À remplir dans le dashboard Render
-      - key: FROM_EMAIL
-        value: bymycar.reporting@gmail.com
 
       
       # --- PIPELINE API KEY (mettre la même valeur dans GitHub Secrets) ---

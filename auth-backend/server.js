@@ -14,11 +14,7 @@
  * Variables d'environnement :
  *   PORT             - Port (défaut: 3001)
  *   JWT_SECRET       - Secret pour les tokens JWT
- *   SMTP_HOST        - Serveur SMTP (défaut: smtp.gmail.com)
- *   SMTP_PORT        - Port SMTP (défaut: 587)
- *   SMTP_USER        - Utilisateur SMTP (bymycar.reporting@gmail.com)
- *   SMTP_PASS        - Mot de passe d'application Gmail
- *   FROM_EMAIL       - Adresse d'envoi
+ *   RESEND_API_KEY   - Clé API Resend (envoi d'emails)
  *   DATA_API_KEY     - Clé API pour le pipeline (upload data)
  *   ALLOWED_ORIGINS  - Origines CORS (séparées par virgules)
  */
@@ -47,13 +43,10 @@ const USERS_FILE = path.join(DATA_DIR, 'users.json');
 const DATA_FILE = path.join(DATA_DIR, 'dashboard-data.json');
 const CONFIG_FILE = path.join(DATA_DIR, 'services_config.json');
 
-// SMTP (Gmail)
-const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
-const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
-const SMTP_USER = process.env.SMTP_USER || 'bymycar.reporting@gmail.com';
-const SMTP_PASS = (process.env.SMTP_PASS || '').replace(/ /g, '');
-const FROM_EMAIL = process.env.FROM_EMAIL || SMTP_USER || 'bymycar.reporting@gmail.com';
-const SMTP_CONFIGURED = !!(SMTP_HOST && SMTP_USER && SMTP_PASS);
+// Resend (email API — pas de SMTP, pas de ports bloqués)
+const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
+const RESEND_CONFIGURED = !!RESEND_API_KEY;
+const FROM_EMAIL = 'onboarding@resend.dev'; // email par défaut Resend, les emails arrivent quand même
 
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000').split(',').map(s => s.trim());
 
@@ -113,60 +106,46 @@ async function updateUserPassword(email, newHash) {
 // EMAIL
 // ============================================================
 
-async function sendEmailSMTP(to, code) {
-  if (!SMTP_CONFIGURED) {
-    console.error('SMTP not configured');
+async function sendEmailViaResend(to, code) {
+  if (!RESEND_CONFIGURED) {
+    console.error('Resend API key not configured');
     return false;
   }
   
-  // Try SMTP with timeout — don't block the response
   try {
-    const nodemailer = require('nodemailer');
+    const resp = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: `CallScoring <${FROM_EMAIL}>`,
+        to: [to],
+        subject: '🔐 CallScoring — Votre code de vérification',
+        html: `
+          <div style="font-family:-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:20px;">
+            <h2 style="color:#1d1d1f;font-size:18px;margin-bottom:8px;">Connexion à votre tableau de bord</h2>
+            <p style="color:#6e6e73;font-size:14px;margin-bottom:20px;">Voici votre code de vérification :</p>
+            <div style="background:#f5f5f7;border-radius:16px;padding:24px;text-align:center;font-size:40px;font-weight:700;letter-spacing:12px;color:#0071e3;font-family:monospace;margin-bottom:20px;">${code}</div>
+            <p style="color:#86868b;font-size:13px;">Ce code expire dans <strong>15 minutes</strong>.</p>
+            <p style="color:#86868b;font-size:13px;">Si vous n'avez pas demandé cette connexion, ignorez cet email.</p>
+            <hr style="border:none;border-top:1px solid #e8e8ed;margin:20px 0;">
+            <p style="color:#aeaeb2;font-size:11px;text-align:center;">CallScoring — ByMyCar BDC Dashboard</p>
+          </div>`,
+      }),
+    });
     
-    // Try port 587 first (STARTTLS), then 465 (SSL)
-    const configs = [
-      { host: SMTP_HOST, port: 587, secure: false },
-      { host: SMTP_HOST, port: 465, secure: true },
-    ];
-    
-    let lastError = null;
-    for (const cfg of configs) {
-      try {
-        const transporter = nodemailer.createTransport({
-          ...cfg,
-          auth: { user: SMTP_USER, pass: SMTP_PASS },
-          connectionTimeout: 8000,
-          greetingTimeout: 8000,
-          socketTimeout: 10000,
-        });
-        await transporter.sendMail({
-          from: `"CallScoring" <${FROM_EMAIL}>`,
-          to,
-          subject: '🔐 CallScoring — Votre code de vérification',
-          html: `
-            <div style="font-family:-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:20px;">
-              <div style="background:#1a1a1a;border-radius:16px;padding:24px;text-align:center;margin-bottom:24px;">
-                <span style="color:#fff;font-size:20px;font-weight:700;">CallScoring</span>
-              </div>
-              <h2 style="color:#1d1d1f;font-size:18px;margin-bottom:8px;">Connexion à votre tableau de bord</h2>
-              <p style="color:#6e6e73;font-size:14px;margin-bottom:20px;">Voici votre code de vérification :</p>
-              <div style="background:#f5f5f7;border-radius:16px;padding:24px;text-align:center;font-size:40px;font-weight:700;letter-spacing:12px;color:#0071e3;font-family:monospace;margin-bottom:20px;">${code}</div>
-              <p style="color:#86868b;font-size:13px;">Ce code expire dans <strong>15 minutes</strong>.</p>
-              <p style="color:#86868b;font-size:13px;">Si vous n'avez pas demandé cette connexion, ignorez cet email.</p>
-              <hr style="border:none;border-top:1px solid #e8e8ed;margin:20px 0;">
-              <p style="color:#aeaeb2;font-size:11px;text-align:center;">CallScoring — ByMyCar BDC Dashboard</p>
-            </div>`,
-        });
-        console.log(`  ✅ Email sent to ${to} via port ${cfg.port}`);
-        return true;
-      } catch (err) {
-        lastError = err;
-        console.error(`  SMTP port ${cfg.port} failed:`, err.message.substring(0, 100));
-      }
+    const data = await resp.json();
+    if (resp.ok) {
+      console.log(`  ✅ Email sent to ${to} via Resend — id: ${data.id}`);
+      return true;
+    } else {
+      console.error(`  ❌ Resend API error: ${resp.status} ${JSON.stringify(data)}`);
+      return false;
     }
-    throw lastError;
   } catch (err) {
-    console.error('  ❌ All SMTP attempts failed:', err.message);
+    console.error('  ❌ Resend request failed:', err.message);
     return false;
   }
 }
@@ -286,12 +265,12 @@ app.post('/api/auth/request-code', (req, res) => {
     console.log(`  📧 Code for ${email}: ${code}`);
 
     // 2. Envoyer l'email en arrière-plan (ne bloque pas la réponse)
-    if (SMTP_CONFIGURED) {
-      sendEmailSMTP(email, code).then(sent => {
+    if (RESEND_CONFIGURED) {
+      sendEmailViaResend(email, code).then(sent => {
         console.log(`  📧 Email to ${email}: ${sent ? 'sent' : 'FAILED'}`);
       });
     } else {
-      console.log('  ⚠️ SMTP not configured, email not sent');
+      console.log('  ⚠️ Resend API key not configured, email not sent');
     }
 
     // 3. Répondre immédiatement (toujours succès)
@@ -374,7 +353,7 @@ app.get('/api/auth/check-user', (req, res) => {
 
 // GET /api/health
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', smtp_configured: SMTP_CONFIGURED, users_count: users.length, has_data: !!dashboardData, uptime: process.uptime() });
+  res.json({ status: 'ok', email_configured: RESEND_CONFIGURED, users_count: users.length, has_data: !!dashboardData, uptime: process.uptime() });
 });
 
 // ============================================================
@@ -462,11 +441,11 @@ loadDashboardData();
 app.listen(PORT, () => {
   console.log(`\n  🚀 Call Scoring — Backend unique`);
   console.log(`  📡 Port: ${PORT}`);
-  console.log(`  ✉️  SMTP: ${SMTP_CONFIGURED ? '✅ Gmail' : '❌ Non configuré'}`);
+  console.log(`  ✉️  Email: ${RESEND_CONFIGURED ? '✅ Resend API' : '❌ Non configuré'}`);
   console.log(`  👥 Utilisateurs: ${users.length}`);
   console.log(`  📊 Données: ${dashboardData ? '✅ Chargées' : '❌ Aucune'}`);
   console.log(`  🔑 API Key: ${DATA_API_KEY ? '✅ Configurée' : '❌ Non configurée'}`);
-  if (!SMTP_CONFIGURED) console.log(`  ⚠️  Définir SMTP_USER et SMTP_PASS`);
+  if (!RESEND_CONFIGURED) console.log(`  ⚠️  Définir RESEND_API_KEY dans les variables d'environnement`);
   if (!DATA_API_KEY) console.log(`  ⚠️  Définir DATA_API_KEY pour les uploads du pipeline`);
   console.log();
 });
