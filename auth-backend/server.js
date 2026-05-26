@@ -107,12 +107,17 @@ async function updateUserPassword(email, newHash) {
 // ============================================================
 
 async function sendEmailViaResend(to, code) {
+  const startTime = Date.now();
   if (!RESEND_CONFIGURED) {
     console.error('Resend API key not configured');
     return false;
   }
   
+  // On bloque la réponse jusqu'à savoir si l'email est parti
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    
     const resp = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -134,18 +139,24 @@ async function sendEmailViaResend(to, code) {
             <p style="color:#aeaeb2;font-size:11px;text-align:center;">CallScoring — ByMyCar BDC Dashboard</p>
           </div>`,
       }),
+      signal: controller.signal,
     });
     
+    clearTimeout(timeout);
     const data = await resp.json();
     if (resp.ok) {
-      console.log(`  ✅ Email sent to ${to} via Resend — id: ${data.id}`);
+      console.log(`  ✅ Email sent to ${to} via Resend — id: ${data.id} (${Date.now()-startTime}ms)`);
       return true;
     } else {
       console.error(`  ❌ Resend API error: ${resp.status} ${JSON.stringify(data)}`);
       return false;
     }
   } catch (err) {
-    console.error('  ❌ Resend request failed:', err.message);
+    if (err.name === 'AbortError') {
+      console.error('  ❌ Resend request timed out (10s)');
+    } else {
+      console.error('  ❌ Resend request failed:', err.message);
+    }
     return false;
   }
 }
@@ -249,7 +260,7 @@ app.use(express.json({ limit: '50mb' }));
 // ============================================================
 
 // POST /api/auth/request-code — stocke le code, envoie l'email en arrière-plan
-app.post('/api/auth/request-code', (req, res) => {
+app.post('/api/auth/request-code', async (req, res) => {
   try {
     const { email, purpose } = req.body;
     if (!email || !validateEmailDomain(email))
@@ -264,17 +275,27 @@ app.post('/api/auth/request-code', (req, res) => {
     storeCode(email, code);
     console.log(`  📧 Code for ${email}: ${code}`);
 
-    // 2. Envoyer l'email en arrière-plan (ne bloque pas la réponse)
+    // 2. Envoyer l'email SYNCHRONE (on attend la réponse)
+    let emailSent = false;
     if (RESEND_CONFIGURED) {
-      sendEmailViaResend(email, code).then(sent => {
-        console.log(`  📧 Email to ${email}: ${sent ? 'sent' : 'FAILED'}`);
-      });
+      emailSent = await sendEmailViaResend(email, code);
+      console.log(`  📧 Email to ${email}: ${emailSent ? 'sent' : 'FAILED'}`);
     } else {
       console.log('  ⚠️ Resend API key not configured, email not sent');
     }
 
-    // 3. Répondre immédiatement (toujours succès)
-    res.json({ sent: true, exists: !!findUser(email), message: 'Code envoyé par email.' });
+    // 3. Répondre — inclut le code si l'email n'a pas pu être délivré
+    const response = { sent: emailSent, exists: !!findUser(email) };
+    if (!emailSent && RESEND_CONFIGURED) {
+      response.code = code; // fallback : le frontend affichera le code
+      response.message = 'Code affiché à l\'écran (email non délivrable pour ce destinataire).';
+    } else if (emailSent) {
+      response.message = 'Code envoyé par email.';
+    } else {
+      response.message = 'Code affiché à l\'écran (email non configuré).';
+      response.code = code;
+    }
+    res.json(response);
   } catch (err) { 
     console.error(err); 
     res.status(500).json({ error: 'Erreur interne.' }); 
