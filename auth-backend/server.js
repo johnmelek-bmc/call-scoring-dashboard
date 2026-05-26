@@ -1,23 +1,25 @@
 #!/usr/bin/env node
 /**
- * Call Scoring — Authentication Backend
+ * Call Scoring — Backend unique (auth + dashboard + données)
  * 
- * Backend autonome — stockage local (users.json), aucun accès GitHub.
+ * Un seul service Render sert tout :
+ * - API d'authentification (publique)
+ * - Dashboard (nécessite JWT valide)
+ * - Données de scoring (nécessite JWT valide)
+ * - Upload des données par le pipeline (clé API)
  * 
- * Flow :
- *   1. Email → validation domaine @bymycar.* / @cosmobilis.*
- *   2. Si compte existe → saisir mot de passe → connecté
- *   3. Si nouveau → code par email (Gmail SMTP) → créer mot de passe → connecté
- *   4. Mot de passe oublié → code par email → nouveau mot de passe
+ * Rien n'est accessible sans authentification.
+ * Aucun repo public avec des données sensibles.
  * 
  * Variables d'environnement :
  *   PORT             - Port (défaut: 3001)
- *   JWT_SECRET       - Secret JWT (auto-généré si absent)
+ *   JWT_SECRET       - Secret pour les tokens JWT
  *   SMTP_HOST        - Serveur SMTP (défaut: smtp.gmail.com)
  *   SMTP_PORT        - Port SMTP (défaut: 587)
  *   SMTP_USER        - Utilisateur SMTP (bymycar.reporting@gmail.com)
- *   SMTP_PASS        - Mot de passe d'application Gmail ⚠️ requis
- *   FROM_EMAIL       - Adresse d'envoi (défaut: SMTP_USER)
+ *   SMTP_PASS        - Mot de passe d'application Gmail
+ *   FROM_EMAIL       - Adresse d'envoi
+ *   DATA_API_KEY     - Clé API pour le pipeline (upload data)
  *   ALLOWED_ORIGINS  - Origines CORS (séparées par virgules)
  */
 
@@ -37,8 +39,13 @@ const JWT_SECRET = process.env.JWT_SECRET || crypto.randomBytes(64).toString('he
 const JWT_EXPIRY = '2h';
 const CODE_EXPIRY_MS = 15 * 60 * 1000;
 const SALT_ROUNDS = 10;
+const DATA_API_KEY = process.env.DATA_API_KEY || '';
+
 const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis'];
-const USERS_FILE = path.join(__dirname, 'users.json');
+const DATA_DIR = __dirname; // stockage local
+const USERS_FILE = path.join(DATA_DIR, 'users.json');
+const DATA_FILE = path.join(DATA_DIR, 'dashboard-data.json');
+const CONFIG_FILE = path.join(DATA_DIR, 'services_config.json');
 
 // SMTP
 const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
@@ -48,44 +55,50 @@ const SMTP_PASS = process.env.SMTP_PASS || '';
 const FROM_EMAIL = process.env.FROM_EMAIL || SMTP_USER || 'noreply@bymycar.fr';
 const SMTP_CONFIGURED = !!(SMTP_HOST && SMTP_USER && SMTP_PASS);
 
-const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000,https://johnmelek-bmc.github.io').split(',').map(s => s.trim());
+const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000').split(',').map(s => s.trim());
 
 // ============================================================
-// USER STORAGE (JSON file)
+// PERSISTENCE
 // ============================================================
+
+let users = [];
+let pendingCodes = new Map();
+
+// Dashboard data (loaded in memory)
+let dashboardData = null;
+let servicesConfig = null;
 
 function loadUsers() {
   try {
     if (fs.existsSync(USERS_FILE)) {
-      const data = fs.readFileSync(USERS_FILE, 'utf-8');
-      return JSON.parse(data);
+      users = JSON.parse(fs.readFileSync(USERS_FILE, 'utf-8'));
     }
-  } catch (err) {
-    console.error('Error loading users:', err.message);
-  }
-  return [];
+  } catch (err) { console.error('Error loading users:', err.message); }
 }
 
-function saveUsers(users) {
+function saveUsers() {
   try {
     fs.writeFileSync(USERS_FILE, JSON.stringify(users, null, 2), 'utf-8');
     return true;
-  } catch (err) {
-    console.error('Error saving users:', err.message);
-    return false;
-  }
+  } catch (err) { console.error('Error saving users:', err.message); return false; }
 }
 
-let users = loadUsers();
-const pendingCodes = new Map();
-
-function findUser(email) {
-  return users.find(u => u.email === email.toLowerCase());
+function loadDashboardData() {
+  try {
+    if (fs.existsSync(DATA_FILE)) {
+      dashboardData = JSON.parse(fs.readFileSync(DATA_FILE, 'utf-8'));
+    }
+    if (fs.existsSync(CONFIG_FILE)) {
+      servicesConfig = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf-8'));
+    }
+  } catch (err) { console.error('Error loading dashboard data:', err.message); }
 }
+
+function findUser(email) { return users.find(u => u.email === email.toLowerCase()); }
 
 async function addUser(email, passwordHash) {
   users.push({ email: email.toLowerCase(), passwordHash, created_at: new Date().toISOString() });
-  return saveUsers(users);
+  return saveUsers();
 }
 
 async function updateUserPassword(email, newHash) {
@@ -93,7 +106,7 @@ async function updateUserPassword(email, newHash) {
   if (idx === -1) return false;
   users[idx].passwordHash = newHash;
   users[idx].updated_at = new Date().toISOString();
-  return saveUsers(users);
+  return saveUsers();
 }
 
 // ============================================================
@@ -115,17 +128,17 @@ async function sendEmailSMTP(to, code) {
       to,
       subject: '🔐 CallScoring — Votre code de vérification',
       html: `
-        <div style="font-family: -apple-system, sans-serif; max-width:480px; margin:0 auto; padding:20px;">
-          <div style="background:#1a1a1a; border-radius:16px; padding:24px; text-align:center; margin-bottom:24px;">
-            <span style="color:#fff; font-size:20px; font-weight:700;">CallScoring</span>
+        <div style="font-family:-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:20px;">
+          <div style="background:#1a1a1a;border-radius:16px;padding:24px;text-align:center;margin-bottom:24px;">
+            <span style="color:#fff;font-size:20px;font-weight:700;">CallScoring</span>
           </div>
-          <h2 style="color:#1d1d1f; font-size:18px; margin-bottom:8px;">Connexion à votre tableau de bord</h2>
-          <p style="color:#6e6e73; font-size:14px; margin-bottom:20px;">Voici votre code de vérification :</p>
-          <div style="background:#f5f5f7; border-radius:16px; padding:24px; text-align:center; font-size:40px; font-weight:700; letter-spacing:12px; color:#0071e3; font-family:monospace; margin-bottom:20px;">${code}</div>
-          <p style="color:#86868b; font-size:13px;">Ce code expire dans <strong>15 minutes</strong>.</p>
-          <p style="color:#86868b; font-size:13px;">Si vous n'avez pas demandé cette connexion, ignorez cet email.</p>
-          <hr style="border:none; border-top:1px solid #e8e8ed; margin:20px 0;">
-          <p style="color:#aeaeb2; font-size:11px; text-align:center;">CallScoring — ByMyCar BDC Dashboard</p>
+          <h2 style="color:#1d1d1f;font-size:18px;margin-bottom:8px;">Connexion à votre tableau de bord</h2>
+          <p style="color:#6e6e73;font-size:14px;margin-bottom:20px;">Voici votre code de vérification :</p>
+          <div style="background:#f5f5f7;border-radius:16px;padding:24px;text-align:center;font-size:40px;font-weight:700;letter-spacing:12px;color:#0071e3;font-family:monospace;margin-bottom:20px;">${code}</div>
+          <p style="color:#86868b;font-size:13px;">Ce code expire dans <strong>15 minutes</strong>.</p>
+          <p style="color:#86868b;font-size:13px;">Si vous n'avez pas demandé cette connexion, ignorez cet email.</p>
+          <hr style="border:none;border-top:1px solid #e8e8ed;margin:20px 0;">
+          <p style="color:#aeaeb2;font-size:11px;text-align:center;">CallScoring — ByMyCar BDC Dashboard</p>
         </div>`,
     });
     return true;
@@ -173,198 +186,251 @@ function generateJWT(email) {
   );
 }
 
+// Middleware : vérifie le JWT
+function authMiddleware(req, res, next) {
+  const auth = req.headers.authorization;
+  if (!auth || !auth.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Authentification requise' });
+  }
+  try {
+    req.user = jwt.verify(auth.slice(7), JWT_SECRET);
+    next();
+  } catch (err) {
+    return res.status(401).json({ error: 'Session expirée. Reconnectez-vous.' });
+  }
+}
+
+// Middleware : vérifie la clé API (pour le pipeline)
+function apiKeyMiddleware(req, res, next) {
+  const key = req.headers['x-api-key'];
+  if (!DATA_API_KEY || key !== DATA_API_KEY) {
+    return res.status(403).json({ error: 'Clé API invalide' });
+  }
+  next();
+}
+
+// Middleware : vérifie le JWT pour les fichiers statiques protégés
+function staticAuthMiddleware(req, res, next) {
+  // Routes publiques (login, etc.)
+  const publicPaths = ['/index.html', '/'];
+  if (publicPaths.includes(req.path)) return next();
+
+  // Fichiers statiques protégés
+  const protectedExtensions = ['.html', '.js', '.css', '.json', '.svg', '.png'];
+  const ext = path.extname(req.path).toLowerCase();
+  if (protectedExtensions.includes(ext)) {
+    const auth = req.headers.authorization;
+    if (!auth || !auth.startsWith('Bearer ')) {
+      return res.redirect('/?unauthorized=1');
+    }
+    try {
+      jwt.verify(auth.slice(7), JWT_SECRET);
+      next();
+    } catch (err) {
+      return res.redirect('/?unauthorized=1');
+    }
+  } else {
+    next();
+  }
+}
+
 // ============================================================
 // APP
 // ============================================================
 
 const app = express();
 app.use(cors({ origin: (o, cb) => cb(null, true), credentials: true }));
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 
 // ============================================================
-// ROUTES
+// ROUTES API (publiques)
 // ============================================================
 
-// POST /api/auth/request-code — Envoie un code par email
+// POST /api/auth/request-code
 app.post('/api/auth/request-code', async (req, res) => {
   try {
     const { email, purpose } = req.body;
     if (!email || !validateEmailDomain(email))
       return res.status(400).json({ error: 'Email non autorisé (@bymycar.* / @cosmobilis.*)' });
-
     const exists = !!findUser(email);
-
-    if (!purpose && exists)
-      return res.json({ exists: true, sent: false, message: 'Compte existant. Entrez votre mot de passe.' });
-    if (purpose === 'register' && exists)
-      return res.json({ exists: true, sent: false, error: 'Ce compte existe déjà. Connectez-vous avec votre mot de passe.' });
-    if (purpose === 'forgot' && !exists)
-      return res.json({ exists: false, sent: false, error: 'Aucun compte avec cet email.' });
+    if (!purpose && exists) return res.json({ exists: true, sent: false });
+    if (purpose === 'register' && exists) return res.json({ exists: true, sent: false, error: 'Ce compte existe déjà.' });
+    if (purpose === 'forgot' && !exists) return res.json({ exists: false, sent: false, error: 'Aucun compte avec cet email.' });
 
     const code = generateCode();
     storeCode(email, code);
     const sent = SMTP_CONFIGURED ? await sendEmailSMTP(email, code) : false;
-    console.log(`  Code for ${email}: ${code} [sent: ${sent}]`);
-
-    if (!sent) return res.json({ sent: false, error: SMTP_CONFIGURED ? "Erreur d'envoi. Réessayez." : "SMTP non configuré." });
+    console.log(`  📧 Code for ${email}: ${code} [sent: ${sent}]`);
+    if (!sent) return res.json({ sent: false, error: SMTP_CONFIGURED ? "Erreur d'envoi." : "SMTP non configuré." });
     res.json({ sent: true, exists: !!findUser(email), message: 'Code envoyé par email.' });
-  } catch (err) {
-    console.error('request-code error:', err);
-    res.status(500).json({ error: 'Erreur interne.' });
-  }
+  } catch (err) { console.error(err); res.status(500).json({ error: 'Erreur interne.' }); }
 });
 
-// POST /api/auth/verify-code — Vérifie le code, retourne un temp_token
+// POST /api/auth/verify-code
 app.post('/api/auth/verify-code', (req, res) => {
   try {
     const { email, code } = req.body;
     if (!email || !code) return res.status(400).json({ valid: false, error: 'Paramètres manquants.' });
-
     const result = verifyStoredCode(email, code);
     if (!result.valid) return res.status(401).json({ valid: false, error: result.reason });
-
-    const tempToken = jwt.sign(
-      { email: email.toLowerCase(), action: 'set_password', time: Date.now() },
-      JWT_SECRET,
-      { expiresIn: '5m' }
-    );
+    const tempToken = jwt.sign({ email: email.toLowerCase(), action: 'set_password', time: Date.now() }, JWT_SECRET, { expiresIn: '5m' });
     res.json({ valid: true, exists: !!findUser(email), tempToken });
-  } catch (err) {
-    console.error('verify-code error:', err);
-    res.status(500).json({ error: 'Erreur interne.' });
-  }
+  } catch (err) { console.error(err); res.status(500).json({ error: 'Erreur interne.' }); }
 });
 
-// POST /api/auth/set-password — Crée un compte (nouvel utilisateur)
+// POST /api/auth/set-password
 app.post('/api/auth/set-password', async (req, res) => {
   try {
     const { tempToken, email, password } = req.body;
-    if (!tempToken || !email || !password)
-      return res.status(400).json({ error: 'Paramètres manquants.' });
-
+    if (!tempToken || !email || !password) return res.status(400).json({ error: 'Paramètres manquants.' });
     let decoded;
-    try { decoded = jwt.verify(tempToken, JWT_SECRET); } catch (e) {
-      return res.status(401).json({ error: 'Token invalide ou expiré. Recommencez.' });
-    }
-    if (decoded.email !== email.toLowerCase() || decoded.action !== 'set_password')
-      return res.status(401).json({ error: 'Token invalide.' });
-    if (password.length < 4)
-      return res.status(400).json({ error: 'Le mot de passe doit faire au moins 4 caractères.' });
-    if (findUser(email))
-      return res.status(400).json({ error: 'Ce compte existe déjà.' });
-
+    try { decoded = jwt.verify(tempToken, JWT_SECRET); } catch (e) { return res.status(401).json({ error: 'Token invalide ou expiré.' }); }
+    if (decoded.email !== email.toLowerCase() || decoded.action !== 'set_password') return res.status(401).json({ error: 'Token invalide.' });
+    if (password.length < 4) return res.status(400).json({ error: 'Min. 4 caractères.' });
+    if (findUser(email)) return res.status(400).json({ error: 'Ce compte existe déjà.' });
     const hash = await bcrypt.hash(password, SALT_ROUNDS);
-    const saved = await addUser(email, hash);
-    if (!saved) return res.status(500).json({ error: "Erreur lors de la création du compte." });
-
-    const token = generateJWT(email);
+    if (!(await addUser(email, hash))) return res.status(500).json({ error: 'Erreur création compte.' });
     console.log(`  ✅ Nouvel utilisateur: ${email}`);
-    res.json({ success: true, token, email: email.toLowerCase() });
-  } catch (err) {
-    console.error('set-password error:', err);
-    res.status(500).json({ error: 'Erreur interne.' });
-  }
+    res.json({ success: true, token: generateJWT(email), email: email.toLowerCase() });
+  } catch (err) { console.error(err); res.status(500).json({ error: 'Erreur interne.' }); }
 });
 
-// POST /api/auth/login — Connexion email + mot de passe
+// POST /api/auth/login
 app.post('/api/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) return res.status(400).json({ error: 'Email et mot de passe requis.' });
-
     const user = findUser(email);
     if (!user) return res.status(401).json({ error: 'Aucun compte avec cet email.' });
-
-    const match = await bcrypt.compare(password, user.passwordHash);
-    if (!match) return res.status(401).json({ error: 'Mot de passe incorrect.' });
-
-    const token = generateJWT(email);
-    res.json({ success: true, token, email: email.toLowerCase() });
-  } catch (err) {
-    console.error('login error:', err);
-    res.status(500).json({ error: 'Erreur interne.' });
-  }
+    if (!(await bcrypt.compare(password, user.passwordHash))) return res.status(401).json({ error: 'Mot de passe incorrect.' });
+    res.json({ success: true, token: generateJWT(email), email: email.toLowerCase() });
+  } catch (err) { console.error(err); res.status(500).json({ error: 'Erreur interne.' }); }
 });
 
-// POST /api/auth/reset-password — Réinitialisation (forgot password)
+// POST /api/auth/reset-password
 app.post('/api/auth/reset-password', async (req, res) => {
   try {
     const { tempToken, email, newPassword } = req.body;
-    if (!tempToken || !email || !newPassword)
-      return res.status(400).json({ error: 'Paramètres manquants.' });
-
+    if (!tempToken || !email || !newPassword) return res.status(400).json({ error: 'Paramètres manquants.' });
     let decoded;
-    try { decoded = jwt.verify(tempToken, JWT_SECRET); } catch (e) {
-      return res.status(401).json({ error: 'Token invalide ou expiré.' });
-    }
-    if (decoded.email !== email.toLowerCase() || decoded.action !== 'set_password')
-      return res.status(401).json({ error: 'Token invalide.' });
-    if (!findUser(email))
-      return res.status(400).json({ error: 'Aucun compte trouvé.' });
-    if (newPassword.length < 4)
-      return res.status(400).json({ error: 'Min. 4 caractères.' });
-
+    try { decoded = jwt.verify(tempToken, JWT_SECRET); } catch (e) { return res.status(401).json({ error: 'Token invalide ou expiré.' }); }
+    if (decoded.email !== email.toLowerCase() || decoded.action !== 'set_password') return res.status(401).json({ error: 'Token invalide.' });
+    if (!findUser(email)) return res.status(400).json({ error: 'Aucun compte trouvé.' });
+    if (newPassword.length < 4) return res.status(400).json({ error: 'Min. 4 caractères.' });
     const hash = await bcrypt.hash(newPassword, SALT_ROUNDS);
-    const saved = await updateUserPassword(email, hash);
-    if (!saved) return res.status(500).json({ error: "Erreur lors de la mise à jour." });
-
-    const token = generateJWT(email);
+    if (!(await updateUserPassword(email, hash))) return res.status(500).json({ error: 'Erreur mise à jour.' });
     console.log(`  ✅ Mot de passe réinitialisé: ${email}`);
-    res.json({ success: true, token, email: email.toLowerCase() });
-  } catch (err) {
-    console.error('reset-password error:', err);
-    res.status(500).json({ error: 'Erreur interne.' });
-  }
+    res.json({ success: true, token: generateJWT(email), email: email.toLowerCase() });
+  } catch (err) { console.error(err); res.status(500).json({ error: 'Erreur interne.' }); }
 });
 
-// GET /api/auth/me — Vérifie le token JWT
-app.get('/api/auth/me', (req, res) => {
-  const auth = req.headers.authorization;
-  if (!auth || !auth.startsWith('Bearer '))
-    return res.status(401).json({ authenticated: false });
-
-  try {
-    const decoded = jwt.verify(auth.slice(7), JWT_SECRET);
-    res.json({ authenticated: true, email: decoded.email, domain: decoded.domain, hasPassword: !!findUser(decoded.email) });
-  } catch (err) {
-    res.status(401).json({ authenticated: false });
-  }
+// GET /api/auth/me
+app.get('/api/auth/me', authMiddleware, (req, res) => {
+  res.json({ authenticated: true, email: req.user.email, domain: req.user.domain });
 });
 
-// GET /api/auth/check-user — Vérifie si un email a un compte
+// GET /api/auth/check-user
 app.get('/api/auth/check-user', (req, res) => {
   const email = req.query.email;
   if (!email) return res.status(400).json({ error: 'Email requis.' });
   res.json({ exists: !!findUser(email), email: email.toLowerCase() });
 });
 
-// POST /api/auth/logout
-app.post('/api/auth/logout', (req, res) => res.json({ success: true }));
-
 // GET /api/health
 app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'ok',
-    smtp_configured: SMTP_CONFIGURED,
-    users_count: users.length,
-    uptime: process.uptime(),
-  });
+  res.json({ status: 'ok', smtp_configured: SMTP_CONFIGURED, users_count: users.length, has_data: !!dashboardData, uptime: process.uptime() });
 });
 
-// Serve static (frontend) in dev mode
-app.use(express.static(path.join(__dirname, '..')));
+// ============================================================
+// ROUTES PROTÉGÉES (données du dashboard)
+// ============================================================
+
+// GET /api/data/dashboard — données de scoring (protégé par JWT)
+app.get('/api/data/dashboard', authMiddleware, (req, res) => {
+  if (!dashboardData) return res.status(404).json({ error: 'Aucune donnée disponible' });
+  res.json(dashboardData);
+});
+
+// GET /api/data/services — configuration des services (protégé par JWT)
+app.get('/api/data/services', authMiddleware, (req, res) => {
+  if (!servicesConfig) return res.status(404).json({ error: 'Aucune configuration disponible' });
+  res.json(servicesConfig);
+});
+
+// ============================================================
+// ROUTES PIPELINE (upload des données)
+// ============================================================
+
+// POST /api/data/update — le pipeline push les données ici
+app.post('/api/data/update', apiKeyMiddleware, (req, res) => {
+  try {
+    const { data, config } = req.body;
+    if (data) {
+      dashboardData = data;
+      fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf-8');
+    }
+    if (config) {
+      servicesConfig = config;
+      fs.writeFileSync(CONFIG_FILE, JSON.stringify(config, null, 2), 'utf-8');
+    }
+    console.log(`  ✅ Données mises à jour: data=${!!data} config=${!!config}`);
+    res.json({ success: true, data_received: !!data, config_received: !!config });
+  } catch (err) {
+    console.error('Data update error:', err);
+    res.status(500).json({ error: 'Erreur lors de la mise à jour des données.' });
+  }
+});
+
+// ============================================================
+// FICHIERS STATIQUES — servis manuellement (pas de express.static)
+// ============================================================
+
+// Servir index.html (page principale)
+app.get('/', (req, res) => {
+  const indexPath = path.join(__dirname, '..', 'index.html');
+  if (fs.existsSync(indexPath)) return res.sendFile(indexPath);
+  res.status(404).json({ error: 'index.html non trouvé' });
+});
+
+// Servir les autres fichiers statiques du frontend (js, css, etc.)
+app.get('*', (req, res, next) => {
+  // Ne pas intercepter les routes API qui commencent par /api/
+  if (req.path.startsWith('/api/')) return next();
+  
+  // Sécurité : ne jamais servir data.json, services_config.json en statique
+  const basename = path.basename(req.path);
+  if (basename === 'data.json' || basename === 'services_config.json') {
+    return res.status(403).json({ error: 'Données accessibles via /api/data/dashboard' });
+  }
+  
+  // Servir le fichier statique depuis la racine du repo
+  const filePath = path.join(__dirname, '..', req.path);
+  if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+    return res.sendFile(filePath);
+  }
+  
+  // Fallback SPA : servir index.html pour les routes inconnues
+  const indexPath = path.join(__dirname, '..', 'index.html');
+  if (fs.existsSync(indexPath)) return res.sendFile(indexPath);
+  
+  res.status(404).json({ error: 'Page non trouvée' });
+});
 
 // ============================================================
 // START
 // ============================================================
 
+loadUsers();
+loadDashboardData();
+
 app.listen(PORT, () => {
-  console.log(`\n  🚀 Call Scoring Auth Backend`);
+  console.log(`\n  🚀 Call Scoring — Backend unique`);
   console.log(`  📡 Port: ${PORT}`);
-  console.log(`  ✉️  SMTP: ${SMTP_CONFIGURED ? '✅ Gmail configuré' : '❌ NON configuré'}`);
+  console.log(`  ✉️  SMTP: ${SMTP_CONFIGURED ? '✅ Gmail' : '❌ Non configuré'}`);
   console.log(`  👥 Utilisateurs: ${users.length}`);
-  console.log(`  💾 Stockage: ${USERS_FILE}`);
-  console.log(`  🌐 CORS: ${ALLOWED_ORIGINS.join(', ')}`);
-  if (!SMTP_CONFIGURED) console.log(`  ⚠️  Définir SMTP_USER et SMTP_PASS dans les variables d'environnement`);
+  console.log(`  📊 Données: ${dashboardData ? '✅ Chargées' : '❌ Aucune'}`);
+  console.log(`  🔑 API Key: ${DATA_API_KEY ? '✅ Configurée' : '❌ Non configurée'}`);
+  if (!SMTP_CONFIGURED) console.log(`  ⚠️  Définir SMTP_USER et SMTP_PASS`);
+  if (!DATA_API_KEY) console.log(`  ⚠️  Définir DATA_API_KEY pour les uploads du pipeline`);
   console.log();
 });
