@@ -1,0 +1,42 @@
+# ============================================================
+# Render Blueprint — Call Scoring Auth Backend
+# ============================================================
+# Backend autonome : stockage local (users.json), aucun accès GitHub.
+# Déployer depuis le REPO PUBLIC (johnmelek-bmc/call-scoring-dashboard)
+# pour ne donner aucun accès au repo privé.
+# ============================================================
+
+services:
+  - type: web
+    name: call-scoring-auth
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "3001"
+
+      # --- GMAIL SMTP (OBLIGATOIRE) ---
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        value: bymycar.reporting@gmail.com
+      - key: SMTP_PASS
+        sync: false  # ⬅️ À remplir dans le dashboard Render
+      - key: FROM_EMAIL
+        value: bymycar.reporting@gmail.com
+
+      # --- CORS ---
+      - key: ALLOWED_ORIGINS
+        value: "https://johnmelek-bmc.github.io"
+
+      # --- JWT (auto-généré si vide) ---
+      - key: JWT_SECRET
+        generateValue: true
