@@ -387,7 +387,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function load() {
   try {
-    const r = await fetch('data.json?' + Date.now());
+    // Récupérer le token JWT depuis la session
+    let token = '';
+    try { const s = JSON.parse(localStorage.getItem('bdc_session') || '{}'); token = s.token || ''; } catch(e) {}
+    
+    const headers = { 'Authorization': 'Bearer ' + token };
+    const r = await fetch(API_BASE_URL + '/api/data/dashboard', { headers });
     if (!r.ok) throw new Error(String(r.status));
     DATA = normalizeAllData(await r.json());
     const dates = Object.keys(DATA).sort();
@@ -815,8 +820,8 @@ function esc(s) { return typeof s==='string' ? s.replace(/&/g,'&amp;').replace(/
 //   4. Mot de passe oublié → code par email → nouveau mot de passe
 // Session JWT stockée localStorage (2h)
 
-// À CHANGER : mettre l'URL de votre backend Render après déploiement
-const API_BASE_URL = 'http://localhost:3001';
+// Backend et frontend servis par le même serveur (même origine)
+const API_BASE_URL = '';
 
 const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis'];
 const SESSION_DURATION_MS = 2 * 60 * 60 * 1000;
