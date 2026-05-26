@@ -33,6 +33,11 @@ services:
       - key: FROM_EMAIL
         value: bymycar.reporting@gmail.com
 
+      
+      # --- PIPELINE API KEY (mettre la même valeur dans GitHub Secrets) ---
+      - key: DATA_API_KEY
+        sync: false  # ⬅️ À remplir dans le dashboard Render
+
       # --- CORS ---
       - key: ALLOWED_ORIGINS
         value: "https://johnmelek-bmc.github.io"
