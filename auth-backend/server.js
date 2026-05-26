@@ -14,7 +14,9 @@
  * Variables d'environnement :
  *   PORT             - Port (défaut: 3001)
  *   JWT_SECRET       - Secret pour les tokens JWT
- *   RESEND_API_KEY   - Clé API Resend (optionnel, valeur par défaut intégrée)
+ *   SMTP_USER        - Email Gmail (défaut: bymycar.reporting@gmail.com)
+ *   SMTP_PASS        - Mot de passe d'application Gmail (défaut intégré)
+ *   RESEND_API_KEY   - Clé API Resend (backup si SMTP échoue)
  *   DATA_API_KEY     - Clé API pour le pipeline (upload data)
  *   ALLOWED_ORIGINS  - Origines CORS (séparées par virgules)
  */
@@ -26,6 +28,7 @@ const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const nodemailer = require('nodemailer');
 
 // ============================================================
 // CONFIG
@@ -37,16 +40,36 @@ const CODE_EXPIRY_MS = 15 * 60 * 1000;
 const SALT_ROUNDS = 10;
 const DATA_API_KEY = process.env.DATA_API_KEY || '';
 
-const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis', 'gmail'];
-const DATA_DIR = __dirname; // stockage local
+const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis'];
+const DATA_DIR = __dirname;
 const USERS_FILE = path.join(DATA_DIR, 'users.json');
 const DATA_FILE = path.join(DATA_DIR, 'dashboard-data.json');
 const CONFIG_FILE = path.join(DATA_DIR, 'services_config.json');
 
-// Resend (email API — pas de SMTP, pas de ports bloqués)
-const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_XcUCq1fC_9ZHLgBZVCpfvcDvRs1Rk5SNj';
+// SMTP Gmail — envoie vers TOUS les domaines (aucune vérification DNS nécessaire)
+const SMTP_USER = process.env.SMTP_USER || 'bymycar.reporting@gmail.com';
+const SMTP_PASS = process.env.SMTP_PASS || 'hzcwhjaqbehvkcuc';
+
+let smtpTransporter = null;
+try {
+  smtpTransporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: { user: SMTP_USER, pass: SMTP_PASS },
+    connectionTimeout: 8000,
+    greetingTimeout: 8000,
+    socketTimeout: 8000,
+  });
+  console.log('  ✅ SMTP Gmail configuré');
+} catch (err) {
+  console.error('  ❌ SMTP Gmail configuration error:', err.message);
+}
+
+// Resend (backup si SMTP échoue)
+const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
 const RESEND_CONFIGURED = !!RESEND_API_KEY;
-const FROM_EMAIL = 'onboarding@resend.dev'; // email par défaut Resend, les emails arrivent quand même
+const FROM_EMAIL = 'onboarding@resend.dev';
 
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000').split(',').map(s => s.trim());
 
@@ -57,7 +80,6 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000')
 let users = [];
 let pendingCodes = new Map();
 
-// Dashboard data (loaded in memory)
 let dashboardData = null;
 let servicesConfig = null;
 
@@ -103,8 +125,42 @@ async function updateUserPassword(email, newHash) {
 }
 
 // ============================================================
-// EMAIL
+// EMAIL — Gmail SMTP (primary) + Resend API (backup)
 // ============================================================
+
+function buildEmailHtml(code) {
+  return `
+    <div style="font-family:-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:20px;">
+      <h2 style="color:#1d1d1f;font-size:18px;margin-bottom:8px;">Connexion à votre tableau de bord</h2>
+      <p style="color:#6e6e73;font-size:14px;margin-bottom:20px;">Voici votre code de vérification :</p>
+      <div style="background:#f5f5f7;border-radius:16px;padding:24px;text-align:center;font-size:40px;font-weight:700;letter-spacing:12px;color:#0071e3;font-family:monospace;margin-bottom:20px;">${code}</div>
+      <p style="color:#86868b;font-size:13px;">Ce code expire dans <strong>15 minutes</strong>.</p>
+      <p style="color:#86868b;font-size:13px;">Si vous n'avez pas demandé cette connexion, ignorez cet email.</p>
+      <hr style="border:none;border-top:1px solid #e8e8ed;margin:20px 0;">
+      <p style="color:#aeaeb2;font-size:11px;text-align:center;">CallScoring — ByMyCar BDC Dashboard</p>
+    </div>`;
+}
+
+async function sendEmailViaSMTP(to, code) {
+  const startTime = Date.now();
+  if (!smtpTransporter) {
+    console.error('  ❌ SMTP transporter not initialized');
+    return false;
+  }
+  try {
+    const info = await smtpTransporter.sendMail({
+      from: `"CallScoring" <${SMTP_USER}>`,
+      to: to,
+      subject: '🔐 CallScoring — Votre code de vérification',
+      html: buildEmailHtml(code),
+    });
+    console.log(`  ✅ Email sent to ${to} via SMTP — id: ${info.messageId} (${Date.now()-startTime}ms)`);
+    return true;
+  } catch (err) {
+    console.error(`  ❌ SMTP send failed for ${to}:`, err.message);
+    return false;
+  }
+}
 
 async function sendEmailViaResend(to, code) {
   const startTime = Date.now();
@@ -112,12 +168,9 @@ async function sendEmailViaResend(to, code) {
     console.error('Resend API key not configured');
     return false;
   }
-  
-  // On bloque la réponse jusqu'à savoir si l'email est parti
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 10000);
-    
     const resp = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -128,20 +181,10 @@ async function sendEmailViaResend(to, code) {
         from: `CallScoring <${FROM_EMAIL}>`,
         to: [to],
         subject: '🔐 CallScoring — Votre code de vérification',
-        html: `
-          <div style="font-family:-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:20px;">
-            <h2 style="color:#1d1d1f;font-size:18px;margin-bottom:8px;">Connexion à votre tableau de bord</h2>
-            <p style="color:#6e6e73;font-size:14px;margin-bottom:20px;">Voici votre code de vérification :</p>
-            <div style="background:#f5f5f7;border-radius:16px;padding:24px;text-align:center;font-size:40px;font-weight:700;letter-spacing:12px;color:#0071e3;font-family:monospace;margin-bottom:20px;">${code}</div>
-            <p style="color:#86868b;font-size:13px;">Ce code expire dans <strong>15 minutes</strong>.</p>
-            <p style="color:#86868b;font-size:13px;">Si vous n'avez pas demandé cette connexion, ignorez cet email.</p>
-            <hr style="border:none;border-top:1px solid #e8e8ed;margin:20px 0;">
-            <p style="color:#aeaeb2;font-size:11px;text-align:center;">CallScoring — ByMyCar BDC Dashboard</p>
-          </div>`,
+        html: buildEmailHtml(code),
       }),
       signal: controller.signal,
     });
-    
     clearTimeout(timeout);
     const data = await resp.json();
     if (resp.ok) {
@@ -161,14 +204,30 @@ async function sendEmailViaResend(to, code) {
   }
 }
 
+async function sendVerificationEmail(to, code) {
+  // 1. Try SMTP Gmail first — works for ALL domains
+  const smtpOk = await sendEmailViaSMTP(to, code);
+  if (smtpOk) return true;
+  
+  // 2. Fallback to Resend API
+  if (RESEND_CONFIGURED) {
+    const resendOk = await sendEmailViaResend(to, code);
+    if (resendOk) return true;
+  }
+  
+  // 3. Both failed
+  console.error(`  ❌ CRITICAL: All email methods failed for ${to}`);
+  return false;
+}
+
 // ============================================================
 // HELPERS
 // ============================================================
 
 function validateEmailDomain(email) {
   if (!email || !email.includes('@')) return false;
-  const domainName = email.split('@')[1].split('.')[0].toLowerCase();
-  return ALLOWED_DOMAINS.some(d => domainName === d || domainName.endsWith('.' + d));
+  const domain = email.split('@')[1].toLowerCase();
+  return ALLOWED_DOMAINS.some(d => domain === d || domain.endsWith('.' + d));
 }
 
 function storeCode(email, code) {
@@ -199,7 +258,6 @@ function generateJWT(email) {
   );
 }
 
-// Middleware : vérifie le JWT
 function authMiddleware(req, res, next) {
   const auth = req.headers.authorization;
   if (!auth || !auth.startsWith('Bearer ')) {
@@ -213,7 +271,6 @@ function authMiddleware(req, res, next) {
   }
 }
 
-// Middleware : vérifie la clé API (pour le pipeline)
 function apiKeyMiddleware(req, res, next) {
   const key = req.headers['x-api-key'];
   if (!DATA_API_KEY || key !== DATA_API_KEY) {
@@ -222,13 +279,9 @@ function apiKeyMiddleware(req, res, next) {
   next();
 }
 
-// Middleware : vérifie le JWT pour les fichiers statiques protégés
 function staticAuthMiddleware(req, res, next) {
-  // Routes publiques (login, etc.)
   const publicPaths = ['/index.html', '/'];
   if (publicPaths.includes(req.path)) return next();
-
-  // Fichiers statiques protégés
   const protectedExtensions = ['.html', '.js', '.css', '.json', '.svg', '.png'];
   const ext = path.extname(req.path).toLowerCase();
   if (protectedExtensions.includes(ext)) {
@@ -256,10 +309,10 @@ app.use(cors({ origin: (o, cb) => cb(null, true), credentials: true }));
 app.use(express.json({ limit: '50mb' }));
 
 // ============================================================
-// ROUTES API (publiques)
+// ROUTES API
 // ============================================================
 
-// POST /api/auth/request-code — stocke le code, envoie l'email en arrière-plan
+// POST /api/auth/request-code
 app.post('/api/auth/request-code', async (req, res) => {
   try {
     const { email, purpose } = req.body;
@@ -270,32 +323,21 @@ app.post('/api/auth/request-code', async (req, res) => {
     if (purpose === 'register' && exists) return res.json({ exists: true, sent: false, error: 'Ce compte existe déjà.' });
     if (purpose === 'forgot' && !exists) return res.json({ exists: false, sent: false, error: 'Aucun compte avec cet email.' });
 
-    // 1. Générer et stocker le code immédiatement
+    // 1. Generate and store code
     const code = generateCode();
     storeCode(email, code);
     console.log(`  📧 Code for ${email}: ${code}`);
 
-    // 2. Envoyer l'email SYNCHRONE (on attend la réponse)
-    let emailSent = false;
-    if (RESEND_CONFIGURED) {
-      emailSent = await sendEmailViaResend(email, code);
-      console.log(`  📧 Email to ${email}: ${emailSent ? 'sent' : 'FAILED'}`);
-    } else {
-      console.log('  ⚠️ Resend API key not configured, email not sent');
-    }
+    // 2. Send email — MUST succeed (no screen fallback)
+    const emailSent = await sendVerificationEmail(email, code);
+    console.log(`  📧 Email to ${email}: ${emailSent ? 'sent' : 'FAILED'}`);
 
-    // 3. Répondre — inclut le code si l'email n'a pas pu être délivré
-    const response = { sent: emailSent, exists: !!findUser(email) };
-    if (!emailSent && RESEND_CONFIGURED) {
-      response.code = code; // fallback : le frontend affichera le code
-      response.message = 'Code affiché à l\'écran (email non délivrable pour ce destinataire).';
-    } else if (emailSent) {
-      response.message = 'Code envoyé par email.';
+    if (emailSent) {
+      res.json({ sent: true, exists: !!findUser(email), message: 'Code envoyé par email.' });
     } else {
-      response.message = 'Code affiché à l\'écran (email non configuré).';
-      response.code = code;
+      // Both SMTP and Resend failed — return error, NO code on screen
+      res.status(500).json({ sent: false, error: 'Erreur d\'envoi. Veuillez réessayer ou contacter le support.' });
     }
-    res.json(response);
   } catch (err) { 
     console.error(err); 
     res.status(500).json({ error: 'Erreur interne.' }); 
@@ -374,20 +416,28 @@ app.get('/api/auth/check-user', (req, res) => {
 
 // GET /api/health
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', email_configured: RESEND_CONFIGURED, users_count: users.length, has_data: !!dashboardData, uptime: process.uptime() });
+  res.json({ 
+    status: 'ok', 
+    email_configured: !!smtpTransporter, 
+    smtp_configured: !!smtpTransporter,
+    resend_configured: RESEND_CONFIGURED,
+    users_count: users.length, 
+    has_data: !!dashboardData, 
+    uptime: process.uptime() 
+  });
 });
 
 // ============================================================
 // ROUTES PROTÉGÉES (données du dashboard)
 // ============================================================
 
-// GET /api/data/dashboard — données de scoring (protégé par JWT)
+// GET /api/data/dashboard
 app.get('/api/data/dashboard', authMiddleware, (req, res) => {
   if (!dashboardData) return res.status(404).json({ error: 'Aucune donnée disponible' });
   res.json(dashboardData);
 });
 
-// GET /api/data/services — configuration des services (protégé par JWT)
+// GET /api/data/services
 app.get('/api/data/services', authMiddleware, (req, res) => {
   if (!servicesConfig) return res.status(404).json({ error: 'Aucune configuration disponible' });
   res.json(servicesConfig);
@@ -397,7 +447,7 @@ app.get('/api/data/services', authMiddleware, (req, res) => {
 // ROUTES PIPELINE (upload des données)
 // ============================================================
 
-// POST /api/data/update — le pipeline push les données ici
+// POST /api/data/update
 app.post('/api/data/update', apiKeyMiddleware, (req, res) => {
   try {
     const { data, config } = req.body;
@@ -418,37 +468,27 @@ app.post('/api/data/update', apiKeyMiddleware, (req, res) => {
 });
 
 // ============================================================
-// FICHIERS STATIQUES — servis manuellement (pas de express.static)
+// FICHIERS STATIQUES
 // ============================================================
 
-// Servir index.html (page principale)
 app.get('/', (req, res) => {
   const indexPath = path.join(__dirname, '..', 'index.html');
   if (fs.existsSync(indexPath)) return res.sendFile(indexPath);
   res.status(404).json({ error: 'index.html non trouvé' });
 });
 
-// Servir les autres fichiers statiques du frontend (js, css, etc.)
 app.get('*', (req, res, next) => {
-  // Ne pas intercepter les routes API qui commencent par /api/
   if (req.path.startsWith('/api/')) return next();
-  
-  // Sécurité : ne jamais servir data.json, services_config.json en statique
   const basename = path.basename(req.path);
   if (basename === 'data.json' || basename === 'services_config.json') {
     return res.status(403).json({ error: 'Données accessibles via /api/data/dashboard' });
   }
-  
-  // Servir le fichier statique depuis la racine du repo
   const filePath = path.join(__dirname, '..', req.path);
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
     return res.sendFile(filePath);
   }
-  
-  // Fallback SPA : servir index.html pour les routes inconnues
   const indexPath = path.join(__dirname, '..', 'index.html');
   if (fs.existsSync(indexPath)) return res.sendFile(indexPath);
-  
   res.status(404).json({ error: 'Page non trouvée' });
 });
 
@@ -462,11 +502,10 @@ loadDashboardData();
 app.listen(PORT, () => {
   console.log(`\n  🚀 Call Scoring — Backend unique`);
   console.log(`  📡 Port: ${PORT}`);
-  console.log(`  ✉️  Email: ${RESEND_CONFIGURED ? '✅ Resend API' : '❌ Non configuré'}`);
+  console.log(`  ✉️  Email: ${smtpTransporter ? '✅ SMTP Gmail' : '❌ SMTP non configuré'}`);
+  console.log(`     Backup: ${RESEND_CONFIGURED ? '✅ Resend API' : '❌ Aucun'}`);
   console.log(`  👥 Utilisateurs: ${users.length}`);
   console.log(`  📊 Données: ${dashboardData ? '✅ Chargées' : '❌ Aucune'}`);
   console.log(`  🔑 API Key: ${DATA_API_KEY ? '✅ Configurée' : '❌ Non configurée'}`);
-  if (!RESEND_CONFIGURED) console.log(`  ⚠️  Définir RESEND_API_KEY dans les variables d'environnement`);
-  if (!DATA_API_KEY) console.log(`  ⚠️  Définir DATA_API_KEY pour les uploads du pipeline`);
   console.log();
 });
