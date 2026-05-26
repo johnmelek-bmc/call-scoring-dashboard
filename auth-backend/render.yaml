@@ -12,6 +12,7 @@ services:
     env: node
     region: frankfurt
     plan: free
+    rootDir: auth-backend
     buildCommand: npm install
     startCommand: node server.js
     healthCheckPath: /api/health
