@@ -14,7 +14,7 @@
  * Variables d'environnement :
  *   PORT             - Port (défaut: 3001)
  *   JWT_SECRET       - Secret pour les tokens JWT
- *   RESEND_API_KEY   - Clé API Resend (envoi d'emails)
+ *   RESEND_API_KEY   - Clé API Resend (optionnel, valeur par défaut intégrée)
  *   DATA_API_KEY     - Clé API pour le pipeline (upload data)
  *   ALLOWED_ORIGINS  - Origines CORS (séparées par virgules)
  */
@@ -44,7 +44,7 @@ const DATA_FILE = path.join(DATA_DIR, 'dashboard-data.json');
 const CONFIG_FILE = path.join(DATA_DIR, 'services_config.json');
 
 // Resend (email API — pas de SMTP, pas de ports bloqués)
-const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
+const RESEND_API_KEY = process.env.RESEND_API_KEY || 're_XcUCq1fC_9ZHLgBZVCpfvcDvRs1Rk5SNj';
 const RESEND_CONFIGURED = !!RESEND_API_KEY;
 const FROM_EMAIL = 'onboarding@resend.dev'; // email par défaut Resend, les emails arrivent quand même
 
