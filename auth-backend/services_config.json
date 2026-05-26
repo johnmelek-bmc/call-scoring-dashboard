@@ -1,0 +1,10 @@
+{
+    "services":  [
+                     "E-vendeurs",
+                     "Qualifieurs",
+                     "APV GVA",
+                     "Standard",
+                     "APV FMC/NSA/BMW"
+                 ],
+    "default":  "E-vendeurs"
+}
