@@ -148,6 +148,7 @@ async function sendEmailViaSMTP(to, code) {
     return false;
   }
   try {
+    console.log(`  🔌 Attempting SMTP send to ${to} via smtp.gmail.com:465...`);
     const info = await smtpTransporter.sendMail({
       from: `"CallScoring" <${SMTP_USER}>`,
       to: to,
@@ -157,7 +158,38 @@ async function sendEmailViaSMTP(to, code) {
     console.log(`  ✅ Email sent to ${to} via SMTP — id: ${info.messageId} (${Date.now()-startTime}ms)`);
     return true;
   } catch (err) {
-    console.error(`  ❌ SMTP send failed for ${to}:`, err.message);
+    console.error(`  ❌ SMTP send failed for ${to}: ${err.message}`);
+    if (err.code === 'ESOCKET') console.error('     → Socket error - port 465 may be blocked');
+    if (err.code === 'ETIMEDOUT') console.error('     → Connection timed out');
+    if (err.code === 'EAUTH') console.error('     → Authentication failed');
+    
+    // NEW: Try port 587 as fallback
+    try {
+      console.log(`  🔌 Retrying ${to} via smtp.gmail.com:587 (STARTTLS)...`);
+      const transporter2 = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        requireTLS: true,
+        auth: { user: SMTP_USER, pass: SMTP_PASS },
+        connectionTimeout: 8000,
+        greetingTimeout: 8000,
+        socketTimeout: 8000,
+      });
+      const info2 = await transporter2.sendMail({
+        from: `"CallScoring" <${SMTP_USER}>`,
+        to: to,
+        subject: '🔐 CallScoring — Votre code de vérification',
+        html: buildEmailHtml(code),
+      });
+      console.log(`  ✅ Email sent to ${to} via SMTP 587 — id: ${info2.messageId} (${Date.now()-startTime}ms)`);
+      return true;
+    } catch (err2) {
+      console.error(`  ❌ SMTP 587 also failed for ${to}: ${err2.message}`);
+      if (err2.code === 'ESOCKET') console.error('     → Port 587 also blocked');
+      if (err2.code === 'ETIMEDOUT') console.error('     → Port 587 timed out');
+    }
+    
     return false;
   }
 }
@@ -425,6 +457,37 @@ app.get('/api/health', (req, res) => {
     has_data: !!dashboardData, 
     uptime: process.uptime() 
   });
+});
+
+// GET /api/test/smtp — diagnostic endpoint to test SMTP connectivity
+app.get('/api/test/smtp', async (req, res) => {
+  const results = { port_465: null, port_587: null };
+  
+  // Test port 465
+  try {
+    const t1 = Date.now();
+    const t1a = nodemailer.createTransport({
+      host: 'smtp.gmail.com', port: 465, secure: true,
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
+      connectionTimeout: 8000, greetingTimeout: 5000, socketTimeout: 5000,
+    });
+    await t1a.verify();
+    results.port_465 = { ok: true, ms: Date.now() - t1 };
+  } catch (e) { results.port_465 = { ok: false, error: e.message, code: e.code }; }
+  
+  // Test port 587
+  try {
+    const t2 = Date.now();
+    const t2a = nodemailer.createTransport({
+      host: 'smtp.gmail.com', port: 587, secure: false, requireTLS: true,
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
+      connectionTimeout: 8000, greetingTimeout: 5000, socketTimeout: 5000,
+    });
+    await t2a.verify();
+    results.port_587 = { ok: true, ms: Date.now() - t2 };
+  } catch (e) { results.port_587 = { ok: false, error: e.message, code: e.code }; }
+  
+  res.json(results);
 });
 
 // ============================================================
