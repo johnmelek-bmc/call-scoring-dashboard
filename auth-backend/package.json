@@ -12,5 +12,8 @@
     "jsonwebtoken": "^9.0.2",
     "bcryptjs": "^2.4.3",
     "nodemailer": "^6.9.16"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
