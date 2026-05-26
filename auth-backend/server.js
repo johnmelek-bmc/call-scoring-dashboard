@@ -37,7 +37,7 @@ const CODE_EXPIRY_MS = 15 * 60 * 1000;
 const SALT_ROUNDS = 10;
 const DATA_API_KEY = process.env.DATA_API_KEY || '';
 
-const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis'];
+const ALLOWED_DOMAINS = ['bymycar', 'cosmobilis', 'gmail'];
 const DATA_DIR = __dirname; // stockage local
 const USERS_FILE = path.join(DATA_DIR, 'users.json');
 const DATA_FILE = path.join(DATA_DIR, 'dashboard-data.json');
