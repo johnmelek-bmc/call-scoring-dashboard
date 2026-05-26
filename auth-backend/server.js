@@ -47,11 +47,11 @@ const USERS_FILE = path.join(DATA_DIR, 'users.json');
 const DATA_FILE = path.join(DATA_DIR, 'dashboard-data.json');
 const CONFIG_FILE = path.join(DATA_DIR, 'services_config.json');
 
-// SMTP
+// SMTP (Gmail)
 const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
-const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
-const SMTP_USER = process.env.SMTP_USER || '';
-const SMTP_PASS = process.env.SMTP_PASS || '';
+const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465');
+const SMTP_USER = process.env.SMTP_USER || 'bymycar.reporting@gmail.com';
+const SMTP_PASS = (process.env.SMTP_PASS || '').replace(/ /g, '');
 const FROM_EMAIL = process.env.FROM_EMAIL || SMTP_USER || 'noreply@bymycar.fr';
 const SMTP_CONFIGURED = !!(SMTP_HOST && SMTP_USER && SMTP_PASS);
 
@@ -120,8 +120,11 @@ async function sendEmailSMTP(to, code) {
     const transporter = nodemailer.createTransport({
       host: SMTP_HOST,
       port: SMTP_PORT,
-      secure: false,
+      secure: SMTP_PORT === 465,
       auth: { user: SMTP_USER, pass: SMTP_PASS },
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
     });
     await transporter.sendMail({
       from: `"CallScoring" <${FROM_EMAIL}>`,
