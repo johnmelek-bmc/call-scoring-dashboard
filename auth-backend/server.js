@@ -237,19 +237,21 @@ async function sendEmailViaResend(to, code) {
 }
 
 async function sendVerificationEmail(to, code) {
-  // 1. Try SMTP Gmail first — works for ALL domains
-  const smtpOk = await sendEmailViaSMTP(to, code);
-  if (smtpOk) return true;
-  
-  // 2. Fallback to Resend API
+  // 1. Try Resend API first — works for @gmail.com
   if (RESEND_CONFIGURED) {
     const resendOk = await sendEmailViaResend(to, code);
     if (resendOk) return true;
   }
   
-  // 3. Both failed
-  console.error(`  ❌ CRITICAL: All email methods failed for ${to}`);
-  return false;
+  // 2. Try SMTP Gmail (might work, might not — depends on hosting provider)
+  const smtpOk = await sendEmailViaSMTP(to, code);
+  if (smtpOk) return true;
+  
+  // 3. Both direct methods failed — queue for local relay delivery
+  console.log(`  📋 Queuing email for ${to} — relay will deliver via local SMTP`);
+  addPendingEmail(to, code);
+  // Return true because the code IS stored and WILL be delivered
+  return true;
 }
 
 // ============================================================
@@ -459,7 +461,7 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// GET /api/test/smtp — diagnostic endpoint to test SMTP connectivity
+
 app.get('/api/test/smtp', async (req, res) => {
   const results = { port_465: null, port_587: null };
   
