@@ -1,7 +1,7 @@
 {
   "name": "call-scoring-auth",
   "version": "1.0.0",
-  "description": "Authentication backend for Call Scoring dashboard — magic link + JWT HttpOnly cookies + SMTP email",
+  "description": "Authentication backend for Call Scoring dashboard \u2014 magic link + JWT HttpOnly cookies + SMTP email",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -10,6 +10,7 @@
     "express": "^4.18.2",
     "cors": "^2.8.5",
     "jsonwebtoken": "^9.0.2",
-    "bcryptjs": "^2.4.3"
+    "bcryptjs": "^2.4.3",
+    "nodemailer": "^6.9.16"
   }
 }
