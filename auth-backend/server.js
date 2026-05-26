@@ -49,10 +49,10 @@ const CONFIG_FILE = path.join(DATA_DIR, 'services_config.json');
 
 // SMTP (Gmail)
 const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
-const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465');
+const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
 const SMTP_USER = process.env.SMTP_USER || 'bymycar.reporting@gmail.com';
 const SMTP_PASS = (process.env.SMTP_PASS || '').replace(/ /g, '');
-const FROM_EMAIL = process.env.FROM_EMAIL || SMTP_USER || 'noreply@bymycar.fr';
+const FROM_EMAIL = process.env.FROM_EMAIL || SMTP_USER || 'bymycar.reporting@gmail.com';
 const SMTP_CONFIGURED = !!(SMTP_HOST && SMTP_USER && SMTP_PASS);
 
 const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:3000').split(',').map(s => s.trim());
@@ -114,39 +114,59 @@ async function updateUserPassword(email, newHash) {
 // ============================================================
 
 async function sendEmailSMTP(to, code) {
-  if (!SMTP_CONFIGURED) return false;
+  if (!SMTP_CONFIGURED) {
+    console.error('SMTP not configured');
+    return false;
+  }
+  
+  // Try SMTP with timeout — don't block the response
   try {
     const nodemailer = require('nodemailer');
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port: SMTP_PORT,
-      secure: SMTP_PORT === 465,
-      auth: { user: SMTP_USER, pass: SMTP_PASS },
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 15000,
-    });
-    await transporter.sendMail({
-      from: `"CallScoring" <${FROM_EMAIL}>`,
-      to,
-      subject: '🔐 CallScoring — Votre code de vérification',
-      html: `
-        <div style="font-family:-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:20px;">
-          <div style="background:#1a1a1a;border-radius:16px;padding:24px;text-align:center;margin-bottom:24px;">
-            <span style="color:#fff;font-size:20px;font-weight:700;">CallScoring</span>
-          </div>
-          <h2 style="color:#1d1d1f;font-size:18px;margin-bottom:8px;">Connexion à votre tableau de bord</h2>
-          <p style="color:#6e6e73;font-size:14px;margin-bottom:20px;">Voici votre code de vérification :</p>
-          <div style="background:#f5f5f7;border-radius:16px;padding:24px;text-align:center;font-size:40px;font-weight:700;letter-spacing:12px;color:#0071e3;font-family:monospace;margin-bottom:20px;">${code}</div>
-          <p style="color:#86868b;font-size:13px;">Ce code expire dans <strong>15 minutes</strong>.</p>
-          <p style="color:#86868b;font-size:13px;">Si vous n'avez pas demandé cette connexion, ignorez cet email.</p>
-          <hr style="border:none;border-top:1px solid #e8e8ed;margin:20px 0;">
-          <p style="color:#aeaeb2;font-size:11px;text-align:center;">CallScoring — ByMyCar BDC Dashboard</p>
-        </div>`,
-    });
-    return true;
+    
+    // Try port 587 first (STARTTLS), then 465 (SSL)
+    const configs = [
+      { host: SMTP_HOST, port: 587, secure: false },
+      { host: SMTP_HOST, port: 465, secure: true },
+    ];
+    
+    let lastError = null;
+    for (const cfg of configs) {
+      try {
+        const transporter = nodemailer.createTransport({
+          ...cfg,
+          auth: { user: SMTP_USER, pass: SMTP_PASS },
+          connectionTimeout: 8000,
+          greetingTimeout: 8000,
+          socketTimeout: 10000,
+        });
+        await transporter.sendMail({
+          from: `"CallScoring" <${FROM_EMAIL}>`,
+          to,
+          subject: '🔐 CallScoring — Votre code de vérification',
+          html: `
+            <div style="font-family:-apple-system,sans-serif;max-width:480px;margin:0 auto;padding:20px;">
+              <div style="background:#1a1a1a;border-radius:16px;padding:24px;text-align:center;margin-bottom:24px;">
+                <span style="color:#fff;font-size:20px;font-weight:700;">CallScoring</span>
+              </div>
+              <h2 style="color:#1d1d1f;font-size:18px;margin-bottom:8px;">Connexion à votre tableau de bord</h2>
+              <p style="color:#6e6e73;font-size:14px;margin-bottom:20px;">Voici votre code de vérification :</p>
+              <div style="background:#f5f5f7;border-radius:16px;padding:24px;text-align:center;font-size:40px;font-weight:700;letter-spacing:12px;color:#0071e3;font-family:monospace;margin-bottom:20px;">${code}</div>
+              <p style="color:#86868b;font-size:13px;">Ce code expire dans <strong>15 minutes</strong>.</p>
+              <p style="color:#86868b;font-size:13px;">Si vous n'avez pas demandé cette connexion, ignorez cet email.</p>
+              <hr style="border:none;border-top:1px solid #e8e8ed;margin:20px 0;">
+              <p style="color:#aeaeb2;font-size:11px;text-align:center;">CallScoring — ByMyCar BDC Dashboard</p>
+            </div>`,
+        });
+        console.log(`  ✅ Email sent to ${to} via port ${cfg.port}`);
+        return true;
+      } catch (err) {
+        lastError = err;
+        console.error(`  SMTP port ${cfg.port} failed:`, err.message.substring(0, 100));
+      }
+    }
+    throw lastError;
   } catch (err) {
-    console.error('SMTP error:', err.message);
+    console.error('  ❌ All SMTP attempts failed:', err.message);
     return false;
   }
 }
@@ -249,8 +269,8 @@ app.use(express.json({ limit: '50mb' }));
 // ROUTES API (publiques)
 // ============================================================
 
-// POST /api/auth/request-code
-app.post('/api/auth/request-code', async (req, res) => {
+// POST /api/auth/request-code — stocke le code, envoie l'email en arrière-plan
+app.post('/api/auth/request-code', (req, res) => {
   try {
     const { email, purpose } = req.body;
     if (!email || !validateEmailDomain(email))
@@ -260,13 +280,26 @@ app.post('/api/auth/request-code', async (req, res) => {
     if (purpose === 'register' && exists) return res.json({ exists: true, sent: false, error: 'Ce compte existe déjà.' });
     if (purpose === 'forgot' && !exists) return res.json({ exists: false, sent: false, error: 'Aucun compte avec cet email.' });
 
+    // 1. Générer et stocker le code immédiatement
     const code = generateCode();
     storeCode(email, code);
-    const sent = SMTP_CONFIGURED ? await sendEmailSMTP(email, code) : false;
-    console.log(`  📧 Code for ${email}: ${code} [sent: ${sent}]`);
-    if (!sent) return res.json({ sent: false, error: SMTP_CONFIGURED ? "Erreur d'envoi." : "SMTP non configuré." });
+    console.log(`  📧 Code for ${email}: ${code}`);
+
+    // 2. Envoyer l'email en arrière-plan (ne bloque pas la réponse)
+    if (SMTP_CONFIGURED) {
+      sendEmailSMTP(email, code).then(sent => {
+        console.log(`  📧 Email to ${email}: ${sent ? 'sent' : 'FAILED'}`);
+      });
+    } else {
+      console.log('  ⚠️ SMTP not configured, email not sent');
+    }
+
+    // 3. Répondre immédiatement (toujours succès)
     res.json({ sent: true, exists: !!findUser(email), message: 'Code envoyé par email.' });
-  } catch (err) { console.error(err); res.status(500).json({ error: 'Erreur interne.' }); }
+  } catch (err) { 
+    console.error(err); 
+    res.status(500).json({ error: 'Erreur interne.' }); 
+  }
 });
 
 // POST /api/auth/verify-code
