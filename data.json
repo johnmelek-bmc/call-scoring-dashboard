@@ -32934,5 +32934,190 @@
       },
       "recording_available": false
     }
+  ],
+  "2026-05-01": [
+    {
+      "id": "4ae47869",
+      "date": "2026-05-01",
+      "datetime": "2026-05-01T07:48:27.395Z",
+      "url": "https://apps.mypurecloud.de/directory/#/conversations/3b69a925-d159-4c06-bc56-94884ae47869",
+      "grade": "75.4%",
+      "grade_label": "Conforme",
+      "grade_letter": "A",
+      "score": 75.4,
+      "score_20": 15.1,
+      "agent_tone": "Excellent — professionnel et engageant",
+      "client_sentiment": {
+        "Satisfied": 70,
+        "Neutral": 20,
+        "Frustrated": 10
+      },
+      "agent_name": "Camille DURAND",
+      "agent_id": "d7b60f32-0b68-449d-b98b-5cced060aafd",
+      "manager": "Mickael Rochegude",
+      "service": "Qualifieurs",
+      "transcript": "(transcription indisponible)",
+      "pros": [
+        "Pertinence de la réponse",
+        "Attitude et climat d'échange",
+        "Accueil du client",
+        "Découverte des attentes du client  - Questionnement besoins du client",
+        "Conclusion du contact"
+      ],
+      "cons": [
+        "Respect des process e-Vente / Qualif"
+      ],
+      "a_ameliorer": [
+        "Prise en charge et accompagnement du contact",
+        "Traitement des objections"
+      ],
+      "duration_sec": 466,
+      "metrics": {
+        "tTalk": 465.9,
+        "tHandle": 545.6,
+        "tAcw": 30.0,
+        "talk_min": 7.8,
+        "handle_min": 9.1
+      },
+      "evaluation": {
+        "overall_pct": 75.4,
+        "grade": "Conforme",
+        "category_breakdown": {
+          "Forme": {
+            "earned": 52.0,
+            "possible": 62.0,
+            "pct": 83.9
+          },
+          "Fond": {
+            "earned": 49.0,
+            "possible": 72.0,
+            "pct": 68.1
+          }
+        },
+        "criteria": [
+          {
+            "id": "prise_en_charge_et_accompagnement_du_contact",
+            "label": "Prise en charge et accompagnement du contact",
+            "level": "A ameliorer",
+            "points": 10,
+            "max_points": 20,
+            "pct": 50.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "pertinence_de_la_reponse",
+            "label": "Pertinence de la réponse",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": false
+          },
+          {
+            "id": "attitude_et_climat_dechange",
+            "label": "Attitude et climat d'échange",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": false
+          },
+          {
+            "id": "accueil_du_client",
+            "label": "Accueil du client",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "decouverte_des_attentes_du_client_questionnement_besoins_du_client",
+            "label": "Découverte des attentes du client  - Questionnement besoins du client",
+            "level": "Conforme",
+            "points": 20,
+            "max_points": 20,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "traitement_des_objections",
+            "label": "Traitement des objections",
+            "level": "A ameliorer",
+            "points": 3,
+            "max_points": 6,
+            "pct": 50.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "respect_des_process_evente_qualif",
+            "label": "Respect des process e-Vente / Qualif",
+            "level": "Non conforme",
+            "points": 0,
+            "max_points": 20,
+            "pct": 0.0,
+            "category": "Fond",
+            "coaching": true
+          },
+          {
+            "id": "mise_en_attente",
+            "label": "Mise en attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "temps_dattente",
+            "label": "Temps d'attente",
+            "level": "Non applicable",
+            "points": 0,
+            "max_points": 6,
+            "pct": null,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "conclusion_du_contact",
+            "label": "Conclusion du contact",
+            "level": "Conforme",
+            "points": 10,
+            "max_points": 10,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "prise_de_conge",
+            "label": "Prise de congé",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Forme",
+            "coaching": true
+          },
+          {
+            "id": "qualification_historisation_sf_genesys",
+            "label": "Qualification - Historisation (SF - Genesys)",
+            "level": "Conforme",
+            "points": 6,
+            "max_points": 6,
+            "pct": 100.0,
+            "category": "Fond",
+            "coaching": true
+          }
+        ]
+      },
+      "recording_available": false
+    }
   ]
 }
