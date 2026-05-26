@@ -226,8 +226,8 @@ async function sendVerificationEmail(to, code) {
 
 function validateEmailDomain(email) {
   if (!email || !email.includes('@')) return false;
-  const domain = email.split('@')[1].toLowerCase();
-  return ALLOWED_DOMAINS.some(d => domain === d || domain.endsWith('.' + d));
+  const domainName = email.split('@')[1].split('.')[0].toLowerCase();
+  return ALLOWED_DOMAINS.some(d => domainName === d || domainName.endsWith('.' + d));
 }
 
 function storeCode(email, code) {
