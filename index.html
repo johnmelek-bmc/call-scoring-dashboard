@@ -1250,7 +1250,7 @@ function completeLogin(email, token) {
   const session = { email, token, loginTime: Date.now(), expiryTime: Date.now() + SESSION_DURATION_MS };
   localStorage.setItem('bdc_session', JSON.stringify(session));
   document.getElementById('userBadge').innerHTML = email + ' · <span style="cursor:pointer;color:rgba(255,69,58,0.8)" onclick="logout()">Déconnexion</span>';
-  setTimeout(() => hideLogin(), 300);
+  setTimeout(() => { hideLogin(); load(); }, 300);
 }
 
 function checkSession() {
