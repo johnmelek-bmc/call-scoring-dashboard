@@ -1669,9 +1669,9 @@ function esc(s) { return typeof s==='string' ? s.replace(/&/g,'&amp;').replace(/
 
 
 
-// Backend et frontend servis par le même serveur (même origine)
+// Backend Render
 
-const API_BASE_URL = '';
+const API_BASE_URL = 'https://call-scoring-auth.onrender.com';
 
 
 
@@ -2529,7 +2529,9 @@ function completeLogin(email, token) {
 
   document.getElementById('userBadge').innerHTML = email + ' · <span style="cursor:pointer;color:rgba(255,69,58,0.8)" onclick="logout()">Déconnexion</span>';
 
-  setTimeout(() => { hideLogin(); load(); }, 300);
+  hideLogin();
+
+  load();
 
 }
 
